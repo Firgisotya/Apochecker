@@ -52,17 +52,17 @@
                             </li>
                             <li>
                                 <div class="header-icons">
-                            <li style="padding-left: 180px;"><a class="shopping-cart" href="/cart"><i
+                            <li style="padding-left: 120px;"><a class="shopping-cart" href="/cart"><i
                                         class="fas fa-shopping-cart"></i></a></li>
                             <li style=""><a class="mobile-hide search-bar-icon" href="#"><i
                                         class="fas fa-search"></i></a></li>
                             @guest
                             @if (Route::has('login'))
-                            <li><a class="" href="{{ route('login') }}"><i
+                            <li><a class="" href="{{ route('login') }}">Login <i
                                         class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
                             @endif
                             @else
-                            <li style="margin-left: -100px"><a href="">{{ Auth::user() -> name }}</a>
+                            <li style="margin-left: -100px"><a href="">Hello, {{ Auth::user() -> name }}</a>
                                 <ul id="tes" style="width: 100px;padding: 5px" class="sub-menu text-end">
                                     <li><a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
