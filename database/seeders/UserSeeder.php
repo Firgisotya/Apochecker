@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
                 'image' => '',
                 'level' => '',
                 'email' => 'firgi@gmail.com',
-                'password' => 'password',
+                'password' => Hash::make('123'),
             ],
             [
                 'name' => 'sotya',
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
                 'image' => '',
                 'level' => '',
                 'email' => 'sotya@gmail.com',
-                'password' => 'password',
+                'password' => Hash::make('123'),
             ],
             [
                 'name' => 'lazuardi',
@@ -41,7 +41,7 @@ class UserSeeder extends Seeder
                 'image' => '',
                 'level' => '',
                 'email' => 'lazuardi@gmail.com',
-                'password' => 'password',
+                'password' => Hash::make('123'),
             ],
             [
                 'name' => 'timur',
