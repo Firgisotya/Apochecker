@@ -47,7 +47,7 @@ Route::get('/single-product', function () {
 
 Auth::routes();
 
-Route::get('/', HomeController::class)->name('home');
+
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', function () {

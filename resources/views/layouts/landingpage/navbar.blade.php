@@ -15,10 +15,11 @@
                     <!-- menu start -->
                     <nav class="main-menu">
                         <ul>
-                            <li class="current-list-item"><a href="/">Home</a>
+                            <li class="{{ Request::is('/') ? 'current-list-item' : ''}}"><a href="/">Home</a>
 
                             </li>
-                            <li><a href="/about">About</a></li>
+                            <li class="{{ Request::is('about') ? 'current-list-item' : ''}}"><a href="/about">About</a>
+                            </li>
                             <li><a href="#">Pages</a>
                                 <ul class="sub-menu">
                                     <li><a href="/404">404 page</a></li>
@@ -30,14 +31,17 @@
                                     <li><a href="/shop">Shop</a></li>
                                 </ul>
                             </li>
-                            <li><a href="/news">News</a>
+                            <li
+                                class="{{ Request::is('news') || Request::is('single-news') ? 'current-list-item' : ''}}">
+                                <a href="/news">News</a>
                                 <ul class="sub-menu">
                                     <li><a href="/news">News</a></li>
                                     <li><a href="/single-news">Single News</a></li>
                                 </ul>
                             </li>
-                            <li><a href="/contact">Contact</a></li>
-                            <li><a href="/shop">Shop</a>
+                            <li class="{{ Request::is('contact') ? 'current-list-item' : ''}}"><a
+                                    href="/contact">Contact</a></li>
+                            <li class="{{ Request::is('shop') ? 'current-list-item' : ''}}"><a href="/shop">Shop</a>
                                 <ul class="sub-menu">
                                     <li><a href="/shop">Shop</a></li>
                                     <li><a href="/checkout">Check Out</a></li>
@@ -49,9 +53,33 @@
                                 <div class="header-icons">
                                     <a class="shopping-cart" href="/cart"><i class="fas fa-shopping-cart"></i></a>
                                     <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                                    @guest
+                                    @if (Route::has('login'))
                                     <a class="" href="{{ route('login') }}"><i
                                             class="fa-solid fa-arrow-right-to-bracket"></i></a>
+                                    @endif
+                                    @else
+                                    <a href="#">{{ Auth::user() -> name }}</a>
+                                    <ul style="width: 100px; margin-left: 100px;padding: 5px" class="sub-menu text-end">
+                                        <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                                                                                                 document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }} <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
+                                                @csrf
+                                            </form>
+                                        </li>
+
+                                    </ul>
+
+
+                                    @endguest
+
                                 </div>
+
                             </li>
                         </ul>
                     </nav>

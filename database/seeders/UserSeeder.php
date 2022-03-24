@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -49,8 +50,8 @@ class UserSeeder extends Seeder
                 'image' => '',
                 'level' => '',
                 'email' => 'timur@gmail.com',
-                'password' => 'password',
+                'password' => Hash::make('123'),
             ]
-            ]);
+        ]);
     }
 }
