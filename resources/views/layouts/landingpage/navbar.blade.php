@@ -51,45 +51,43 @@
                             </li>
                             <li>
                                 <div class="header-icons">
-                                    <a class="shopping-cart" href="/cart"><i class="fas fa-shopping-cart"></i></a>
-                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-                                    @guest
-                                    @if (Route::has('login'))
-                                    <a class="" href="{{ route('login') }}"><i
-                                            class="fa-solid fa-arrow-right-to-bracket"></i></a>
-                                    @endif
-                                    @else
-                                    <a href="#">{{ Auth::user() -> name }}</a>
-                                    <ul style="width: 100px; margin-left: 100px;padding: 5px" class="sub-menu text-end">
-                                        <li><a class="dropdown-item" href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();
-                                                                                                                                 document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }} <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                                            </a>
+                            <li style="padding-left: 280px;"><a class="shopping-cart" href="/cart"><i
+                                        class="fas fa-shopping-cart"></i></a></li>
+                            <li style=""><a class="mobile-hide search-bar-icon" href="#"><i
+                                        class="fas fa-search"></i></a></li>
+                            @guest
+                            @if (Route::has('login'))
+                            <li><a class="" href="{{ route('login') }}"><i
+                                        class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
+                            @endif
+                            @else
+                            <li style="margin-left: -100px"><a href="">{{ Auth::user() -> name }}</a>
+                                <ul id="tes" style="width: 100px;padding: 5px" class="sub-menu text-end">
+                                    <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                                                                                                                             document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }} <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                        </a>
 
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                class="d-none">
-                                                @csrf
-                                            </form>
-                                        </li>
-
-                                    </ul>
-
-
-                                    @endguest
-
-                                </div>
-
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                </ul>
                             </li>
-                        </ul>
-                    </nav>
-                    <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-                    <div class="mobile-menu"></div>
-                    <!-- menu end -->
+                            @endguest
                 </div>
+                </li>
+                </ul>
+                </nav>
+                <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                <div class="mobile-menu"></div>
+                <!-- menu end -->
             </div>
         </div>
     </div>
+</div>
 </div>
 <!-- end header -->
 
