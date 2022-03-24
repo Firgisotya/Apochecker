@@ -15,7 +15,8 @@
                     <!-- menu start -->
                     <nav class="main-menu">
                         <ul>
-                            <li class="{{ Request::is('/') ? 'current-list-item' : ''}}"><a href="/">Home</a>
+                            <li style="padding-left: 100px" class="{{ Request::is('/') ? 'current-list-item' : ''}}"><a
+                                    href="/">Home</a>
 
                             </li>
                             <li class="{{ Request::is('about') ? 'current-list-item' : ''}}"><a href="/about">About</a>
@@ -51,7 +52,7 @@
                             </li>
                             <li>
                                 <div class="header-icons">
-                            <li style="padding-left: 280px;"><a class="shopping-cart" href="/cart"><i
+                            <li style="padding-left: 180px;"><a class="shopping-cart" href="/cart"><i
                                         class="fas fa-shopping-cart"></i></a></li>
                             <li style=""><a class="mobile-hide search-bar-icon" href="#"><i
                                         class="fas fa-search"></i></a></li>
