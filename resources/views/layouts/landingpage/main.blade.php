@@ -9,7 +9,7 @@
         content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
     <!-- title -->
-    <title>Fruitkha - Slider Version</title>
+    <title>Apochecker</title>
 
     <!-- favicon -->
     <link rel="shortcut icon" type="image/png" href="img/favicon.png">
@@ -75,6 +75,8 @@
     <script src="js/sticker.js"></script>
     <!-- main js -->
     <script src="js/main.js"></script>
+    {{-- FontAwesome --}}
+    <link rel="stylesheet" href="{{ asset('fontawesome/fontawesome-free-6.0.0-web/css/all.min.css') }}">
 
 </body>
 
