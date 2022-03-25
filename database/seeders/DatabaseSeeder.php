@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Testimoni;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -20,7 +21,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
-
+            TestimoniSeeder::class,
+            NewsSeeder::class,
         ]);
     }
 }

@@ -7,7 +7,7 @@
                     <!-- logo -->
                     <div class="site-logo">
                         <a href="/">
-                            <img src="img/logo.png" alt="">
+                            <img src="/img/logo.png" alt="">
                         </a>
                     </div>
                     <!-- logo -->
@@ -21,24 +21,11 @@
                             </li>
                             <li class="{{ Request::is('about') ? 'current-list-item' : ''}}"><a href="/about">About</a>
                             </li>
-                            <li><a href="#">Pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="/404">404 page</a></li>
-                                    <li><a href="/about">About</a></li>
-                                    <li><a href="/cart">Cart</a></li>
-                                    <li><a href="/checkout">Check Out</a></li>
-                                    <li><a href="/contact">Contact</a></li>
-                                    <li><a href="/news">News</a></li>
-                                    <li><a href="/shop">Shop</a></li>
-                                </ul>
-                            </li>
+
                             <li
                                 class="{{ Request::is('news') || Request::is('single-news') ? 'current-list-item' : ''}}">
                                 <a href="/news">News</a>
-                                <ul class="sub-menu">
-                                    <li><a href="/news">News</a></li>
-                                    <li><a href="/single-news">Single News</a></li>
-                                </ul>
+
                             </li>
                             <li class="{{ Request::is('contact') ? 'current-list-item' : ''}}"><a
                                     href="/contact">Contact</a></li>

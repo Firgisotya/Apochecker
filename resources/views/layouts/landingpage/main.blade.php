@@ -9,29 +9,29 @@
         content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
     <!-- title -->
-    <title>Apochecker</title>
+    <title>Apochecker-{{ $title }}</title>
 
     <!-- favicon -->
-    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
     <!-- google font -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
     <!-- fontawesome -->
-    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="/css/all.min.css">
     <!-- bootstrap -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <!-- owl carousel -->
-    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="/css/owl.carousel.css">
     <!-- magnific popup -->
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
     <!-- animate css -->
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="/css/animate.css">
     <!-- mean menu css -->
-    <link rel="stylesheet" href="css/meanmenu.min.css">
+    <link rel="stylesheet" href="/css/meanmenu.min.css">
     <!-- main style -->
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
     <!-- responsive -->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 
 </head>
 
@@ -56,25 +56,25 @@
 
 
     <!-- jquery -->
-    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="/js/jquery-1.11.3.min.js"></script>
     <!-- bootstrap -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
     <!-- count down -->
-    <script src="js/jquery.countdown.js"></script>
+    <script src="/js/jquery.countdown.js"></script>
     <!-- isotope -->
-    <script src="js/jquery.isotope-3.0.6.min.js"></script>
+    <script src="/js/jquery.isotope-3.0.6.min.js"></script>
     <!-- waypoints -->
-    <script src="js/waypoints.js"></script>
+    <script src="/js/waypoints.js"></script>
     <!-- owl carousel -->
-    <script src="js/owl.carousel.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
     <!-- magnific popup -->
-    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
     <!-- mean menu -->
-    <script src="js/jquery.meanmenu.min.js"></script>
+    <script src="/js/jquery.meanmenu.min.js"></script>
     <!-- sticker js -->
-    <script src="js/sticker.js"></script>
+    <script src="/js/sticker.js"></script>
     <!-- main js -->
-    <script src="js/main.js"></script>
+    <script src="/js/main.js"></script>
     {{-- FontAwesome --}}
     <link rel="stylesheet" href="{{ asset('fontawesome/fontawesome-free-6.0.0-web/css/all.min.css') }}">
 

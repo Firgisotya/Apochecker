@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ObatController;
 
 /*
@@ -16,33 +17,16 @@ use App\Http\Controllers\ObatController;
 |
 */
 
-Route::get('/', function () {
-    return view('index_2');
-});
-Route::get('/about', function () {
-    return view('about');
-});
-Route::get('/cart', function () {
-    return view('cart');
-});
-Route::get('/checkout', function () {
-    return view('checkout');
-});
-Route::get('/contact', function () {
-    return view('contact');
-});
-Route::get('/news', function () {
-    return view('news');
-});
-Route::get('/shop', function () {
-    return view('shop');
-});
-Route::get('/single-news', function () {
-    return view('single-news');
-});
-Route::get('/single-product', function () {
-    return view('single-product');
-});
+// Route untuk Homepage
+Route::get('/', [HomeController::class, 'home']);
+Route::get('/about', [HomeController::class, 'about']);
+Route::get('/cart', [HomeController::class, 'cart']);
+Route::get('/checkout', [HomeController::class, 'checkout']);
+Route::get('/contact', [HomeController::class, 'contact']);
+Route::resource('/news', NewsController::class);
+Route::get('/shop', [HomeController::class, 'shop']);
+Route::get('/single-product', [HomeController::class, 'singleProduct']);
+
 
 
 Auth::routes();

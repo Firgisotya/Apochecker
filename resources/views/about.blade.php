@@ -147,54 +147,23 @@
 		<div class="row">
 			<div class="col-lg-10 offset-lg-1 text-center">
 				<div class="testimonial-sliders">
+					@foreach ($testimonis as $testimoni)
 					<div class="single-testimonial-slider">
 						<div class="client-avater">
-							<img src="img/avaters/avatar1.png" alt="">
+							<img src="{{ asset($testimoni -> photo) }}" alt="">
 						</div>
 						<div class="client-meta">
-							<h3>Saira Hakim <span>Local shop owner</span></h3>
+							<h3>{{ $testimoni -> name }} <span>{{ $testimoni -> job_title }}</span></h3>
 							<p class="testimonial-body">
-								" Sed ut perspiciatis unde omnis iste natus error veritatis et quasi architecto
-								beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis
-								iste natus error sit voluptatem accusantium "
+								" {{ $testimoni -> comment }} "
 							</p>
 							<div class="last-icon">
 								<i class="fas fa-quote-right"></i>
 							</div>
 						</div>
 					</div>
-					<div class="single-testimonial-slider">
-						<div class="client-avater">
-							<img src="img/avaters/avatar2.png" alt="">
-						</div>
-						<div class="client-meta">
-							<h3>David Niph <span>Local shop owner</span></h3>
-							<p class="testimonial-body">
-								" Sed ut perspiciatis unde omnis iste natus error veritatis et quasi architecto
-								beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis
-								iste natus error sit voluptatem accusantium "
-							</p>
-							<div class="last-icon">
-								<i class="fas fa-quote-right"></i>
-							</div>
-						</div>
-					</div>
-					<div class="single-testimonial-slider">
-						<div class="client-avater">
-							<img src="img/avaters/avatar3.png" alt="">
-						</div>
-						<div class="client-meta">
-							<h3>Jacob Sikim <span>Local shop owner</span></h3>
-							<p class="testimonial-body">
-								" Sed ut perspiciatis unde omnis iste natus error veritatis et quasi architecto
-								beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis
-								iste natus error sit voluptatem accusantium "
-							</p>
-							<div class="last-icon">
-								<i class="fas fa-quote-right"></i>
-							</div>
-						</div>
-					</div>
+					@endforeach
+
 				</div>
 			</div>
 		</div>
@@ -202,31 +171,5 @@
 </div>
 <!-- end testimonail-section -->
 
-<!-- logo carousel -->
-<div class="logo-carousel-section">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="logo-carousel-inner">
-					<div class="single-logo-item">
-						<img src="img/company-logos/1.png" alt="">
-					</div>
-					<div class="single-logo-item">
-						<img src="img/company-logos/2.png" alt="">
-					</div>
-					<div class="single-logo-item">
-						<img src="img/company-logos/3.png" alt="">
-					</div>
-					<div class="single-logo-item">
-						<img src="img/company-logos/4.png" alt="">
-					</div>
-					<div class="single-logo-item">
-						<img src="img/company-logos/5.png" alt="">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- end logo carousel -->
+
 @endsection
