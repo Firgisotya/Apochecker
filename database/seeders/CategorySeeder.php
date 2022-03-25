@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -13,6 +15,17 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        $categories = collect(value: [
+            'Flu',
+            'Demam',
+            'Diare',
+            'Vitamin'
+        ]);
+        $categories->each(function ($category) {
+            Category::create([
+                'name' => $category,
+                'slug' => Str::slug($category),
+            ]);
+        });
     }
 }

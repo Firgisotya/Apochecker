@@ -38,9 +38,6 @@ class HomeController extends Controller
 
     public function shop()
     {
-        return view('shop', [
-            'title' => 'Shop',
-        ]);
     }
 
     public function singleProduct()

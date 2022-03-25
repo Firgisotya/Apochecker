@@ -15,4 +15,8 @@ class Category extends Model
     {
         return $this->hasMany(Obat::class);
     }
+    public function product()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

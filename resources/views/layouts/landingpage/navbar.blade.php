@@ -29,20 +29,22 @@
                             </li>
                             <li class="{{ Request::is('contact') ? 'current-list-item' : ''}}"><a
                                     href="/contact">Contact</a></li>
-                            <li class="{{ Request::is('shop') ? 'current-list-item' : ''}}"><a href="/shop">Shop</a>
+                            <li class="{{ Request::is('products') ? 'current-list-item' : ''}}"><a
+                                    href="/products">Shop</a>
                                 <ul class="sub-menu">
-                                    <li><a href="/shop">Shop</a></li>
+                                    <li><a href="/products">Shop</a></li>
                                     <li><a href="/checkout">Check Out</a></li>
-                                    <li><a href="/single-product">Single Product</a></li>
+
                                     <li><a href="/cart">Cart</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <div class="header-icons">
-                            <li style="padding-left: 120px;"><a class="shopping-cart" href="/cart"><i
-                                        class="fas fa-shopping-cart"></i></a></li>
-                            <li style=""><a class="mobile-hide search-bar-icon" href="#"><i
-                                        class="fas fa-search"></i></a></li>
+                            <li style="padding-left: 170px;"><a class="shopping-cart position-relative" href="/cart"><i
+                                        class="fas fa-shopping-cart"></i><span class="badge bg-danger"
+                                        style="transform: translateY(-15px);margin-left: 3px;padding:2px 4px;border-radius: 30px">12</span></a>
+                            </li>
+
                             @guest
                             @if (Route::has('login'))
                             <li><a class="" href="{{ route('login') }}">Login <i
