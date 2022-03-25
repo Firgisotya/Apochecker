@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -39,4 +40,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
         return view('admin.index');
     })->name('index');
     Route::resource('/admin/obat', ObatController::class);
+    Route::get('/admin/kategori/checkSlug', [CategoryController::class, 'checkSlug']);
+    Route::resource('/admin/kategori', CategoryController::class);
+
 });

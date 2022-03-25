@@ -24,7 +24,10 @@
                       <label class="col-sm-2 col-form-label" for="kategori">Kategori</label>
                       <div class="col-sm-10">
                         <select class="form-select" name="kategori">
-                            <option value="1">One</option>
+                            @foreach ($categories as $category)
+
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
                           </select>
                       </div>
                     </div>

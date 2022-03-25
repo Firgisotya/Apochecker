@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Obat;
+use App\Http\Requests\StoreObatRequest;
+use App\Http\Requests\UpdateObatRequest;
+use App\Models\Category;
 
 class ObatController extends Controller
 {
@@ -23,16 +26,18 @@ class ObatController extends Controller
      */
     public function create()
     {
-        return view('admin.obat.create');
+        return view('admin.obat.create', [
+            'categories' => Category::all(),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreObatRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreObatRequest $request)
     {
         //
     }
@@ -40,10 +45,10 @@ class ObatController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Obat  $obat
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Obat $obat)
     {
         //
     }
@@ -51,10 +56,10 @@ class ObatController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Obat  $obat
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Obat $obat)
     {
         //
     }
@@ -62,11 +67,11 @@ class ObatController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\UpdateObatRequest  $request
+     * @param  \App\Models\Obat  $obat
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateObatRequest $request, Obat $obat)
     {
         //
     }
@@ -74,10 +79,10 @@ class ObatController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Obat  $obat
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Obat $obat)
     {
         //
     }

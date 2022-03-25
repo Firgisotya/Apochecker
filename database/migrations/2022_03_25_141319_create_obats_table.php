@@ -15,15 +15,14 @@ class CreateObatsTable extends Migration
     {
         Schema::create('obats', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->string('nama');
+            $table->foreignId('category_id')->constrained();
+            $table->string('name');
             $table->string('slug');
-            $table->string('kategori');
-            $table->string('harga');
-            $table->string('stok');
-            $table->text('deskripsi')->nullable();
-            $table->string('gambar')->nullable();
+            $table->string('category');
+            $table->text('description');
+            $table->string('image');
+            $table->integer('price');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }
