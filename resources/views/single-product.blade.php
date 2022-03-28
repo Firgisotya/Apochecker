@@ -19,35 +19,57 @@
 <!-- single product -->
 <div class="single-product mt-150 mb-150">
 	<div class="container">
-		<div class="row">
-			<div class="col-md-5">
-				<div class="single-product-img">
-					<img src="{{ asset($product->image) }}" alt="">
-				</div>
-			</div>
-			<div class="col-md-7">
-				<div class="single-product-content">
-					<h3>{{ $product -> name }}</h3>
-					<p class="single-product-pricing"><span></span>Rp. {{ number_format($product -> price) }}</p>
-					<p>{{ $product -> description }}</p>
-					<div class="single-product-form">
-						<p><strong>Stok :</strong>{{ $product -> quantity }}</p>
-						<form action="index.html">
-							<input type="number" placeholder="0">
-						</form>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-						<p><strong>Categories: </strong>{{ $product -> category -> name }}</p>
-					</div>
-					<h4>Share:</h4>
-					<ul class="product-share">
-						<li><a href=""><i class="fab fa-facebook-f"></i></a></li>
-						<li><a href=""><i class="fab fa-twitter"></i></a></li>
-						<li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
-						<li><a href=""><i class="fab fa-linkedin"></i></a></li>
-					</ul>
-				</div>
-			</div>
+		@if (session()->has('success'))
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
+			<strong>{{ session('success') }}</strong>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 		</div>
+		@endif
+		<form action="/pesan/{{ $product -> slug }}" method="POST" enctype="multipart/form-data">
+			@csrf
+			<div class="row">
+				<div class="col-md-5">
+					<div class="single-product-img">
+						<img src="{{ asset($product->image) }}" alt="">
+					</div>
+				</div>
+				<div class="col-md-7">
+					<div class="single-product-content">
+						<h3>
+							@if ($product -> stock > 0)
+							<span class="badge bg-success text-white p-2"><i class="fa-solid fa-circle-check"></i> Ready
+								Stok!</span>
+							@else
+							<span class="badge bg-danger text-white p-2"><i class="fa-solid fa-circle-xmark"></i> Stok
+								Habis!</span>
+							@endif
+						</h3>
+						<h3>{{ $product -> name }}</h3>
+						<p class="single-product-pricing"><span></span>Rp. {{ number_format($product -> price) }}</p>
+						<p>{{ $product -> description }}</p>
+						<div class="single-product-form">
+							{{-- <input type="text" name="name" id="" value="{{ $product -> name }}"
+							placeholder="{{ $product -> name }}">
+							<input type="text" name="image" id="" value="{{ $product -> image }}"
+								placeholder="{{ $product -> image }}">
+							<input type="text" name="price" id="" value="{{ $product -> price }}"
+								placeholder="{{ $product -> price }}"> --}}
+							<p><strong>Stok :</strong>{{ $product -> stock }}</p>
+							<input type="number" name="quantity" id="" @if ($product -> stock == 0) disabled
+							@endif
+							><br>
+							<button type="submit" class="cart-btn" style="border: none" @if ($product ->
+								stock == 0 )
+								disabled
+								@endif><i class="fas fa-shopping-cart"></i> Add to
+								Cart</button>
+							<p><strong>Categories: </strong>{{ $product -> category -> name }}</p>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</form>
 	</div>
 </div>
 <!-- end single product -->
@@ -59,8 +81,9 @@
 			<div class="col-lg-8 offset-lg-2 text-center">
 				<div class="section-title">
 					<h3><span class="orange-text">Related</span> Products</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet
-						beatae optio.</p>
+					<p>Berikut ini kami juga menyediakan beberapa macam obat
+						{{ Str::lower($product -> category -> name) }} yang ada
+						di toko kami, dan juga sedang anda cari!</p>
 				</div>
 			</div>
 		</div>

@@ -465,6 +465,7 @@ a.read-more-btn:hover {
 
 a.boxed-btn,
 a.bordered-btn,
+button.cart-btn,
 a.cart-btn {
     border-radius: 50px;
 }
@@ -1268,12 +1269,14 @@ div.owl-controls div.owl-nav div:hover {
     box-shadow: none;
 }
 
+button.cart-btn,
 a.cart-btn {
     -webkit-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;
 }
 
+button.cart-btn:hover,
 a.cart-btn:hover {
     background-color: #051922;
     color: #f28123;
@@ -2473,6 +2476,7 @@ p.product-price span {
     font-weight: 400;
 }
 
+button.cart-btn,
 a.cart-btn {
     font-family: "Poppins", sans-serif;
     display: inline-block;
@@ -2481,7 +2485,8 @@ a.cart-btn {
     padding: 10px 20px;
 }
 
-a.cart-btn i {
+button.cart-btn i,
+a.cart-btn {
     margin-right: 5px;
 }
 
@@ -2526,7 +2531,8 @@ input[type="number"] {
     margin-bottom: 15px;
 }
 
-.single-product-form a.cart-btn {
+.single-product-form button.cart-btn,
+a.cart-btn {
     margin-bottom: 15px;
 }
 
