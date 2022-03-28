@@ -17,6 +17,11 @@
 <!-- end breadcrumb section -->
 
 <!-- products -->
+@if ($message = Session::get('error'))
+<div class="alert alert-success">
+	<p>{{ $message }}</p>
+</div>
+@endif
 <div class="product-section mt-150 mb-150">
 	<div class="container">
 
@@ -42,7 +47,7 @@
 								height="250px"></a>
 					</div>
 					<h3>{{ $product -> name }}</h3>
-					<p class="product-price"><span>Per Kg</span> Rp. {{ number_format($product -> price) }} </p>
+					<p class="product-price"><span></span> Rp. {{ number_format($product -> price) }} </p>
 					<a href="/products/{{ $product -> slug }}" class="cart-btn"><i class="fas fa-shopping-cart"></i>
 						Order</a>
 				</div>

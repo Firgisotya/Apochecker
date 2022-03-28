@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ObatController;
+use App\Http\Controllers\PesanController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -26,7 +27,7 @@ Route::get('/checkout', [HomeController::class, 'checkout']);
 Route::get('/contact', [HomeController::class, 'contact']);
 Route::resource('/news', NewsController::class);
 Route::resource('/products', ProductController::class);
-
+Route::post('/pesan/{product}', [PesanController::class, 'store']);
 
 
 
