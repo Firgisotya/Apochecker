@@ -17,11 +17,7 @@
 <!-- end breadcrumb section -->
 
 <!-- products -->
-@if ($message = Session::get('error'))
-<div class="alert alert-success">
-	<p>{{ $message }}</p>
-</div>
-@endif
+
 <div class="product-section mt-150 mb-150">
 	<div class="container">
 
@@ -43,7 +39,7 @@
 			<div class="col-lg-4 col-md-6 text-center {{ $product -> category -> name }}">
 				<div class="single-product-item">
 					<div class="product-image">
-						<a href="/shop/{{ $product -> slug }}"><img src="{{ asset($product -> image) }}" alt=""
+						<a href="/products/{{ $product -> slug }}"><img src="{{ asset($product -> image) }}" alt=""
 								height="250px"></a>
 					</div>
 					<h3>{{ $product -> name }}</h3>

@@ -18,7 +18,14 @@
 
 <!-- cart -->
 <div class="cart-section mt-150 mb-150">
-	<div class="container">
+	<div class="container">@if (session()->has('success'))
+		<div class="alert alert-success alert-dismissible fade show p-3" role="alert">
+			<strong>{{ session('success') }}</strong>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		@endif
 		<div class="row">
 			<div class="col-lg-8 col-md-12">
 				<div class="cart-table-wrap">
@@ -34,30 +41,40 @@
 							</tr>
 						</thead>
 						<tbody>
+							@php
+							$order = \App\Models\Order::where('user_id', auth()->user()->id)->where('status',
+							0)->first();
+
+							if (!empty($order)) {
+							$orderDetails = \App\Models\OrderDetail::where('order_id', $order->id)->get();
+							}
+							@endphp
+							@if (!empty($order))
+							@foreach ($orderDetails as $orderDetail)
 							<tr class="table-body-row">
-								<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-								<td class="product-image"><img src="img/products/product-img-1.jpg" alt=""></td>
-								<td class="product-name">Strawberry</td>
-								<td class="product-price">$85</td>
-								<td class="product-quantity"><input type="number" placeholder="0"></td>
-								<td class="product-total">1</td>
+								<td class="product-remove">
+									<form action="/order/{{ $orderDetail -> id }}" method="POST">
+										@method('DELETE')
+										@csrf
+										<button type="submit" class="btn btn-danger"><i
+												class="fa-solid fa-trash"></i></button>
+									</form>
+								</td>
+								<td class="product-image"><img src="{{ $orderDetail -> product -> image }}" alt=""></td>
+								<td class="product-name">{{ $orderDetail -> product -> name }}</td>
+								<td class="product-price">{{ $orderDetail -> product -> price }}</td>
+								<td class="product-price">{{ $orderDetail -> quantity }}</td>
+								<td class="product-total">{{ $orderDetail -> price }}</td>
 							</tr>
-							<tr class="table-body-row">
-								<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-								<td class="product-image"><img src="img/products/product-img-2.jpg" alt=""></td>
-								<td class="product-name">Berry</td>
-								<td class="product-price">$70</td>
-								<td class="product-quantity"><input type="number" placeholder="0"></td>
-								<td class="product-total">1</td>
+
+							@endforeach
+							@else
+							<tr class="text-black text-center">
+								<td colspan="7">
+									<h3>Anda belum memesan product</h3>
+								</td>
 							</tr>
-							<tr class="table-body-row">
-								<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-								<td class="product-image"><img src="img/products/product-img-3.jpg" alt=""></td>
-								<td class="product-name">Lemon</td>
-								<td class="product-price">$35</td>
-								<td class="product-quantity"><input type="number" placeholder="0"></td>
-								<td class="product-total">1</td>
-							</tr>
+							@endif
 						</tbody>
 					</table>
 				</div>
@@ -73,27 +90,35 @@
 							</tr>
 						</thead>
 						<tbody>
+							@if (!empty($order))
 							<tr class="total-data">
 								<td><strong>Subtotal: </strong></td>
-								<td>$500</td>
+								<td>{{ number_format($order -> total) }}</td>
+							</tr>
+							@else
+							<tr class="total-data">
+								<td><strong>Subtotal: </strong></td>
+								<td>0</td>
 							</tr>
 							<tr class="total-data">
 								<td><strong>Shipping: </strong></td>
-								<td>$45</td>
+								<td>0</td>
 							</tr>
 							<tr class="total-data">
 								<td><strong>Total: </strong></td>
-								<td>$545</td>
+								<td>0</td>
 							</tr>
+							@endif
 						</tbody>
 					</table>
 					<div class="cart-buttons">
-						<a href="cart.html" class="boxed-btn">Update Cart</a>
-						<a href="checkout.html" class="boxed-btn black">Check Out</a>
+						<a href="/checkout" class="boxed-btn black"><button class="border-0 bg-transparent text-white"
+								@if (empty($order)) disabled @endif>
+								Check Out</button></a>
 					</div>
 				</div>
 
-				<div class="coupon-section">
+				{{-- <div class="coupon-section">
 					<h3>Apply Coupon</h3>
 					<div class="coupon-form-wrap">
 						<form action="index.html">
@@ -101,7 +126,7 @@
 							<p><input type="submit" value="Apply"></p>
 						</form>
 					</div>
-				</div>
+				</div> --}}
 			</div>
 		</div>
 	</div>

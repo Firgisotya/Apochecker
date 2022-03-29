@@ -28,7 +28,7 @@
 								<h5 class="mb-0">
 									<button class="btn btn-link" type="button" data-toggle="collapse"
 										data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-										Billing Address
+										Informasi Pembeli
 									</button>
 								</h5>
 							</div>
@@ -37,13 +37,35 @@
 								data-parent="#accordionExample">
 								<div class="card-body">
 									<div class="billing-address-form">
-										<form action="index.html">
-											<p><input type="text" placeholder="Name"></p>
-											<p><input type="email" placeholder="Email"></p>
-											<p><input type="text" placeholder="Address"></p>
-											<p><input type="tel" placeholder="Phone"></p>
-											<p><textarea name="bill" id="bill" cols="30" rows="10"
-													placeholder="Say Something"></textarea></p>
+										<form>
+											<div class="mb-3">
+												<label for="exampleInputEmail1" class="form-label d-block "
+													style="padding-left: 80px"><Strong>Foto</Strong></label>
+												@if ($user -> image)
+												<img src="{{ $user -> image }}" alt="" height="200px">
+												@else
+												<img src="{{ asset('img/bahan/profile.png') }}" alt="" height="200px">
+												@endif
+											</div>
+											<div class="mb-3">
+												<label for="exampleInputEmail1"
+													class="form-label"><strong>Nama</strong></label>
+												<input type="email" class="form-control p-4" id="exampleInputEmail1"
+													aria-describedby="emailHelp" value="{{ $user -> name }}">
+											</div>
+											<div class="mb-3">
+												<label for="exampleInputPassword1" class="form-label"><strong>Nomor
+														Telepon</strong></label>
+												<input type="text" class="form-control p-4" id="exampleInputPassword1"
+													value="{{ $user -> phone }}">
+											</div>
+											<div class="mb-3">
+												<label for="exampleInputPassword1" class="form-label"><strong>Alamat
+														Email</strong></label>
+												<input type="text" class="form-control p-4" id="exampleInputPassword1"
+													value="{{ $user -> email }}">
+											</div>
+
 										</form>
 									</div>
 								</div>
@@ -54,7 +76,7 @@
 								<h5 class="mb-0">
 									<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
 										data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-										Shipping Address
+										Alamat Pengiriman
 									</button>
 								</h5>
 							</div>
@@ -62,7 +84,11 @@
 								data-parent="#accordionExample">
 								<div class="card-body">
 									<div class="shipping-address-form">
-										<p>Your shipping address form is here.</p>
+										@if ($user -> address)
+										<p>{{ $user -> address }}</p>
+										@else
+										<p>Anda belum memasukkan alamat rumah anda!</p>
+										@endif
 									</div>
 								</div>
 							</div>
@@ -94,6 +120,14 @@
 			<div class="col-lg-4">
 				<div class="order-details-wrap">
 					<table class="order-details">
+						@php
+						$order = \App\Models\Order::where('user_id', auth()->user()->id)->where('status',
+						0)->first();
+
+						if (!empty($order)) {
+						$orderDetails = \App\Models\OrderDetail::where('order_id', $order->id)->get();
+						}
+						@endphp
 						<thead>
 							<tr>
 								<th>Your order Details</th>
@@ -105,18 +139,21 @@
 								<td>Product</td>
 								<td>Total</td>
 							</tr>
+							@if (!empty($order))
+							@foreach ($orderDetails as $order)
 							<tr>
-								<td>Strawberry</td>
-								<td>$85.00</td>
+								<td>{{ $order -> product -> name }}</td>
+								<td>Rp. {{ number_format($order -> price) }}</td>
 							</tr>
-							<tr>
-								<td>Berry</td>
-								<td>$70.00</td>
+							@endforeach
+							@else
+							<tr class="text-black text-center">
+								<td colspan="7">
+									<h3>Anda belum memesan product</h3>
+								</td>
 							</tr>
-							<tr>
-								<td>Lemon</td>
-								<td>$35.00</td>
-							</tr>
+							@endif
+
 						</tbody>
 						<tbody class="checkout-details">
 							<tr>

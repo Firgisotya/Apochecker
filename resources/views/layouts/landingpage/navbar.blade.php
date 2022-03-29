@@ -39,46 +39,55 @@
                                 </ul>
                             </li>
                             <li>
-                                @php
-                                $mainOrder = \App\Models\Order::where('user_id', auth()->user()->id)->where('status',
-                                0)->first();
 
-                                if (!empty($mainOrder)){
-                                $notification = \App\Models\OrderDetail::where('order_id', $mainOrder->id)->count();
-                                }
-                                @endphp
-
-                                @if (!empty($mainOrder))
-
-
-                                <div class="header-icons">
-                            <li style="padding-left: 170px;"><a class="shopping-cart position-relative" href="/cart"><i
-                                        class="fas fa-shopping-cart"></i><span class="badge bg-danger"
-                                        style="transform: translateY(-15px);margin-left: 3px;padding:2px 4px;border-radius: 30px">{{ $notification }}</span></a>
-                            </li>
-                            @endif
-                            @guest
-                            @if (Route::has('login'))
+                                @guest
+                                @if (Route::has('login'))
                             <li><a class="" href="{{ route('login') }}">Login <i
                                         class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
                             @endif
                             @else
-                            <li style="margin-left: -100px"><a href="">Hello, {{ Auth::user() -> name }}</a>
-                                <ul id="tes" style="width: 100px;padding: 5px" class="sub-menu text-end">
-                                    <li><a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                                                                                                                             document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }} <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                                        </a>
+                            @php
+                            $mainOrder = \App\Models\Order::where('user_id', auth()->user()->id)->where('status',
+                            0)->first();
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                            class="d-none">
-                                            @csrf
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                            @endguest
+                            if (!empty($mainOrder)){
+                            $notification = \App\Models\OrderDetail::where('order_id', $mainOrder->id)->count();
+                            }
+                            @endphp
+
+                            @if (!empty($mainOrder))
+
+
+                            <div class="header-icons">
+                                <li style="padding-left: 170px;"><a class="shopping-cart position-relative"
+                                        href="/cart"><i class="fas fa-shopping-cart"></i><span class="badge bg-danger"
+                                            style="transform: translateY(-15px);margin-left: 3px;padding:2px 4px;border-radius: 30px">{{ $notification }}</span></a>
+                                </li>
+
+                                @else
+                                <li style="padding-left: 170px;"><a class="shopping-cart position-relative"
+                                        href="/cart"><i class="fas fa-shopping-cart"></i><span class="badge bg-danger"
+                                            style="transform: translateY(-15px);margin-left: 3px;padding:2px 4px;border-radius: 30px"></span></a>
+                                </li>
+                                @endif
+                                <li style="margin-left: -100px"><a href="">Hello, {{ Auth::user() -> name }}</a>
+                                    <ul id="tes" style="width: 100px;padding: 5px" class="sub-menu text-end">
+                                </li>
+                                <li><a class="dropdown-item" href="/profile">Profile <i
+                                            class="fa-solid fa-user pl-3"></i></a></li>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                                                                                                             document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }} <i class="fa-solid fa-arrow-right-from-bracket pl-3"></i>
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+
+                        </ul>
+                        </li>
+                        @endguest
                 </div>
                 </li>
                 </ul>

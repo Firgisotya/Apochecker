@@ -46,7 +46,6 @@ class ProductController extends Controller
      */
     public function store(Request $request, Product $product)
     {
-        dd($product->id);
         $dateTime = new DateTime();
         if ($request->quantity > $product->stock) {
             return redirect('/products/' . $product->slug)->with('error', 'Stock tidak mencukupi');

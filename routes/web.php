@@ -29,6 +29,8 @@ Route::get('/contact', [HomeController::class, 'contact']);
 Route::resource('/news', NewsController::class);
 Route::resource('/products', ProductController::class);
 Route::post('/pesan/{product}', [PesanController::class, 'store']);
+Route::get('/profile', [HomeController::class, 'profile']);
+Route::delete('/order/{order_detail}', [PesanController::class, 'delete']);
 
 
 
@@ -43,5 +45,4 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('/admin/obat', ObatController::class);
     Route::get('/admin/kategori/checkSlug', [CategoryController::class, 'checkSlug']);
     Route::resource('/admin/kategori', CategoryController::class);
-
 });

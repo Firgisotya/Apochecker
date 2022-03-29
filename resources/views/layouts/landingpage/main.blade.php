@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="/css/main.css">
     <!-- responsive -->
     <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/profile.css">
 
 </head>
 

@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\Order;
 use App\Models\Testimoni;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -25,6 +29,7 @@ class HomeController extends Controller
     }
     public function cart()
     {
+
         return view('cart', [
             'title' => 'Cart',
         ]);
@@ -50,6 +55,14 @@ class HomeController extends Controller
     {
         return view('checkout', [
             'title' => 'Checkout',
+            'user' => Auth::user(),
+        ]);
+    }
+    public function profile()
+    {
+        return view('profile', [
+            'title' => 'Profile',
+            'user' => Auth::user(),
         ]);
     }
 }

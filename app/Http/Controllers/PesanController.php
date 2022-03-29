@@ -14,18 +14,13 @@ class PesanController extends Controller
 {
     public function store(Request $request, Product $product)
     {
-        // ddd($product->id);
+
         $dateTime = new DateTime();
         if ($request->quantity > $product->stock) {
-            return redirect('/products/' . $product->slug)->with('error', 'Stock tidak mencukupi');
+            return redirect('/products/' . $product->slug)->with('warning', 'Stock tidak mencukupi!');
         }
         if (empty(Order::where('user_id', Auth::user()->id)->where('status', 0)->first())) {
-            // $order = new Order();
-            // $order->user_id = Auth::user()->id;
-            // $order->time = $dateTime->format('Y-m-d H:i:s');
-            // $order->status = 0;
-            // $order->total = 0;
-            // $order->save();
+
             Order::insert([
                 'user_id' => Auth::user()->id,
                 'time' => $dateTime->format('Y-m-d H:i:s'),
@@ -38,10 +33,7 @@ class PesanController extends Controller
         $detailOrderId = OrderDetail::where('order_id', $orderUserStatus->id)->where('product_id', $product_id->id)->first();
         $tambahOrder = [];
         if (empty($detailOrderId)) {
-            // $tambahOrder = new OrderDetail();
-            // $tambahOrder->order_id = $orderUserStatus->id;
-            // $tambahOrder->product_id = $product_id->id;
-            // $tambahOrder->price = $product->price * $request->quantity;
+
             $tambahOrder = [
                 'order_id' => $orderUserStatus->id,
                 'product_id' => $product_id->id,
@@ -50,7 +42,7 @@ class PesanController extends Controller
             if ($request->quantity != 0) {
                 $tambahOrder['quantity'] = $request->quantity;
             } else {
-                return redirect('/')->with('error', 'Jumlah yang anda pesan minimal 1 barang');
+                return redirect('/products')->with('error', 'Jumlah yang anda pesan minimal 1 barang');
             }
             OrderDetail::insert($tambahOrder);
         } else {
@@ -58,12 +50,23 @@ class PesanController extends Controller
             if ($request->quantity != 0) {
                 $detailOrderId->quantity += $request->quantity;
             } else {
-                return redirect('/')->with('error', 'Jumlah yang anda pesan minimal 1 barang');
+                return redirect()->back()->with('error', 'Masukkan jumlah pesanan anda!');
             }
             $detailOrderId->update();
         }
         $orderUserStatus->total += $product->price * $request->quantity;
         $orderUserStatus->update();
-        return redirect('/cart')->with('success', 'Barang berhasil ditambahkan ke keranjang');
+        return redirect()->back()->with('success', 'Barang berhasil ditambahkan ke keranjang!');
+    }
+    public function delete(OrderDetail $orderDetail)
+    {
+
+        $orderDetailId = OrderDetail::where('id', $orderDetail->id)->first();
+        $orderId = Order::where('id', $orderDetailId->order_id)->first();
+        $orderId->total -= $orderDetailId->price;
+        $orderId->update();
+
+        $orderDetail->delete();
+        return redirect('/cart')->with('success', 'Pesanan berhasil dibatalkan!');
     }
 }
