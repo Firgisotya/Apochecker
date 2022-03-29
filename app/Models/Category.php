@@ -10,7 +10,12 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $table = 'categories';
+
+    protected $fillable = [
+        'name',
+        'slug',
+    ];
 
     public function obats()
     {

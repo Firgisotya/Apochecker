@@ -22,10 +22,10 @@
 
             <div class="table-responsive text-nowrap">
                 @if (session()->has('success'))
-  <div class="alert alert-success col-lg-6" role="alert">
-    {{ session('success') }}
-  </div>
-  @endif
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+                @endif
               <table class="table">
                 <thead class="table-dark">
                   <tr>
@@ -38,19 +38,12 @@
                     <tr>
                         <td>{{ $category->name }}</td>
                         <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="/admin/kategori/edit"
-                                ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                              >
-                              <a class="dropdown-item" href="/admin/kategori/delete"
-                                ><i class="bx bx-trash me-1"></i> Hapus</a
-                              >
-                            </div>
-                          </div>
+                            <a href="/admin/kategori/{{ $category->id }}/edit" class="btn btn-warning"><i class='bx bxs-pencil'></i></a>
+                            <form action="/admin/kategori/{{ $category->slug }}" method="POST" class="d-inline">
+                            @method('delete')
+                            @csrf
+                            <button class="btn btn-danger border-0" onclick="return confirm('Are you sure?')"><i class='bx bxs-trash' ></i></button>
+                            </form>
                         </td>
                       </tr>
                     @endforeach

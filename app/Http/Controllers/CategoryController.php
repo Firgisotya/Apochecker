@@ -46,7 +46,8 @@ class CategoryController extends Controller
        ]);
 
        Category::create($validatedData);
-       return redirect('/admin/dashboard')->with('success', 'Kategori baru telah ditambahkan!');
+       return redirect('/admin/kategori')->with('success', 'Kategori baru telah ditambahkan!');
+
     }
 
     /**
@@ -68,7 +69,10 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.kategori.edit',[
+            'category' => $category
+        ]);
+
     }
 
     /**
@@ -91,7 +95,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        Category::destroy($category->id);
+        return redirect('/admin/kategori')->with('success', 'Kategori has been deleted!');
     }
 
     public function checkSlug(Request $request){
