@@ -20,12 +20,14 @@
                   </div>
             </div>
 
-            <div class="table-responsive text-nowrap">
-                @if (session()->has('success'))
+            @if (session()->has('success'))
             <div class="alert alert-success" role="alert">
                 {{ session('success') }}
-            </div>
-                @endif
+              </div>
+            @endif
+
+            <div class="table-responsive text-nowrap">
+
               <table class="table">
                 <thead class="table-dark">
                   <tr>
@@ -38,7 +40,7 @@
                     <tr>
                         <td>{{ $category->name }}</td>
                         <td>
-                            <a href="/admin/kategori/{{ $category->id }}/edit" class="btn btn-warning"><i class='bx bxs-pencil'></i></a>
+                            <a href="/admin/kategori/{{ $category->slug }}/edit" class="btn btn-warning"><i class='bx bxs-pencil'></i></a>
                             <form action="/admin/kategori/{{ $category->slug }}" method="POST" class="d-inline">
                             @method('delete')
                             @csrf
