@@ -109,7 +109,7 @@ class ProductController extends Controller
         return view('single-product', [
             'title' => 'Single Product',
             'product' => $product,
-            'related' => Product::where('category_id', $product->category_id)->latest()->take(3)->get(),
+            'related' => Product::where('category_id', $product->category_id)->take(3)->get()->except($product->id),
         ]);
     }
 

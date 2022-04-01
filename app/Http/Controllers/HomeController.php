@@ -6,6 +6,7 @@ use App\Models\News;
 use App\Models\Order;
 use App\Models\Testimoni;
 use App\Models\OrderDetail;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,7 @@ class HomeController extends Controller
             'title' => 'Home',
             'testimonis' => Testimoni::all(),
             'recents' => News::latest()->take(3)->get(),
+            'products' => Product::where('id', 1)->orWhere('id', 12)->orWhere('id', 20)->get(),
         ]);
     }
     public function about()
@@ -63,6 +65,12 @@ class HomeController extends Controller
         return view('profile', [
             'title' => 'Profile',
             'user' => Auth::user(),
+        ]);
+    }
+    public function validation()
+    {
+        return view('validation', [
+            'title' => 'Validation',
         ]);
     }
 }

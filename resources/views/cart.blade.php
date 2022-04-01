@@ -18,7 +18,8 @@
 
 <!-- cart -->
 <div class="cart-section mt-150 mb-150">
-	<div class="container">@if (session()->has('success'))
+	<div class="container">
+		@if (session()->has('success'))
 		<div class="alert alert-success alert-dismissible fade show p-3" role="alert">
 			<strong>{{ session('success') }}</strong>
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">

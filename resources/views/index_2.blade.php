@@ -121,36 +121,19 @@
 		</div>
 
 		<div class="row">
+			@foreach ( $products as $product )
 			<div class="col-lg-4 col-md-6 text-center">
 				<div class="single-product-item">
 					<div class="product-image">
-						<a href="single-product.html"><img src="img/products/product-img-1.jpg" alt=""></a>
+						<a href="/products/{{ $product -> slug }}"><img src="{{ $product -> image }}" alt=""></a>
 					</div>
-					<h3>Strawberry</h3>
-					<p class="product-price"><span>Per Kg</span> 85$ </p>
-					<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+					<h3>{{ $product -> name }}</h3>
+					<p class="product-price"> {{ number_format($product -> price) }} </p>
+					<a href="/products/{{ $product -> slug }}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add
+						to Cart</a>
 				</div>
 			</div>
-			<div class="col-lg-4 col-md-6 text-center">
-				<div class="single-product-item">
-					<div class="product-image">
-						<a href="single-product.html"><img src="img/products/product-img-2.jpg" alt=""></a>
-					</div>
-					<h3>Berry</h3>
-					<p class="product-price"><span>Per Kg</span> 70$ </p>
-					<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-				<div class="single-product-item">
-					<div class="product-image">
-						<a href="single-product.html"><img src="img/products/product-img-3.jpg" alt=""></a>
-					</div>
-					<h3>Lemon</h3>
-					<p class="product-price"><span>Per Kg</span> 35$ </p>
-					<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-				</div>
-			</div>
+			@endforeach
 		</div>
 	</div>
 </div>
@@ -166,11 +149,11 @@
 					<div class="price-box">
 						<div class="inner-price">
 							<span class="price">
-								<strong>30%</strong> <br> off per kg
+								<strong>30%</strong> <br> <strong>Off...</strong>
 							</span>
 						</div>
 					</div>
-					<img src="img/a.jpg" alt="">
+					<img style="border-radius: 10px" src="img/3.jpg" alt="">
 				</div>
 			</div>
 			<!--Content Column-->
@@ -197,7 +180,7 @@
 						</div>
 					</div>
 				</div>
-				<a href="cart.html" class="cart-btn mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+				<a href="/products" class="cart-btn mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
 			</div>
 		</div>
 	</div>
