@@ -27,18 +27,6 @@
                         @enderror
                       </div>
                     </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label" for="slug">Slug</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control @error('slug') is-invalid
-                            @enderror" id="slug" name="slug" required value="{{ old('slug') }}">
-                            @error('slug')
-                              <div class="invalid-feedback">
-                                {{ $message }}
-                              </div>
-                            @enderror
-                        </div>
-                      </div>
                     <div class="row justify-content-end">
                       <div class="col-sm-10">
                         <button type="submit" class="btn btn-primary">Create Category</button>

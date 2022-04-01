@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class CategoryController extends Controller
@@ -40,13 +41,17 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-       $validatedData = $request->validate([
-        'name' => 'required|max:255',
-        'slug' => 'required|unique:categories'
-       ]);
+    $request->validate([
+        'name' => 'required|unique:categories,name',
+    ]);
 
-       Category::create($validatedData);
-       return redirect('/admin/kategori')->with('success', 'Kategori baru telah ditambahkan!');
+    Category::create([
+        'name' => $request->name,
+        'slug' => Str::slug($request->name),
+    ]);
+
+    return redirect('/admin/kategori')->with('success', 'Kategori baru telah ditambahkan!');
+
 
     }
 
@@ -95,7 +100,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        Category::destroy($category->id);
+        Category::destroy($category->slug);
         return redirect('/admin/kategori')->with('success', 'Kategori has been deleted!');
     }
 
