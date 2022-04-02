@@ -41,10 +41,10 @@
                                     @if ($user -> image)
                                     <img src="{{ asset('storage/'.$user -> image) }}"
                                         class="img-preview img-fluid mb-3 col-sm-5 d-block  m-auto rounded-circle"
-                                        alt="">
+                                        alt="" height="200px">
                                     @else
                                     <img src="{{ asset('img/bahan/profile.png') }}"
-                                        class="img-preview m-auto rounded-circle" alt="" height="200px" width="200px">
+                                        class="img-preview m-auto rounded-circle" height="200px">
                                     @endif
                                     <div class="pt-3">
                                         <input class=" @error('image')
@@ -72,27 +72,28 @@
                                     <div class="form-group">
                                         <label for="fullName">Name</label>
                                         <input type="text" class="form-control" id="fullName" name="name"
-                                            placeholder="Enter full name" value="{{ $user -> name }}" autofocus>
+                                            placeholder="Masukkan Nama Lengkap" value="{{ $user -> name }}" autofocus>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input type="text" name="username" class="form-control" id="username"
+                                            placeholder="Masukkan Username" value=" {{ $user -> username }}">
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="eMail">Email</label>
                                         <input type="email" name="email" class="form-control" id="eMail"
-                                            placeholder="Enter email ID" value="{{ $user -> email }}">
+                                            placeholder="Masukkan Alamat Email" value="{{ $user -> email }}">
                                     </div>
                                 </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="form-group">
-                                        <label for="phone">Phone</label>
-                                        <input type="text" name="phone" class="form-control" id="phone"
-                                            placeholder="Enter phone number" value=" {{ $user -> phone }}">
-                                    </div>
-                                </div>
+
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="website">Jenis Kelamin</label>
-                                        <select name="gender" class="form-control">
+                                        <select name="gender" class="form-control" id="website">
                                             <option value="Laki-laki" @if ( $user -> gender == 'Laki-laki' )
                                                 selected
                                                 @endif>Laki-laki</option>
@@ -103,15 +104,20 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row gutters">
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                    <h6 class="mt-3 mb-2 text-primary">Address</h6>
-                                </div>
+                            <div class="row gutters mb-5">
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
+                                        <label for="street">Address</label>
                                         <input type="text" class="form-control" id="Street"
                                             placeholder="Masukkan alamat" name="address" value="{{ $user -> address }}"
                                             height="200px">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="hp">No Hp</label>
+                                        <input type="text" class="form-control" id="hp" placeholder="Masukkan No Hp"
+                                            name="phone" value="{{ $user -> phone }}" height="200px">
                                     </div>
                                 </div>
 

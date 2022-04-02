@@ -87,7 +87,8 @@
 										@if ($user -> address)
 										<p>{{ $user -> address }}</p>
 										@else
-										<p>Anda belum memasukkan alamat rumah anda!</p>
+										<p>Anda belum memasukkan alamat rumah anda!, <a href="/profile">Klik disini</a>
+											untuk melengkapi data diri</p>
 										@endif
 									</div>
 								</div>
@@ -205,10 +206,12 @@
 								<td>Shipping</td>
 								<td>$50</td>
 							</tr>
+							@if (!empty($order))
 							<tr>
 								<td>Total</td>
-								<td>$240</td>
+								<td>Rp. </td>
 							</tr>
+							@endif
 						</tbody>
 					</table>
 					<a href="/validation" class="boxed-btn">Place Order</a>

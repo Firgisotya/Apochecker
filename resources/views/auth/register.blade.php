@@ -24,10 +24,10 @@
                         @csrf
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="username"
-                                name="name" value="{{ old('name') }}" placeholder="Enter your username" autofocus
-                                required autocomplete="name" />
-                            @error('name')
+                            <input type="text" class="form-control @error('username') is-invalid @enderror"
+                                id="username" name="username" value="{{ old('userame') }}"
+                                placeholder="Enter your username" autofocus required autocomplete="username" />
+                            @error('username')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

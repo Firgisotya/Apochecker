@@ -75,6 +75,7 @@
 									<h3>Anda belum memesan product</h3>
 								</td>
 							</tr>
+							<h5>Keranjangmu masih kosong nih!, <a href="/products">Ayo pesan Sesuatu!</a></h5>
 							@endif
 						</tbody>
 					</table>
