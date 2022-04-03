@@ -42,7 +42,7 @@ class PesanController extends Controller
             if ($request->quantity != 0) {
                 $tambahOrder['quantity'] = $request->quantity;
             } else {
-                return redirect('/products')->with('error', 'Jumlah yang anda pesan minimal 1 barang');
+                return redirect('/products/' . $product->slug)->with('error', 'Jumlah yang anda pesan minimal 1 barang');
             }
             OrderDetail::insert($tambahOrder);
         } else {

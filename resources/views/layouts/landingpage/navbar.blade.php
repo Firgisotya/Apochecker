@@ -59,26 +59,37 @@
 
 
                             <div class="header-icons">
-                                <li style="padding-left: 170px;"><a class="shopping-cart position-relative"
+                                <li style="padding-left: 250px"><a class="shopping-cart position-relative"
                                         href="/cart"><i class="fas fa-shopping-cart"></i><span class="badge bg-danger"
                                             style="transform: translateY(-15px);margin-left: 3px;padding:2px 4px;border-radius: 30px">{{ $notification }}</span></a>
                                 </li>
-
                                 @else
-                                <li style="padding-left: 170px;"><a class="shopping-cart position-relative"
+                                <li style="padding-left: 250px"><a class="shopping-cart position-relative"
                                         href="/cart"><i class="fas fa-shopping-cart"></i><span class="badge bg-danger"
                                             style="transform: translateY(-15px);margin-left: 3px;padding:2px 4px;border-radius: 30px"></span></a>
                                 </li>
                                 @endif
-                                <li style="margin-left: -100px"><a href="">Hello, {{ Auth::user() -> name }}</a>
-                                    <ul id="tes" style="width: 100px;padding: 5px" class="sub-menu text-end">
+
+                                <li><a href="">Hello, {{ Auth::user() -> username }}</a>
+                                    <ul id="tes" style="width: 100%;padding: 5px" class="sub-menu text-end">
                                 </li>
-                                <li><a class="dropdown-item" href="/profile">Profile <i
-                                            class="fa-solid fa-user pl-3"></i></a></li>
-                                <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                @if (Auth::user() -> level == 'admin')
+                                <li style="height: 40px;overflow: hidden;"><a class="dropdown-item" href="/dashboard"
+                                        style="height: 40px;">Dashboard
+                                        <i class="fa-solid fa-house-chimney-user justify-content-end d-flex"
+                                            style="transform: translateY(-20px)"></i></a></li>
+                                @endif
+                                <li style="height: 40px;overflow: hidden;"><a class="dropdown-item" href="/profile"
+                                        style="height: 40px;">Profile <i
+                                            class="fa-solid fa-user d-flex justify-content-end"
+                                            style="transform: translateY(-20px)"></i></a></li>
+                                <li style="height: 40px;overflow: hidden;"><a class="dropdown-item"
+                                        href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                                                                                                                              document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }} <i class="fa-solid fa-arrow-right-from-bracket pl-3"></i>
+                                        {{ __('Logout') }} <i
+                                            class="fa-solid fa-arrow-right-from-bracket justify-content-end d-flex align-baseline"
+                                            style="transform: translateY(-20px)"></i>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

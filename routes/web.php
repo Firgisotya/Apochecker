@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ObatController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,8 @@ Route::resource('/products', ProductController::class);
 Route::post('/pesan/{product}', [PesanController::class, 'store']);
 Route::get('/profile', [HomeController::class, 'profile']);
 Route::delete('/order/{order_detail}', [PesanController::class, 'delete']);
+Route::get('/validation', [HomeController::class, 'validation']);
+Route::resource('/user', UserController::class);
 
 
 

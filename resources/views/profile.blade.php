@@ -1,14 +1,8 @@
-<style>
-    a {
-        text-decoration: none;
-    }
-</style>
-<div>@extends('layouts.landingpage.main')
+@extends('layouts.landingpage.main')
 
-    @section('content')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <!-- breadcrumb-section -->
+@section('content')
+<!-- breadcrumb-section -->
+<div class="bg" style="background-color: #f5f6fa">
     <div class="breadcrumb-section breadcrumb-bg">
         <div class="container">
             <div class="row">
@@ -22,28 +16,40 @@
         </div>
     </div>
     <!-- end breadcrumb section -->
-
-    <form action="" enctype="multipart/form-data">
-        <div class="container-fluid" style="background-color: #f5f6fa">
+    <div class="container mt-4">
+        @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show p-3" role="alert">
+            <strong>{{ session('success') }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+    </div>
+    <form method="POST" action="/user/{{ $user -> id }}" enctype="multipart/form-data">
+        @method('PUT')
+        @csrf
+        <div class="container" style="background-color: #f5f6fa">
             <div class="row gutters p-5">
                 <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+
                     <div class="card h-100">
                         <div class="card-body">
                             <div class="account-settings">
                                 <div class="user-profile pt-4">
                                     <p><strong>Photo Profile</strong></p>
                                     @if ($user -> image)
-                                    <img src="{{ asset('assets/products/'.$product -> gambar) }}"
-                                        class="img-preview img-fluid mb-3 col-sm-5 d-block rounded m-auto" alt=""
-                                        height="200px">
+                                    <img src="{{ asset('storage/'.$user -> image) }}"
+                                        class="img-preview img-fluid mb-3 col-sm-5 d-block  m-auto rounded-circle"
+                                        alt="" height="200px">
                                     @else
-                                    <img src="{{ asset('img/bahan/profile.png') }}" class="img-preview m-auto rounded"
-                                        alt="" height="200px" width="200px">
+                                    <img src="{{ asset('img/bahan/profile.png') }}"
+                                        class="img-preview m-auto rounded-circle" height="200px">
                                     @endif
                                     <div class="pt-3">
                                         <input class=" @error('image')
-                                                                        is-invalid
-                                                                    @enderror" type="file" id="image" name="image"
+                                                                            is-invalid
+                                                                        @enderror" type="file" id="image" name="image"
                                             onchange="previewImage()">
                                     </div>
                                     <div class="pt-3">
@@ -66,42 +72,52 @@
                                     <div class="form-group">
                                         <label for="fullName">Name</label>
                                         <input type="text" class="form-control" id="fullName" name="name"
-                                            placeholder="Enter full name" value="{{ $user -> name }}" autofocus>
+                                            placeholder="Masukkan Nama Lengkap" value="{{ $user -> name }}" autofocus>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input type="text" name="username" class="form-control" id="username"
+                                            placeholder="Masukkan Username" value=" {{ $user -> username }}">
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="eMail">Email</label>
                                         <input type="email" name="email" class="form-control" id="eMail"
-                                            placeholder="Enter email ID" value="{{ $user -> email }}">
+                                            placeholder="Masukkan Alamat Email" value="{{ $user -> email }}">
                                     </div>
                                 </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="form-group">
-                                        <label for="phone">Phone</label>
-                                        <input type="text" name="phone" class="form-control" id="phone"
-                                            placeholder="Enter phone number" value=" {{ $user -> phone }}">
-                                    </div>
-                                </div>
+
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="website">Jenis Kelamin</label>
-                                        <select name="gender" class="form-control">
-                                            <option value="Laki-laki">Laki-laki</option>
-                                            <option value="Perempuan">Perempuan</option>
+                                        <select name="gender" class="form-control" id="website">
+                                            <option value="Laki-laki" @if ( $user -> gender == 'Laki-laki' )
+                                                selected
+                                                @endif>Laki-laki</option>
+                                            <option value="Perempuan" @if ( $user -> gender == 'Perempuan' )
+                                                selected
+                                                @endif>Perempuan</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row gutters">
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                    <h6 class="mt-3 mb-2 text-primary">Address</h6>
-                                </div>
+                            <div class="row gutters mb-5">
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
+                                        <label for="street">Address</label>
                                         <input type="text" class="form-control" id="Street"
                                             placeholder="Masukkan alamat" name="address" value="{{ $user -> address }}"
                                             height="200px">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="hp">No Hp</label>
+                                        <input type="text" class="form-control" id="hp" placeholder="Masukkan No Hp"
+                                            name="phone" value="{{ $user -> phone }}" height="200px">
                                     </div>
                                 </div>
 
@@ -111,7 +127,7 @@
                                     <div class="text-right">
                                         <button type="button" id="submit" name="submit"
                                             class="btn btn-secondary">Cancel</button>
-                                        <button type="button" id="submit" name="submit"
+                                        <button type="submit" id="submit" name="submit"
                                             class="btn btn-primary">Update</button>
                                     </div>
                                 </div>
@@ -122,8 +138,9 @@
             </div>
         </div>
     </form>
-    <script>
-        function previewImage(){
+</div>
+<script>
+    function previewImage(){
     const image = document.querySelector('#image');
     const imgPreview = document.querySelector('.img-preview');
     
@@ -136,6 +153,5 @@
     imgPreview.src = oFREvent.target.result;
     }
     }
-    </script>
-    @endsection
-</div>
+</script>
+@endsection
