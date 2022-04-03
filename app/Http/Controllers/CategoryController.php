@@ -50,7 +50,7 @@ class CategoryController extends Controller
         'slug' => Str::slug($request->name),
     ]);
 
-    return redirect('/admin/kategori')->with('success', 'Kategori baru telah ditambahkan!');
+    return redirect('/admin/category')->with('success', 'Kategori baru telah ditambahkan!');
 
 
     }
@@ -74,6 +74,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
+
         return view('admin.kategori.edit',[
             'category' => $category
         ]);
@@ -89,7 +90,20 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255|unique:categories,name',
+
+        ]);
+
+        Category::where('id', $category->id)
+        ->update([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name)
+        ]);
+
+        return redirect('/admin/category')->with('success', 'Category has been edited!');
+
+
     }
 
     /**
@@ -100,12 +114,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        Category::destroy($category->slug);
-        return redirect('/admin/kategori')->with('success', 'Kategori has been deleted!');
+        Category::destroy($category->id);
+        return redirect('/admin/category')->with('success', 'Kategori has been deleted!');
     }
 
-    public function checkSlug(Request $request){
-        $slug = SlugService::createSlug(Category::class, 'slug', $request->name);
-        return response()->json(['slug' => $slug]);
-    }
 }

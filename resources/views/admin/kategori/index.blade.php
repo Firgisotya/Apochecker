@@ -13,7 +13,7 @@
                       <i class="bx bx-dots-vertical-rounded"></i>
                     </button>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="/admin/kategori/create"
+                      <a class="dropdown-item" href="/admin/category/create"
                         ><i class="bx bx-plus me-1"></i> Tambah Kategori</a
                       >
                     </div>
@@ -40,8 +40,8 @@
                     <tr>
                         <td>{{ $category->name }}</td>
                         <td>
-                            <a href="/admin/kategori/{{ $category->slug }}/edit" class="btn btn-warning"><i class='bx bxs-pencil'></i></a>
-                            <form action="/admin/kategori/{{ $category->slug }}" method="POST" class="d-inline">
+                            <a href="/admin/category/{{ $category->slug }}/edit" class="btn btn-warning"><i class='bx bxs-pencil'></i></a>
+                            <form action="/admin/category/{{ $category->slug }}" method="POST" class="d-inline">
                             @method('delete')
                             @csrf
                             <button class="btn btn-danger border-0" onclick="return confirm('Are you sure?')"><i class='bx bxs-trash' ></i></button>

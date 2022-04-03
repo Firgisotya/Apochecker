@@ -27,12 +27,5 @@ class Category extends Model
         return 'slug';
     }
 
-    // public function sluggable(): array
-    // {
-    //     return [
-    //         'slug' => [
-    //             'source' => 'name'
-    //         ]
-    //     ];
-    // }
+
 }

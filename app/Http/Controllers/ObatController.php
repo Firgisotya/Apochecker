@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Obat;
 use App\Http\Requests\StoreObatRequest;
 use App\Http\Requests\UpdateObatRequest;
+use Illuminate\Support\Str;
 use App\Models\Category;
+use App\Models\Product;
 
 class ObatController extends Controller
 {
@@ -16,7 +18,9 @@ class ObatController extends Controller
      */
     public function index()
     {
-        return view('admin.obat.index');
+        return view('admin.obat.index', [
+            'obats' => Product::latest()->paginate(5),
+        ]);
     }
 
     /**
@@ -39,7 +43,25 @@ class ObatController extends Controller
      */
     public function store(StoreObatRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'price' => 'required',
+            'stock' => 'required',
+            'category_id' => 'required',
+            'description' => 'required',
+            'imgae' => 'image|file',
+
+        ]);
+
+        $validatedData['slug'] = Str::slug($validatedData['name']);
+
+        if($request->file('image')){
+            $validatedData['image'] = $request->file('image')->store('product');
+        }
+
+        Product::create($validatedData);
+
+        return redirect('/admin/obat')->with('success', 'Product Has Been Added!');
     }
 
     /**
@@ -84,6 +106,7 @@ class ObatController extends Controller
      */
     public function destroy(Obat $obat)
     {
-        //
+        Product::destroy($obat->id);
+        return redirect('/admin/obat')->with('success', 'Product Has Been Deleted!');
     }
 }

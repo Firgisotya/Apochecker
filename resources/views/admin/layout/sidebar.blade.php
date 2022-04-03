@@ -157,11 +157,11 @@
           </li>
           <li class="menu-item">
             <a href="/admin/obat" class="menu-link">
-              <div data-i18n="Obat">Obat</div>
+              <div data-i18n="Obat">Product</div>
             </a>
           </li>
           <li class="menu-item">
-            <a href="/admin/kategori" class="menu-link">
+            <a href="/admin/category" class="menu-link">
               <div data-i18n="Kategori">Kategori</div>
             </a>
           </li>

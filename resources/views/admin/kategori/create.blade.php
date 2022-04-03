@@ -13,7 +13,7 @@
                   <h5 class="mb-0">Tambah Kategori</h5>
                 </div>
                 <div class="card-body">
-                <form action="/admin/kategori" method="POST" class="mb-5" enctype="multipart/form-data">
+                <form action="/admin/category" method="POST" class="mb-5" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
                       <label class="col-sm-2 col-form-label" for="name">Nama Kategori</label>

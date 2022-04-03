@@ -43,7 +43,5 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
         return view('admin.index');
     })->name('index');
     Route::resource('/admin/obat', ObatController::class);
-    Route::get('/admin/kategori/checkSlug', [CategoryController::class, 'checkSlug']);
-    Route::resource('/admin/kategori', CategoryController::class);
-    Route::resource('/admin/kategori', CategoryController::class)->except('show');
+    Route::resource('/admin/category', CategoryController::class)->except('show');
 });

@@ -21,45 +21,46 @@
             {{-- <a href="" class="btn btn-primary">Tambah Obat</a> --}}
             </div>
 
+            @if (session()->has('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+              </div>
+            @endif
+
             <div class="table-responsive text-nowrap">
               <table class="table">
                 <thead class="table-dark">
                   <tr>
                     <th>Nama Obat</th>
-                    <th>Kategori</th>
+                    <th>Kategori ID</th>
                     <th>Harga</th>
                     <th>Stok</th>
-                    <th>Deskripsi</th>
                     <th>Gambar</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <div class="dropdown">
-                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                          <i class="bx bx-dots-vertical-rounded"></i>
-                        </button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" href="/admin/obat/edit"
-                            ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                          >
-                          <a class="dropdown-item" href="/admin/obat/delete"
-                            ><i class="bx bx-trash me-1"></i> Hapus</a
-                          >
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
+                    @foreach ($obats as $obat)
+                    <tr>
+                        <td>{{ $obat->name }}</td>
+                        <td>{{ $obat->category->name }}</td>
+                        <td>{{ $obat->price }}</td>
+                        <td>{{ $obat->stock }}</td>
+                        <td><img src="{{ asset($obat->image) }}" width="100px" height="100px"></td>
+                        <td>
+                            <a href="/admin/obat/{{ $obat->slug }}/edit" class="btn btn-warning"><i class='bx bxs-pencil'></i></a>
+                            <form action="/admin/obat/{{ $obat->slug }}" method="POST" class="d-inline">
+                            @method('delete')
+                            @csrf
+                            <button class="btn btn-danger border-0" onclick="return confirm('Are you sure?')"><i class='bx bxs-trash' ></i></button>
+                            </form>
+                        </td>
+                      </tr>
+                    @endforeach
+
                 </tbody>
               </table>
+              {{ $obats->links() }}
             </div>
           </div>
     </div>
