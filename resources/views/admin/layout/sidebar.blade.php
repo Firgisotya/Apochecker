@@ -92,8 +92,6 @@
         </li>
       </ul>
     </li>
-
-<<<<<<< HEAD
       <!-- Manajemen -->
       <li class="menu-header small text-uppercase">
         <span class="menu-header-text">Manajemen</span>
@@ -155,7 +153,6 @@
           </li>
         </ul>
       </li>
-=======
     <!-- Manajemen -->
     <li class="menu-header small text-uppercase">
       <span class="menu-header-text">Manajemen</span>
@@ -217,10 +214,6 @@
         </li>
       </ul>
     </li>
->>>>>>> 4874f6164f208eef5b8018b1a002585232f86f98
-
-
-
     <!-- Fuzzy -->
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Fuzzy</span></li>
     <li class="menu-item">

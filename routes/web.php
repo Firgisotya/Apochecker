@@ -45,6 +45,6 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.index');
     })->name('index');
-    Route::resource('/admin/obat', ObatController::class);
+    Route::resource('/admin/obat', ObatController::class)->except('show');
     Route::resource('/admin/category', CategoryController::class)->except('show');
 });

@@ -31,26 +31,26 @@
               <table class="table">
                 <thead class="table-dark">
                   <tr>
+                    <th>Gambar</th>
                     <th>Nama Obat</th>
-                    <th>Kategori ID</th>
+                    <th>Kategori</th>
                     <th>Harga</th>
                     <th>Stok</th>
-                    <th>Gambar</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
                     @foreach ($obats as $obat)
                     <tr>
+                        <td><img src="{{ asset($obat->image) }}" width="100px" height="100px"></td>
                         <td>{{ $obat->name }}</td>
                         <td>{{ $obat->category->name }}</td>
                         <td>{{ $obat->price }}</td>
                         <td>{{ $obat->stock }}</td>
-                        <td><img src="{{ asset($obat->image) }}" width="100px" height="100px"></td>
                         <td>
                             <a href="/admin/obat/{{ $obat->slug }}/edit" class="btn btn-warning"><i class='bx bxs-pencil'></i></a>
                             <form action="/admin/obat/{{ $obat->slug }}" method="POST" class="d-inline">
-                            @method('delete')
+                            @method('DELETE')
                             @csrf
                             <button class="btn btn-danger border-0" onclick="return confirm('Are you sure?')"><i class='bx bxs-trash' ></i></button>
                             </form>
@@ -60,7 +60,9 @@
 
                 </tbody>
               </table>
-              {{ $obats->links() }}
+              <div class="d-flex justify-content-lg-center">
+                {{ $obats->links() }}
+                </div>
             </div>
           </div>
     </div>

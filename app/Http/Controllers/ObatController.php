@@ -83,7 +83,9 @@ class ObatController extends Controller
      */
     public function edit(Obat $obat)
     {
-        //
+        return view('admin.obat.edit', [
+            'obat' => $obat,
+        ]);
     }
 
     /**
