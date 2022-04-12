@@ -29,8 +29,8 @@
 				<div class="col-lg-10 offset-lg-1 text-center">
 					<div class="hero-text">
 						<div class="hero-text-tablecell">
-							<p class="subtitle">Fresh Everyday</p>
-							<h1>100% Organic Collection</h1>
+							<p class="subtitle">Buka Setiap Hari</p>
+							<h1>Temukan obat yang anda cari!</h1>
 							<div class="hero-btns">
 								<a href="/shop" class="boxed-btn">Visit Shop</a>
 								<a href="/contact" class="bordered-btn">Contact Us</a>

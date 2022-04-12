@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -79,6 +80,9 @@ class UserController extends Controller
             'image' => 'image|file'
         ]);
         if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
             $validateData['image'] = $request->file('image')->store('profile');
         }
         User::where('id', $user->id)

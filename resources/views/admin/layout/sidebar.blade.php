@@ -18,14 +18,14 @@
 
   <ul class="menu-inner py-1">
     <!-- Dashboard -->
-    <li class="menu-item ">
+    <li class="menu-item {{ Request::is('dashboard') ? 'active' : '' }}">
       <a href="/dashboard" class="menu-link">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
         <div data-i18n="Analytics">Dashboard</div>
       </a>
     </li>
     <li class="menu-item ">
-      <a href="/" class="menu-link">
+      <a href="/" class="menu-link {{ Request::is('/') ? 'active' : '' }}">
         <i class="menu-icon tf-icons bx bx-home-alt"></i>
         <div data-i18n="Analytics">Homepage</div>
       </a>
@@ -92,67 +92,67 @@
         </li>
       </ul>
     </li>
-      <!-- Manajemen -->
-      <li class="menu-header small text-uppercase">
-        <span class="menu-header-text">Manajemen</span>
-      </li>
-      <!-- Manajemen -->
-      <li class="menu-item">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bxs-cabinet"></i>
-          <div data-i18n="Manajemen">Manajemen</div>
-        </a>
-        <ul class="menu-sub">
-          <li class="menu-item">
-            <a href="/admin/user" class="menu-link">
-              <div data-i18n="User">User</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="/admin/obat" class="menu-link">
-              <div data-i18n="Obat">Product</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="/admin/category" class="menu-link">
-              <div data-i18n="Kategori">Kategori</div>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <!-- Transaksi -->
-      <li class="menu-item">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bxs-package"></i>
-          <div data-i18n="Transaksi">Transaksi</div>
-        </a>
-        <ul class="menu-sub">
-          <li class="menu-item">
-            <a href="" class="menu-link">
-              <div data-i18n="Tambah Stok">Tambah Stok</div>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <!-- Laporan -->
-      <li class="menu-item">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bxs-receipt"></i>
-          <div data-i18n="Laporan">Laporan</div>
-        </a>
-        <ul class="menu-sub">
-          <li class="menu-item">
-            <a href="" class="menu-link">
-              <div data-i18n="Histori Tambah Stok">Histori Tambah Stok</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="" class="menu-link">
-              <div data-i18n="Histori Penjualan">Histori Penjualan</div>
-            </a>
-          </li>
-        </ul>
-      </li>
+    <!-- Manajemen -->
+    <li class="menu-header small text-uppercase">
+      <span class="menu-header-text">Manajemen</span>
+    </li>
+    <!-- Manajemen -->
+    <li class="menu-item {{ Request::is('admin/obat') || Request::is('admin/category') ? 'active' : '' }}">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bxs-cabinet"></i>
+        <div data-i18n="Manajemen">Manajemen</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="/admin/user" class="menu-link">
+            <div data-i18n="User">User</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="/admin/product" class="menu-link">
+            <div data-i18n="Obat">Product</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="/admin/category" class="menu-link">
+            <div data-i18n="Kategori">Kategori</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- Transaksi -->
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bxs-package"></i>
+        <div data-i18n="Transaksi">Transaksi</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="" class="menu-link">
+            <div data-i18n="Tambah Stok">Tambah Stok</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- Laporan -->
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bxs-receipt"></i>
+        <div data-i18n="Laporan">Laporan</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="" class="menu-link">
+            <div data-i18n="Histori Tambah Stok">Histori Tambah Stok</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="" class="menu-link">
+            <div data-i18n="Histori Penjualan">Histori Penjualan</div>
+          </a>
+        </li>
+      </ul>
+    </li>
     <!-- Manajemen -->
     <li class="menu-header small text-uppercase">
       <span class="menu-header-text">Manajemen</span>

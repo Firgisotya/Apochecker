@@ -38,13 +38,14 @@
                             <div class="account-settings">
                                 <div class="user-profile pt-4">
                                     <p><strong>Photo Profile</strong></p>
+                                    <input type="hidden" name="oldImage" value="{{ $user -> image }}">
                                     @if ($user -> image)
                                     <img src="{{ asset('storage/'.$user -> image) }}"
-                                        class="img-preview img-fluid mb-3 col-sm-5 d-block  m-auto rounded-circle"
-                                        alt="" height="200px">
+                                        class="img-preview mb-3  m-auto rounded-circle" alt="" height="200px"
+                                        width="200px">
                                     @else
                                     <img src="{{ asset('img/bahan/profile.png') }}"
-                                        class="img-preview m-auto rounded-circle" height="200px">
+                                        class="img-preview m-auto rounded-circle">
                                     @endif
                                     <div class="pt-3">
                                         <input class=" @error('image')
