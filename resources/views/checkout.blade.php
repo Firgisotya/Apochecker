@@ -42,7 +42,8 @@
 												<label for="exampleInputEmail1" class="form-label d-block "
 													style="padding-left: 80px"><Strong>Foto</Strong></label>
 												@if ($user -> image)
-												<img src="{{ $user -> image }}" alt="" height="200px">
+												<img src="{{ 'storage/'.$user -> image }}" alt="" height="200px"
+													width="200px" class="rounded-circle">
 												@else
 												<img src="{{ asset('img/bahan/profile.png') }}" alt="" height="200px">
 												@endif
@@ -50,7 +51,7 @@
 											<div class="mb-3">
 												<label for="exampleInputEmail1"
 													class="form-label"><strong>Nama</strong></label>
-												<input type="email" class="form-control p-4" id="exampleInputEmail1"
+												<input type="text" class="form-control p-4" id="exampleInputEmail1"
 													aria-describedby="emailHelp" value="{{ $user -> name }}">
 											</div>
 											<div class="mb-3">
@@ -108,47 +109,66 @@
 								data-parent="#accordionExample">
 								<div class="card-body">
 									<div class="card-details">
-										<div class="custom-control custom-radio">
-											<input type="radio" id="customRadio1" name="customRadio"
-												class="custom-control-input" required>
-											<label class="custom-control-label" for="customRadio1"><img
-													src="{{ asset('img/payments/bri.png') }}" alt=""
-													height="100px"></label>
-										</div>
-										<div class="custom-control custom-radio">
-											<input type="radio" id="customRadio2" name="customRadio"
-												class="custom-control-input">
-											<label class="custom-control-label" for="customRadio2"><img
-													src="{{ asset('img/payments/bca.png') }}" alt=""
-													height="100px"></label>
-										</div>
-										<div class="custom-control custom-radio">
-											<input type="radio" id="customRadio3" name="customRadio"
-												class="custom-control-input">
-											<label class="custom-control-label" for="customRadio3"><img
-													src="{{ asset('img/payments/mandiri.png') }}" alt=""
-													height="100px"></label>
-										</div>
-										<div class="custom-control custom-radio">
-											<input type="radio" id="customRadio4" name="customRadio"
-												class="custom-control-input">
-											<label class="custom-control-label" for="customRadio4"><img
-													src="{{ asset('img/payments/shopeepay.png') }}" alt=""
-													height="100px"></label>
-										</div>
-										<div class="custom-control custom-radio">
-											<input type="radio" id="customRadio5" name="customRadio"
-												class="custom-control-input">
-											<label class="custom-control-label" for="customRadio5"><img
-													src="{{ asset('img/payments/gopay.png') }}" alt=""
-													height="100px"></label>
-										</div>
-										<div class="custom-control custom-radio">
-											<input type="radio" id="customRadio6" name="customRadio"
-												class="custom-control-input">
-											<label class="custom-control-label" for="customRadio6"><img
-													src="{{ asset('img/payments/linkaja.png') }}" alt=""
-													height="100px"></label>
+										<div class="checkout-accordion-wrap">
+											<div class="accordion" id="accordionExample">
+												<div class="card single-accordion">
+													<div class="card-header" id="satu">
+														<h5 class="mb-0">
+															<button class="btn btn-link" type="button"
+																data-toggle="collapse" data-target="#satuu"
+																aria-expanded="true" aria-controls="satuu">
+																Billing Address
+															</button>
+														</h5>
+													</div>
+
+													<div id="satuu" class="collapse show" aria-labelledby="satu"
+														data-parent="#accordionExample">
+														<div class="card-body">
+
+														</div>
+													</div>
+												</div>
+												<div class="card single-accordion">
+													<div class="card-header" id="dua">
+														<h5 class="mb-0">
+															<button class="btn btn-link collapsed" type="button"
+																data-toggle="collapse" data-target="#duaa"
+																aria-expanded="false" aria-controls="duaa">
+																Shipping Address
+															</button>
+														</h5>
+													</div>
+													<div id="duaa" class="collapse" aria-labelledby="dua"
+														data-parent="#accordionExample">
+														<div class="card-body">
+															<div class="shipping-address-form">
+																<p>Your shipping address form is here.</p>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="card single-accordion">
+													<div class="card-header" id="tiga">
+														<h5 class="mb-0">
+															<button class="btn btn-link collapsed" type="button"
+																data-toggle="collapse" data-target="#tigaa"
+																aria-expanded="false" aria-controls="tigaa">
+																Card Details
+															</button>
+														</h5>
+													</div>
+													<div id="tigaa" class="collapse" aria-labelledby="tiga"
+														data-parent="#accordionExample">
+														<div class="card-body">
+															<div class="card-details">
+																<p>Your card details goes here.</p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
 										</div>
 									</div>
 								</div>
@@ -170,6 +190,7 @@
 						$orderDetails = \App\Models\OrderDetail::where('order_id', $order->id)->get();
 						}
 						@endphp
+
 						<thead>
 							<tr>
 								<th>Your order Details</th>
@@ -194,6 +215,7 @@
 									<h3>Anda belum memesan product</h3>
 								</td>
 							</tr>
+
 							@endif
 
 						</tbody>
@@ -209,7 +231,7 @@
 							@if (!empty($order))
 							<tr>
 								<td>Total</td>
-								<td>Rp. </td>
+								<td>Rp. {{ $order -> total }}</td>
 							</tr>
 							@endif
 						</tbody>

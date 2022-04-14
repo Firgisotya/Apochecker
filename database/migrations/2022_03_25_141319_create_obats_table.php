@@ -23,6 +23,7 @@ class CreateObatsTable extends Migration
             $table->string('image');
             $table->integer('price');
             $table->integer('quantity');
+            $table->integer('quality');
             $table->timestamps();
         });
     }

@@ -58,6 +58,7 @@ class HomeController extends Controller
         return view('checkout', [
             'title' => 'Checkout',
             'user' => Auth::user(),
+
         ]);
     }
     public function profile()

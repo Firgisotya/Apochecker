@@ -48,10 +48,10 @@
                                         class="img-preview m-auto rounded-circle">
                                     @endif
                                     <div class="pt-3">
-                                        <input class=" @error('image')
+                                        <input class="mb-3 @error('image')
                                                                             is-invalid
                                                                         @enderror" type="file" id="image" name="image"
-                                            onchange="previewImage()">
+                                            onchange="previewImage()" height="200px" width="200px">
                                     </div>
                                     <div class="pt-3">
                                         <h5 class="user-name">{{ $user -> name }}</h5>
