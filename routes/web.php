@@ -47,4 +47,5 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     })->name('index');
     Route::resource('/admin/product', ObatController::class)->except('show');
     Route::resource('/admin/category', CategoryController::class)->except('show');
+    Route::resource('/admin/user', UserController::class)->except('show');
 });

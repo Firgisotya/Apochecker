@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateObatRequest;
 use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 
 class ObatController extends Controller
 {
@@ -61,7 +62,7 @@ class ObatController extends Controller
 
         Product::create($validatedData);
 
-        return redirect('/admin/obat')->with('success', 'Product Has Been Added!');
+        return redirect('/admin/product')->with('success', 'Product Has Been Added!');
     }
 
     /**
@@ -96,9 +97,33 @@ class ObatController extends Controller
      * @param  \App\Models\Obat  $obat
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateObatRequest $request, Obat $obat)
+    public function update(UpdateObatRequest $request, Product $product)
     {
-        //
+        $rules = [
+            'name' => 'required|max:255',
+            'price' => 'required',
+            'stock' => 'required',
+            'category_id' => 'required',
+            'description' => 'required',
+            'imgae' => 'image|file',
+
+        ];
+
+
+        $validatedData = $request->validate($rules);
+
+        if($request->file('image')){
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('product');
+        }
+
+        $validatedData['slug'] = Str::slug($validatedData['name']);
+
+        Product::where('id', $product->id)->update($validatedData);
+
+        return redirect('/admin/product')->with('success', 'Product has been edited!');
     }
 
     /**
@@ -107,9 +132,9 @@ class ObatController extends Controller
      * @param  \App\Models\Obat  $obat
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Obat $obat)
+    public function destroy(Product $product)
     {
-        Product::destroy($obat->id);
-        return redirect('/admin/obat')->with('success', 'Product Has Been Deleted!');
+        Product::where('id', $product->id)->delete();
+        return redirect('/admin/product')->with('success', 'Product Has Been Deleted!');
     }
 }

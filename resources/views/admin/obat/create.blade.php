@@ -13,7 +13,7 @@
                   <h5 class="mb-0">Tambah Obat</h5>
                 </div>
                 <div class="card-body">
-                  <form action="/admin/obat" method="POST" enctype="multipart/form-data">
+                  <form action="/admin/product" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
                       <label class="col-sm-2 col-form-label" for="name">Nama Obat</label>
@@ -107,17 +107,17 @@
 
 <script>
     function previewImage(){
-const image = document.querySelector('#image');
-const imgPreview = document.querySelector('.img-preview');
+      const image = document.querySelector('#image');
+      const imgPreview = document.querySelector('.img-preview');
 
-imgPreview.style.display = 'block';
+      imgPreview.style.display = 'block';
 
-const oFReader = new FileReader();
-oFReader.readAsDataURL(iamge.files[0]);
+      const oFReader = new FileReader();
+      oFReader.readAsDataURL(image.files[0]);
 
-oFReader.onload = function(oFREvent){
-  imgPreview.src = oFREvent.target.result;
-}
-}
-</script>
+      oFReader.onload = function(oFREvent){
+      imgPreview.src = oFREvent.target.result;
+      }
+      }
+  </script>
 @endsection
