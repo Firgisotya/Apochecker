@@ -13,9 +13,9 @@
             <h5 class="mb-0">Edit Obat</h5>
           </div>
           <div class="card-body">
-            <form action="/admin/obat" method="POST" enctype="multipart/form-data">
+            <form action="/admin/product/{{ $obat->slug }}" method="POST" enctype="multipart/form-data">
+                @method('put')
               @csrf
-              @method('PUT')
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="name">Nama Obat</label>
                 <div class="col-sm-10">
@@ -35,7 +35,7 @@
                   <select class="form-select" name="category_id">
                     @foreach ($categories as $category)
 
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    <option value="{{ $category->id }}" {{ $obat->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                     @endforeach
                   </select>
                 </div>
@@ -110,12 +110,12 @@
   function previewImage(){
     const image = document.querySelector('#image');
     const imgPreview = document.querySelector('.img-preview');
-    
+
     imgPreview.style.display = 'block';
-    
+
     const oFReader = new FileReader();
     oFReader.readAsDataURL(image.files[0]);
-    
+
     oFReader.onload = function(oFREvent){
     imgPreview.src = oFREvent.target.result;
     }

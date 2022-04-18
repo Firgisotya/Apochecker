@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -15,7 +16,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.user.index', [
+            'users' => User::latest()->paginate(5)
+        ]);
     }
 
     /**
@@ -25,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user.create');
     }
 
     /**
@@ -36,6 +39,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'username' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'gender' => 'required',
+            'address' => 'required',
+            'level' => 'required',
+            'password' => 'required',
+            'imgae' => 'image|file',
+
+        ]);
+
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('user');
+        }
+        $validatedData['password'] = bcrypt($validatedData['password']);
+
+        User::create($validatedData);
+        return redirect('/admin/user')->with('success', 'User Has Been Added!');
     }
 
     /**
@@ -57,7 +80,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('admin.user.edit', [
+            'user' => $user
+        ]);
     }
 
     /**

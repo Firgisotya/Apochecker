@@ -49,4 +49,5 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('/admin/product', ObatController::class)->except('show');
     Route::resource('/admin/category', CategoryController::class)->except('show');
     Route::resource('/admin/news', DashboardNewsController::class);
+    Route::resource('/admin/user', UserController::class)->except('show');
 });
