@@ -49,7 +49,7 @@
 					<div class="hero-text">
 						<div class="hero-text-tablecell">
 							<p class="subtitle">Mega Sale Going On!</p>
-							<h1>Get December Discount</h1>
+							<h1>Get Ramadhan Discount</h1>
 							<div class="hero-btns">
 								<a href="/shop" class="boxed-btn">Visit Shop</a>
 								<a href="/contact" class="bordered-btn">Contact Us</a>

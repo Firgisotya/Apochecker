@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardNewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,4 +48,5 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     })->name('index');
     Route::resource('/admin/product', ObatController::class)->except('show');
     Route::resource('/admin/category', CategoryController::class)->except('show');
+    Route::resource('/admin/news', DashboardNewsController::class);
 });

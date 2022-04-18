@@ -97,7 +97,8 @@
       <span class="menu-header-text">Manajemen</span>
     </li>
     <!-- Manajemen -->
-    <li class="menu-item {{ Request::is('admin/obat') || Request::is('admin/category') ? 'active' : '' }}">
+    <li
+      class="menu-item {{ Request::is('admin/obat') || Request::is('admin/category') || Request::is('admin/news') ? 'active' : '' }}">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bxs-cabinet"></i>
         <div data-i18n="Manajemen">Manajemen</div>
@@ -116,6 +117,11 @@
         <li class="menu-item">
           <a href="/admin/category" class="menu-link">
             <div data-i18n="Kategori">Kategori</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="/admin/news" class="menu-link">
+            <div data-i18n="Kategori">News</div>
           </a>
         </li>
       </ul>
@@ -154,7 +160,7 @@
       </ul>
     </li>
     <!-- Manajemen -->
-    <li class="menu-header small text-uppercase">
+    {{-- <li class="menu-header small text-uppercase">
       <span class="menu-header-text">Manajemen</span>
     </li>
     <!-- Manajemen -->
@@ -180,7 +186,7 @@
           </a>
         </li>
       </ul>
-    </li>
+    </li> --}}
     <!-- Transaksi -->
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">

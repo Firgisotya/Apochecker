@@ -23,7 +23,8 @@
 			<div class="col-lg-8">
 				<div class="single-article-section">
 					<div class="single-article-text">
-						<img src="{{ asset($news -> photo) }}" alt="">
+						<img src="{{ asset($news -> photo) }}" alt="" class="p-2"
+							style="border-radius: 15px;overflow: hidden">
 						<p class="blog-meta">
 							<span class="author"><i class="fas fa-user"></i>{{ $news -> user -> name }}</span>
 							<span class="date"><i class="fas fa-calendar"></i>{{ $news -> date }} </span>
