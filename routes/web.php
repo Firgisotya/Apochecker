@@ -10,6 +10,7 @@ use App\Http\Controllers\PesanController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardNewsController;
+use App\Http\Controllers\StokController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,4 +51,5 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('/admin/category', CategoryController::class)->except('show');
     Route::resource('/admin/news', DashboardNewsController::class);
     Route::resource('/admin/user', UserController::class)->except('show');
+    Route::resource('/admin/stok', StokController::class)->except('show', 'edit', 'update');
 });

@@ -57,7 +57,7 @@ class ObatController extends Controller
         $validatedData['slug'] = Str::slug($validatedData['name']);
 
         if ($request->file('image')) {
-            $validatedData['image'] = $request->file('image')->store('product');
+            $validatedData['image'] = $request->file('image')->store('product', 'public');
         }
 
         Product::create($validatedData);
@@ -116,7 +116,7 @@ class ObatController extends Controller
             if($request->oldImage){
                 Storage::delete($request->oldImage);
             }
-            $validatedData['image'] = $request->file('image')->store('product');
+            $validatedData['image'] = $request->file('image')->store('product', 'public');
         }
 
         $validatedData['slug'] = Str::slug($validatedData['name']);

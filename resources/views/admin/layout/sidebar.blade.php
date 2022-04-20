@@ -134,7 +134,7 @@
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="" class="menu-link">
+          <a href="/admin/stok" class="menu-link">
             <div data-i18n="Tambah Stok">Tambah Stok</div>
           </a>
         </li>
@@ -188,7 +188,7 @@
         </li>
       </ul>
     </li> --}}
-    <!-- Transaksi -->
+    {{-- <!-- Transaksi -->
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bxs-package"></i>
@@ -220,7 +220,7 @@
           </a>
         </li>
       </ul>
-    </li>
+    </li> --}}
 
 
     <!-- Fuzzy -->

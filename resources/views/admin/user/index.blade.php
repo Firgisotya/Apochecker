@@ -43,7 +43,7 @@
           <tbody class="table-border-bottom-0">
             @foreach ($users as $user)
             <tr>
-              <td><img src="{{ asset($user->image) }}" width="100px" height="100px"></td>
+              <td><img src="{{asset('storage/'.$user->image)}}" width="100px" height="100px"></td>
               <td>{{ $user->name }}</td>
               <td>{{ $user->username }}</td>
               <td>{{ $user->email }}</td>

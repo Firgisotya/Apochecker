@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+    protected $table = 'products';
     protected $guarded = ['id'];
 
     public function category()
@@ -21,5 +22,9 @@ class Product extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+    public function stoks()
+    {
+        return $this->hasMany(Stok::class);
     }
 }

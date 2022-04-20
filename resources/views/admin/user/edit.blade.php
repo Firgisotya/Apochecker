@@ -13,7 +13,8 @@
                   <h5 class="mb-0">Edit User</h5>
                 </div>
                 <div class="card-body">
-                  <form action="/admin/user" method="POST" enctype="multipart/form-data">
+                  <form action="/admin/user/{{ $user->id }}" method="POST" enctype="multipart/form-data">
+                    @method('put')
                     @csrf
                     <div class="row mb-3">
                       <label class="col-sm-2 col-form-label" for="name">Nama User</label>
@@ -67,21 +68,15 @@
                         <label class="col-sm-2 col-form-label" for="Gender">Gender</label>
                         <div class="col-sm-10">
                           <select class="form-select" name="gender">
-                              <option value="Laki-Laki" {{  $user->id ? 'selected' : '' }}>Laki-Laki</option>
-                              <option value="Perempuan" {{  $user->id ? 'selected' : '' }}>Perempuan</option>
+                              <option value="Laki-Laki" {{  $user->gander == 'Laki-Laki' ? 'selected' : '' }}>Laki-Laki</option>
+                              <option value="Perempuan" {{  $user->gander == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                             </select>
                         </div>
                       </div>
                     <div class="row mb-3">
                       <label class="col-sm-2 col-form-label" for="address">Address</label>
                       <div class="col-sm-10">
-                        <textarea
-                          id="address"
-                          name="address"
-                          class="form-control @error('address') is-invalid
-                          @enderror"
-                          placeholder="Address" value="{{ old('address', $user->address) }}"
-                        ></textarea>
+                        <textarea id="address" name="address" class="form-control @error('address') is-invalid @enderror" placeholder="Address">{{ old('address', $user->address) }}</textarea>
                         @error('address')
                         <div class="invalid-feedback">
                           {{ $message }}
@@ -92,10 +87,11 @@
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="Image">Image</label>
                         <div class="col-sm-10">
-                            @if ($user -> image)
-                            <img src="{{ asset($user -> image) }}" class="img-preview mb-3 " alt="" height="200px" width="200px">
+                            <input type="hidden" name="oldImage" value="{{ $user->image }}">
+                            @if ($user->image)
+                            <img src="{{asset('storage/'.$user->image)}}" class="img-preview img-fluid mb-3 " alt="" height="200px" width="200px">
                             @else
-                            <img src="{{ asset('img/bahan/profile.png') }}" class="img-preview ">
+                            <img class="img-preview img-fluid" width="200px" height="200px">
                             @endif
                             <div class="pt-3">
                                 <input class=" form-control @error('image') is-invalid @enderror" type="file" id="image"
@@ -104,30 +100,18 @@
                         </div>
                       </div>
                       <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label" for="password">Password</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control @error('password') is-invalid
-                          @enderror" id="password" name="password" placeholder="password"/>
-                          @error('phone')
-                          <div class="invalid-feedback">
-                            {{ $message }}
-                          </div>
-                        @enderror
-                        </div>
-                      </div>
-                      <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="Level">Level</label>
                         <div class="col-sm-10">
                           <select class="form-select" name="level">
 
-                              <option value="admin" {{  $user->id ? 'selected' : '' }}>Admin</option>
-                              <option value="user" {{  $user->id ? 'selected' : '' }}>Pelanggan</option>
+                              <option value="admin" {{  $user->level == 'admin' ? 'selected' : '' }}>Admin</option>
+                              <option value="pelanggan" {{  $user->level == 'pelanggan' ? 'selected' : '' }}>Pelanggan</option>
                             </select>
                         </div>
                       </div>
                     <div class="row justify-content-end">
                       <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary">Tambah</button>
+                        <button type="submit" class="btn btn-primary">Edit</button>
                       </div>
                     </div>
                   </form>

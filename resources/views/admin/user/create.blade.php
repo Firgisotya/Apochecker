@@ -120,7 +120,7 @@
                           <select class="form-select" name="level">
 
                               <option value="admin">Admin</option>
-                              <option value="user">Pelanggan</option>
+                              <option value="pelanggan">Pelanggan</option>
                             </select>
                         </div>
                       </div>

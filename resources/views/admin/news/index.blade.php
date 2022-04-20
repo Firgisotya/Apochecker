@@ -40,9 +40,9 @@
                     <tbody class="table-border-bottom-0">
                         @foreach ($news as $n)
                         <tr>
+                            <td>{{ $n-> user -> name }}</td>
                             <td><img src="{{ asset($n-> photo) }}" width="250px" height="250px"
                                     class="rounded img-fluid"></td>
-                            <td>{{ $n-> user -> name }}</td>
                             <td>{{ $n->title }}</td>
                             {{-- <td>{{ $n->content }}</td> --}}
                             <td>
