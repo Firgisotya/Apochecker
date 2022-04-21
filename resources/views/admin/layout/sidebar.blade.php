@@ -98,28 +98,28 @@
     </li>
     <!-- Manajemen -->
     <li
-      class="menu-item {{ Request::is('admin/obat') || Request::is('admin/category') || Request::is('admin/news') ? 'active' : '' }}">
+      class="menu-item {{ Request::is('admin/product') || Request::is('admin/category') || Request::is('admin/news') || Request::is('admin/user') ? 'active' : '' }}">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bxs-cabinet"></i>
         <div data-i18n="Manajemen">Manajemen</div>
       </a>
       <ul class="menu-sub">
-        <li class="menu-item">
+        <li class="menu-item {{ Request::is('admin/user') ? 'active' : '' }}">
           <a href="/admin/user" class="menu-link">
             <div data-i18n="User">User</div>
           </a>
         </li>
-        <li class="menu-item">
+        <li class="menu-item {{ Request::is('admin/product') ? 'active' : '' }}">
           <a href="/admin/product" class="menu-link">
             <div data-i18n="Obat">Product</div>
           </a>
         </li>
-        <li class="menu-item">
+        <li class="menu-item {{ Request::is('admin/category') ? 'active' : '' }}">
           <a href="/admin/category" class="menu-link">
             <div data-i18n="Kategori">Kategori</div>
           </a>
         </li>
-        <li class="menu-item">
+        <li class="menu-item {{ Request::is('admin/news') ? 'active' : '' }}">
           <a href="/admin/news" class="menu-link">
             <div data-i18n="Kategori">News</div>
           </a>
@@ -127,13 +127,13 @@
       </ul>
     </li>
     <!-- Transaksi -->
-    <li class="menu-item">
+    <li class="menu-item {{ Request::is('admin/stok') ? 'active' : '' }}">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bxs-package"></i>
         <div data-i18n="Transaksi">Transaksi</div>
       </a>
       <ul class="menu-sub">
-        <li class="menu-item">
+        <li class="menu-item {{ Request::is('admin/stok') ? 'active' : '' }}">
           <a href="/admin/stok" class="menu-link">
             <div data-i18n="Tambah Stok">Tambah Stok</div>
           </a>

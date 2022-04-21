@@ -193,20 +193,22 @@
 
 						<thead>
 							<tr>
-								<th>Your order Details</th>
-								<th>Price</th>
+								{{-- <th>Your order Details</th>
+								<th>Price</th> --}}
+								<th><strong>Product</strong></th>
+								<th><strong>Total</strong></th>
 							</tr>
 						</thead>
 						<tbody class="order-details-body">
-							<tr>
-								<td>Product</td>
-								<td>Total</td>
-							</tr>
+							{{-- <tr>
+								<td><strong>Product</strong> </td>
+								<td><strong>Total</strong> </td>
+							</tr> --}}
 							@if (!empty($order))
-							@foreach ($orderDetails as $order)
+							@foreach ($orderDetails as $orders)
 							<tr>
-								<td>{{ $order -> product -> name }}</td>
-								<td>Rp. {{ number_format($order -> price) }}</td>
+								<td>{{ $orders -> product -> name }}</td>
+								<td>Rp. {{ number_format($orders -> price) }}</td>
 							</tr>
 							@endforeach
 							@else
@@ -220,23 +222,23 @@
 
 						</tbody>
 						<tbody class="checkout-details">
-							<tr>
+							{{-- <tr>
 								<td>Subtotal</td>
 								<td>$190</td>
 							</tr>
 							<tr>
 								<td>Shipping</td>
 								<td>$50</td>
-							</tr>
+							</tr> --}}
 							@if (!empty($order))
-							<tr>
-								<td>Total</td>
-								<td>Rp. {{ $order -> total }}</td>
+							<tr style="border-top: 5px">
+								<td><strong>Total</strong></td>
+								<td><strong>Rp. {{ number_format($order -> total) }}</strong></td>
 							</tr>
 							@endif
 						</tbody>
 					</table>
-					<a href="/validation" class="boxed-btn">Place Order</a>
+					<a href="/validation" class="boxed-btn text-center" style="width: 270px">Place Order</a>
 				</div>
 			</div>
 		</div>
