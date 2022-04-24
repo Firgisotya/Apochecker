@@ -40,7 +40,11 @@
           <tbody class="table-border-bottom-0">
             @foreach ($obats as $obat)
             <tr>
-              <td><img src="{{asset('storage/'.$obat->image)}}" width="100px" height="100px"></td>
+              <td><img src="@if ($obat -> image == null)
+                {{ asset('img/products/'.$obat -> slug.'.jpg') }}
+                @else
+                {{asset('storage/'.$obat->image)}}
+              @endif" width="100px" height="100px"></td>
               <td>{{ $obat->name }}</td>
               <td>{{ $obat->category->name }}</td>
               <td>{{ $obat->price }}</td>

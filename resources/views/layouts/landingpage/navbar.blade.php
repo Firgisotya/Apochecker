@@ -7,7 +7,7 @@
                     <!-- logo -->
                     <div class="site-logo">
                         <a href="/">
-                            <img src="/img/logo.png" alt="">
+                            <img src="/img/logo1.png" alt="">
                         </a>
                     </div>
                     <!-- logo -->
@@ -61,7 +61,7 @@
                             <div class="header-icons">
                                 <li style="padding-left: 250px"><a class="shopping-cart position-relative"
                                         href="/cart"><i class="fas fa-shopping-cart"></i><span class="badge bg-danger"
-                                            style="transform: translateY(-15px);margin-left: 3px;padding:2px 4px;border-radius: 30px">{{ $notification }}</span></a>
+                                            style="transform: translateY(-15px);margin-left: 3px;padding:3px 5px;border-radius: 30px">{{ $notification }}</span></a>
                                 </li>
                                 @else
                                 <li style="padding-left: 250px"><a class="shopping-cart position-relative"

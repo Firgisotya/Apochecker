@@ -53,7 +53,7 @@ class UserController extends Controller
         ]);
 
         if ($request->file('image')) {
-            $validatedData['image'] = $request->file('image')->store('user');
+            $validatedData['image'] = $request->file('image')->store('profile');
         }
         $validatedData['password'] = bcrypt($validatedData['password']);
 
@@ -98,22 +98,26 @@ class UserController extends Controller
         $validateData = $request->validate([
             'name' => 'required|max:255',
             'username' => 'required',
+            'address' => 'required',
             'email' => 'required',
             'phone' => 'required',
             'gender' => 'required',
-            'address' => 'required',
+            'image' => 'image|file',
             'level' => 'required',
-            'imgae' => 'image|file',
         ]);
         if ($request->file('image')) {
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
-            $validateData['image'] = $request->file('image')->store('user', 'public');
+            $validateData['image'] = $request->file('image')->store('profile');
+            // $validateData['image'] = $request->file('image')->store('user', 'public');
         }
+
         User::where('id', $user->id)
             ->update($validateData);
-        return redirect('/admin/user')->with('success', 'User Has Been Edited!');
+        return redirect('/profile')->with('success', 'Profile telah diupdate!');
+        // return redirect('/admin/user')->with('success', 'User Has Been Edited!');
+
     }
 
     /**

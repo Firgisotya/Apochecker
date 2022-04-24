@@ -39,8 +39,12 @@
 			<div class="col-lg-4 col-md-6 text-center {{ $product -> category -> name }}">
 				<div class="single-product-item">
 					<div class="product-image">
-						<a href="/products/{{ $product -> slug }}"><img src="{{ asset($product -> image) }}" alt=""
-								height="250px"></a>
+						<a href="/products/{{ $product -> slug }}"><img src="
+								@if ($product -> image == null)
+									{{ asset('img/products/'.$product -> slug.'.jpg') }}
+								@else
+									{{ asset('storage/'.$product -> image) }}
+								@endif" alt="{{ $product -> slug }}" height="250px"></a>
 					</div>
 					<h3>{{ $product -> name }}</h3>
 					<p class="product-price"><span></span> Rp. {{ number_format($product -> price) }} </p>
