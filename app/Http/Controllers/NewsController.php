@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
-use App\Http\Requests\StoreNewsRequest;
-use App\Http\Requests\UpdateNewsRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class NewsController extends Controller
 {
@@ -28,18 +28,30 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.news.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreNewsRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreNewsRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'image' => 'image|file',
+        ]);
+        $validateData['slug'] = Str::slug($request->title);
+        $validateData['excerpt'] = Str::limit(strip_tags($request->content), 200);
+        $validateData['user_id'] = auth()->user()->id;
+        if ($request->file('image')) {
+            $validateData['image'] = $request->file('image')->store('news');
+        }
+        News::create($validateData);
+        return redirect('/news')->with('success', 'News created successfully');
     }
 
     /**
@@ -71,13 +83,12 @@ class NewsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateNewsRequest  $request
+     *  $request
      * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateNewsRequest $request, News $news)
+    public function update(Request $request, News $news)
     {
-        //
     }
 
     /**

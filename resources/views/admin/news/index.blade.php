@@ -13,8 +13,8 @@
                         <i class="bx bx-dots-vertical-rounded"></i>
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/admin/news/create"><i class="bx bx-plus me-1"></i> Tambah
-                            Obat</a>
+                        <a class="dropdown-item" href="/news/create"><i class="bx bx-plus me-1"></i> Tambah
+                            News</a>
                     </div>
                 </div>
                 {{-- <a href="" class="btn btn-primary">Tambah Obat</a> --}}

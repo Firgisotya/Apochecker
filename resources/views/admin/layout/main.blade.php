@@ -43,6 +43,17 @@
   <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
   <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
   <script src="{{ asset('admin/assets/js/config.js') }}"></script>
+
+  {{-- Trix Editor --}}
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/trix.css') }}">
+  <script type="text/javascript" src="{{ asset('js/trix.js') }}"></script>
+  <link rel="stylesheet" type="text/css" href="/css/trix.css">
+  <script type="text/javascript" src="/js/trix.js"></script>
+  <style>
+    trix-toolbar [data-trix-button-group="file-tools"] {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
