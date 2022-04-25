@@ -46,7 +46,7 @@ class UserController extends Controller
             'phone' => 'required',
             'gender' => 'required',
             'address' => 'required',
-            'level' => 'required',
+            // 'level' => 'required',
             // 'password' => 'required',
             'image' => 'image|file',
         ]);
@@ -102,7 +102,7 @@ class UserController extends Controller
             'phone' => 'required',
             'gender' => 'required',
             'image' => 'image|file',
-            'level' => 'required',
+            // 'level' => 'required',
         ]);
         if ($request->file('image')) {
             if ($request->oldImage) {

@@ -19,10 +19,10 @@
                                 <label class="col-sm-2 col-form-label" for="gambar">Gambar</label>
                                 <div class="col-sm-10">
                                     <img class="img-preview img-fluid mb-3 col-sm-5">
-                                    <input class="form-control @error('image') is-invalid
-                                                        @enderror" type="file" id="image" name="image"
+                                    <input class="form-control @error('photo') is-invalid
+                                                        @enderror" type="file" id="photo" name="photo"
                                         onchange="previewImage()">
-                                    @error('image')
+                                    @error('photo')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -31,11 +31,23 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="name">Judul Berita</label>
+                                <label class="col-sm-2 col-form-label" for="title">Judul Berita</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control  @error('name') is-invalid
-                        @enderror" id="name" name="name" placeholder="Nama Obat" />
-                                    @error('name')
+                                    <input type="text" class="form-control  @error('title') is-invalid
+                        @enderror" id="title" name="title" placeholder="Judul" />
+                                    @error('title')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" for="date">Tanggal</label>
+                                <div class="col-sm-10">
+                                    <input type="date" class="form-control  @error('date') is-invalid
+                        @enderror" id="date" name="date" placeholder="Judul" />
+                                    @error('date')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -64,13 +76,13 @@
 
 <script>
     function previewImage(){
-      const image = document.querySelector('#image');
+      const photo = document.querySelector('#photo');
       const imgPreview = document.querySelector('.img-preview');
 
       imgPreview.style.display = 'block';
 
       const oFReader = new FileReader();
-      oFReader.readAsDataURL(image.files[0]);
+      oFReader.readAsDataURL(photo.files[0]);
 
       oFReader.onload = function(oFREvent){
       imgPreview.src = oFREvent.target.result;

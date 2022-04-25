@@ -41,18 +41,19 @@ class DashboardNewsController extends Controller
      */
     public function store(Request $request)
     {
+
         $validateData = $request->validate([
             'title' => 'required|max:255',
             'content' => 'required',
-            'image' => 'image|file',
+            'date' => 'required',
+            'photo' => 'image|file',
         ]);
         $validateData['slug'] = Str::slug($request->title);
         $validateData['excerpt'] = Str::limit(strip_tags($request->content), 200);
         $validateData['user_id'] = auth()->user()->id;
-        if ($request->file('image')) {
-            $validateData['image'] = $request->file('image')->store('news');
+        if ($request->file('photo')) {
+            $validateData['photo'] = $request->file('photo')->store('news', 'public');
         }
-
         News::create($validateData);
         return redirect('/admin/news')->with('success', 'News created successfully');
     }
