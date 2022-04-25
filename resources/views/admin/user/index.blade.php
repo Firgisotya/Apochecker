@@ -27,17 +27,17 @@
 
       <div class="table-responsive text-nowrap">
         <table class="table">
-          <thead class="table-dark">
+          <thead class="table-dark ">
             <tr>
-              <th>Gambar</th>
-              <th>Nama User</th>
-              <th>Username</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Gender</th>
-              <th>Address</th>
-              <th>Level</th>
-              <th>Actions</th>
+              <th class="text-white">Gambar</th>
+              <th class="text-white">Nama User</th>
+              <th class="text-white">Username</th>
+              <th class="text-white">Email</th>
+              <th class="text-white">Phone</th>
+              <th class="text-white">Gender</th>
+              <th class="text-white">Address</th>
+              <th class="text-white">Level</th>
+              <th class="text-white">Actions</th>
             </tr>
           </thead>
           <tbody class="table-border-bottom-0">
@@ -52,8 +52,7 @@
               <td>{{ $user->address }}</td>
               <td>{{ $user->level }}</td>
               <td>
-                <a href="/admin/user/{{ $user->id }}/edit" class="btn btn-warning"><i
-                    class='bx bxs-pencil'></i></a>
+                <a href="/admin/user/{{ $user->id }}/edit" class="btn btn-warning"><i class='bx bxs-pencil'></i></a>
                 <form action="/admin/user/{{ $user->id }}" method="POST" class="d-inline">
                   @method('DELETE')
                   @csrf

@@ -13,7 +13,7 @@
                         <h5 class="mb-0">Tambah Obat</h5>
                     </div>
                     <div class="card-body">
-                        <form action="/news" method="POST" enctype="multipart/form-data">
+                        <form action="/admin/news" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="gambar">Gambar</label>

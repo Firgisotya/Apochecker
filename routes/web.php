@@ -33,6 +33,7 @@ Route::resource('/news', NewsController::class);
 Route::resource('/products', ProductController::class);
 Route::post('/pesan/{product}', [PesanController::class, 'store']);
 Route::get('/profile', [HomeController::class, 'profile']);
+Route::put('/profile/{id}', [HomeController::class, 'update']);
 Route::delete('/order/{order_detail}', [PesanController::class, 'delete']);
 Route::get('/validation', [HomeController::class, 'validation']);
 Route::resource('/user', UserController::class);

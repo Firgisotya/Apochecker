@@ -26,7 +26,7 @@
         </div>
         @endif
     </div>
-    <form method="POST" action="/user/{{ $user -> id }}" enctype="multipart/form-data">
+    <form method="POST" action="/profile/{{ $user -> id }}" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <div class="container" style="background-color: #f5f6fa">

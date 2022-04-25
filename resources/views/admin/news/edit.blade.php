@@ -13,7 +13,7 @@
                         <h5 class="mb-0">Edit News</h5>
                     </div>
                     <div class="card-body">
-                        <form action="/admin/news" method="POST" enctype="multipart/form-data">
+                        <form action="/admin/news/{{ $news -> slug }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="row mb-3">
@@ -44,44 +44,15 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="kategori">Kategori</label>
-                                <div class="col-sm-10">
-                                    <select class="form-select" name="category_id">
-                                        @foreach ($users as $user)
-                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="price">Content</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control @error('price') is-invalid
-                        @enderror" id="price" name="price" placeholder="price"
-                                        value="{{ old('price', $news->price) }}" />
-                                    @error('price')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
-                            </div>
+
 
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="deaskripsi">Deskripsi</label>
-                                <div class="col-sm-10">
-                                    <input id="deaskripsi" name="description"
-                                        class="form-control @error('description') is-invalid @enderror"
-                                        placeholder="Deskripsi" value="{{ old('description', $news->description) }}"
-                                        size="50">
-                                    <textarea name="content" id="" cols="30"
-                                        rows="10">{!! $news -> content !!}</textarea>
-                                    @error('description')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" for="deaskripsi">Content</label>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" id="content" name="content" value="{{ $news -> content }}">
+                                        <trix-editor input="content"></trix-editor>
                                     </div>
-                                    @enderror
                                 </div>
                             </div>
 

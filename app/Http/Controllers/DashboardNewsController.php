@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use App\Models\User;
+use App\Http\Requests\StoreNewsRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class DashboardNewsController extends Controller
 {
@@ -27,7 +29,8 @@ class DashboardNewsController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('admin.news.create');
     }
 
     /**
@@ -38,7 +41,20 @@ class DashboardNewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'image' => 'image|file',
+        ]);
+        $validateData['slug'] = Str::slug($request->title);
+        $validateData['excerpt'] = Str::limit(strip_tags($request->content), 200);
+        $validateData['user_id'] = auth()->user()->id;
+        if ($request->file('image')) {
+            $validateData['image'] = $request->file('image')->store('news');
+        }
+
+        News::create($validateData);
+        return redirect('/admin/news')->with('success', 'News created successfully');
     }
 
     /**
@@ -78,7 +94,19 @@ class DashboardNewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        //
+        $validateData = $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'image' => 'image|file',
+        ]);
+        $validateData['slug'] = Str::slug($request->title);
+        $validateData['excerpt'] = Str::limit(strip_tags($request->content), 200);
+        $validateData['user_id'] = auth()->user()->id;
+        if ($request->file('image')) {
+            $validateData['image'] = $request->file('image')->store('news');
+        }
+        News::where('id', $news->id)->update($validateData);
+        return redirect('/admin/news')->with('success', 'News updated successfully');
     }
 
     /**

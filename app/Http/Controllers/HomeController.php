@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\User;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\Testimoni;
 use App\Models\OrderDetail;
-use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 class HomeController extends Controller
 {
@@ -73,5 +76,30 @@ class HomeController extends Controller
         return view('validation', [
             'title' => 'Validation',
         ]);
+    }
+    public function update(Request $request, $id)
+    {
+        $validateData = $request->validate([
+            'name' => 'required|max:255',
+            'username' => 'required',
+            'address' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'gender' => 'required',
+            'image' => 'image|file',
+            'level' => 'required',
+        ]);
+        ddd($validateData);
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validateData['image'] = $request->file('image')->store('profile');
+            // $validateData['image'] = $request->file('image')->store('user', 'public');
+        }
+
+        User::where('id', $id)
+            ->update($validateData);
+        return redirect('/profile')->with('success', 'Profile telah diupdate!');
     }
 }

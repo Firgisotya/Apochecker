@@ -47,18 +47,17 @@ class UserController extends Controller
             'gender' => 'required',
             'address' => 'required',
             'level' => 'required',
-            'password' => 'required',
-            'imgae' => 'image|file',
-
+            // 'password' => 'required',
+            'image' => 'image|file',
         ]);
 
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('profile');
         }
-        $validatedData['password'] = bcrypt($validatedData['password']);
+        // $validatedData['password'] = bcrypt($validatedData['password']);
 
         User::create($validatedData);
-        return redirect('/admin/user')->with('success', 'User Has Been Added!');
+        return redirect('/profile')->with('success', 'User Has Been Added!');
     }
 
     /**

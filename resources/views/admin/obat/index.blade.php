@@ -29,12 +29,12 @@
         <table class="table">
           <thead class="table-dark">
             <tr>
-              <th>Gambar</th>
-              <th>Nama Obat</th>
-              <th>Kategori</th>
-              <th>Harga</th>
-              <th>Stok</th>
-              <th>Actions</th>
+              <th class="text-white">Gambar</th>
+              <th class="text-white">Nama Obat</th>
+              <th class="text-white">Kategori</th>
+              <th class="text-white">Harga</th>
+              <th class="text-white">Stok</th>
+              <th class="text-white">Actions</th>
             </tr>
           </thead>
           <tbody class="table-border-bottom-0">

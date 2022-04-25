@@ -51,8 +51,8 @@ class ObatController extends Controller
             'category_id' => 'required',
             'description' => 'required',
             'imgae' => 'image|file',
-
         ]);
+        ddd($validatedData);
 
         $validatedData['slug'] = Str::slug($validatedData['name']);
 
@@ -112,8 +112,8 @@ class ObatController extends Controller
 
         $validatedData = $request->validate($rules);
 
-        if($request->file('image')){
-            if($request->oldImage){
+        if ($request->file('image')) {
+            if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
             $validatedData['image'] = $request->file('image')->store('product', 'public');
