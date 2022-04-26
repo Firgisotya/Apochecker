@@ -27,7 +27,7 @@
                                     @endif
                                     <div class="pt-3">
                                         <input class=" form-control @error('image') is-invalid @enderror" type="file"
-                                            id="image" name="image" onchange="previewImage()" style="object-fit: cover">
+                                            id="image" name="photo" onchange="previewImage()" style="object-fit: cover">
                                     </div>
                                 </div>
                             </div>

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Http\Requests\StoreNewsRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardNewsController extends Controller
 {
@@ -17,8 +18,14 @@ class DashboardNewsController extends Controller
      */
     public function index()
     {
+        $news = News::where('photo', 'like', '%' . 'img/latest-news' . '%')->get();
+        $news1 = News::where('photo', 'like', 'news/' . '%')->get();
+        if (News::where('photo', 'like', '%' . 'img/latest-news' . '%')->get()) {
+        } else {
+        }
         return view('admin.news.index', [
             'news' => News::latest()->paginate(10),
+            'opt' => $news,
         ]);
     }
 
@@ -98,14 +105,15 @@ class DashboardNewsController extends Controller
         $validateData = $request->validate([
             'title' => 'required|max:255',
             'content' => 'required',
-            'image' => 'image|file',
+            'photo' => 'image|file',
         ]);
         $validateData['slug'] = Str::slug($request->title);
         $validateData['excerpt'] = Str::limit(strip_tags($request->content), 200);
         $validateData['user_id'] = auth()->user()->id;
-        if ($request->file('image')) {
-            $validateData['image'] = $request->file('image')->store('news');
+        if ($news->photo && file_exists(storage_path('app/public/' . $news->photo))) {
+            Storage::delete('public/' . $news->photo);
         }
+        $validateData['photo'] = $request->file('photo')->store('news', 'public');
         News::where('id', $news->id)->update($validateData);
         return redirect('/admin/news')->with('success', 'News updated successfully');
     }

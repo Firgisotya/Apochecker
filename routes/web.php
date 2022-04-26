@@ -1,16 +1,22 @@
 <?php
 
+use App\Models\News;
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ObatController;
+use App\Http\Controllers\StokController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardNewsController;
-use App\Http\Controllers\StokController;
+use App\Models\Testimoni;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +52,17 @@ Auth::routes();
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', function () {
-        return view('admin.index');
+        return view(
+            'admin.index',
+            [
+                'users' => User::count(),
+                'categories' => Category::count(),
+                'products' => Product::count(),
+                'orders' => Order::count(),
+                'news' => News::count(),
+                'testimonies' => Testimoni::count(),
+            ]
+        );
     })->name('index');
     Route::resource('/admin/product', ObatController::class)->except('show');
     Route::resource('/admin/category', CategoryController::class)->except('show');

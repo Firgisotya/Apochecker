@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="{{ asset('admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
 
   <link rel="stylesheet" href="{{ asset('admin/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
-
+  <link rel="stylesheet" href="{{ asset('fontawesome/fontawesome-free-6.0.0-web/css/all.min.css') }}">
   <!-- Page CSS -->
 
   <!-- Helpers -->

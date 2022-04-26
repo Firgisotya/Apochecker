@@ -4,18 +4,125 @@
 <!-- Content -->
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="row">
+    <div class="col-lg-2 col-md-12 col-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title d-flex align-items-start justify-content-between">
+            <div class="avatar flex-shrink-0">
+              <a href="/admin/user"><img src="{{ asset('admin/logo/team.png') }}" alt=""></a>
+            </div>
+
+          </div>
+          <span class="fw-semibold d-block mb-1">Users</span>
+          <span>
+            <h3 class="card-title mb-2 d-inline pr-3">{{ $users }}</h3>
+            <p class="d-inline">Orang</p>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2 col-md-12 col-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title d-flex align-items-start justify-content-between">
+            <div class="avatar flex-shrink-0">
+              <a href="admin/category"><img src="{{ asset('admin/logo/apps.png') }}" alt=""></a>
+            </div>
+
+          </div>
+          <span class="fw-semibold d-block mb-1">Categories</span>
+          <span>
+            <h3 class="card-title mb-2 d-inline pr-3">{{ $categories }}</h3>
+            <p class="d-inline">Jenis</p>
+          </span>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2 col-md-12 col-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title d-flex align-items-start justify-content-between">
+            <div class="avatar flex-shrink-0">
+              <a href="admin/product"><img src="{{ asset('admin/logo/medicine.png') }}" alt=""></a>
+            </div>
+
+          </div>
+          <span class="fw-semibold d-block mb-1">Products</span>
+          <span>
+            <h3 class="card-title mb-2 d-inline pr-3">{{ $products }}</h3>
+            <p class="d-inline">Buah</p>
+          </span>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2 col-md-12 col-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title d-flex align-items-start justify-content-between">
+            <div class="avatar flex-shrink-0">
+              <img src="{{ asset('admin/logo/cargo.png') }}" alt="">
+            </div>
+
+          </div>
+          <span class="fw-semibold d-block mb-1">Orders</span>
+          <span>
+            <h3 class="card-title mb-2 d-inline pr-3">{{ $orders }}</h3>
+            <p class="d-inline">Pesanan</p>
+          </span>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2 col-md-12 col-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title d-flex align-items-start justify-content-between">
+            <div class="avatar flex-shrink-0">
+              <a href="/admin/news"><img src="{{ asset('admin/logo/newspaper.png') }}" alt=""></a>
+            </div>
+
+          </div>
+          <span class="fw-semibold d-block mb-1">News</span>
+          <span>
+            <h3 class="card-title mb-2 d-inline pr-3">{{ $news }}</h3>
+            <p class="d-inline">Berita</p>
+          </span>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2 col-md-12 col-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title d-flex align-items-start justify-content-between">
+            <div class="avatar flex-shrink-0">
+              <img src="{{ asset('admin/logo/quotation.png') }}" alt="">
+            </div>
+
+          </div>
+          <span class="fw-semibold d-block mb-1">Testimonis</span>
+          <span>
+            <h3 class="card-title mb-2 d-inline pr-3">{{ $testimonies }}</h3>
+            <p class="d-inline">Testimonis</p>
+          </span>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-lg-8 mb-4 order-0">
       <div class="card">
         <div class="d-flex align-items-end row">
           <div class="col-sm-7">
             <div class="card-body">
-              <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
+              <h3 class="card-title text-primary">Selamat Datang, {{ auth()-> user() -> name }}! 🎉</h3>
               <p class="mb-4">
-                You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                your profile.
+                Bagaimana kabarmu hari ini? Tetap jaga kesehatan dan patuhi protokol kesehatan! semoga harimu
+                menyenangkan😄
               </p>
-
-              <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
             </div>
           </div>
           <div class="col-sm-5 text-center text-sm-left">
@@ -187,7 +294,7 @@
           </div>
         </div>
         <!-- </div>
-<div class="row"> -->
+      <div class="row"> -->
         <div class="col-12 mb-4">
           <div class="card">
             <div class="card-body">

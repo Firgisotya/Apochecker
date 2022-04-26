@@ -34,6 +34,8 @@
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/profile.css">
 
+    <link rel="stylesheet" href="{{ asset('fontawesome/fontawesome-free-6.0.0-web/css/all.min.css') }}">
+
 </head>
 
 <body>
@@ -77,7 +79,7 @@
     <!-- main js -->
     <script src="/js/main.js"></script>
     {{-- FontAwesome --}}
-    <link rel="stylesheet" href="{{ asset('fontawesome/fontawesome-free-6.0.0-web/css/all.min.css') }}">
+
 
 </body>
 

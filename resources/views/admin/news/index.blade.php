@@ -41,8 +41,13 @@
                         @foreach ($news as $n)
                         <tr>
                             <td>{{ $n-> user -> name }}</td>
-                            <td><img src="{{ asset($n-> photo) }}" width="250px" height="250px"
-                                    class="rounded img-fluid"></td>
+                            <td><img src="
+                                @if ($opt)
+                                {{ asset($n -> photo) }}
+                                @else
+                                {{ asset('storage/' . $n -> photo) }}
+                                @endif
+                                " width="250px" height="250px" class="rounded img-fluid" alt="{{ $n -> photo }}"></td>
                             <td>{{ $n->title }}</td>
                             {{-- <td>{{ $n->content }}</td> --}}
                             <td>
