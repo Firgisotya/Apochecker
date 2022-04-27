@@ -14,7 +14,7 @@
           </div>
           <div class="card-body">
             <form action="/admin/product/{{ $obat->slug }}" method="POST" enctype="multipart/form-data">
-                @method('put')
+              @method('put')
               @csrf
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="name">Nama Obat</label>
@@ -35,7 +35,8 @@
                   <select class="form-select" name="category_id">
                     @foreach ($categories as $category)
 
-                    <option value="{{ $category->id }}" {{ $obat->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                    <option value="{{ $category->id }}" {{ $obat->category_id == $category->id ? 'selected' : '' }}>
+                      {{ $category->name }}</option>
                     @endforeach
                   </select>
                 </div>
@@ -53,6 +54,19 @@
                   @enderror
                 </div>
               </div>
+              <div class="row">
+
+                <div class="col-sm-10">
+                  <input type="hidden" class="form-control @error('price') is-invalid
+                        @enderror" id="price" name="oldImage" placeholder="price" value="{{$obat->image }}" />
+                  @error('price')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+              </div>
+
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="stok">Stok</label>
                 <div class="col-sm-10">

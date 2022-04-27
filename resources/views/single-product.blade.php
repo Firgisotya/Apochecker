@@ -48,7 +48,11 @@
 			<div class="row">
 				<div class="col-md-5">
 					<div class="single-product-img">
-						<img src="{{ asset($product->image) }}" alt="">
+						<img src="@if ($product -> image == null)
+									{{ asset('img/products/'.$product -> slug.'.jpg') }}
+								@else
+									{{ asset('storage/'.$product -> image) }}
+								@endif" alt="">
 					</div>
 				</div>
 				<div class="col-md-7">

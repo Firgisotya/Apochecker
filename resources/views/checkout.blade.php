@@ -32,42 +32,52 @@
 									</button>
 								</h5>
 							</div>
-
 							<div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
 								data-parent="#accordionExample">
 								<div class="card-body">
 									<div class="billing-address-form">
-										<form>
-											<div class="mb-3">
-												<label for="exampleInputEmail1" class="form-label d-block "
-													style="padding-left: 80px"><Strong>Foto</Strong></label>
-												@if ($user -> image)
-												<img src="{{ 'storage/'.$user -> image }}" alt="" height="200px"
-													width="200px" class="rounded-circle">
-												@else
-												<img src="{{ asset('img/bahan/profile.png') }}" alt="" height="200px">
-												@endif
+										<div class="row">
+											<div class="col-lg-4 ">
+												<div class="mb-3">
+													<label for="exampleInputEmail1" class="form-label d-block "
+														style="padding-left: 80px"><Strong>Foto</Strong></label>
+													@if ($user -> image)
+													<img src="{{ 'storage/'.$user -> image }}" alt="" height="200px"
+														width="200px" class="rounded-circle">
+													@else
+													<img src="{{ asset('img/bahan/profile.png') }}" alt=""
+														height="200px">
+													@endif
+												</div>
 											</div>
-											<div class="mb-3">
-												<label for="exampleInputEmail1"
-													class="form-label"><strong>Nama</strong></label>
-												<input type="text" class="form-control p-4" id="exampleInputEmail1"
-													aria-describedby="emailHelp" value="{{ $user -> name }}">
+											<div class="col-lg-8">
+												<table class="table mt-4">
+													<tbody>
+														<tr>
+															<th>Nama</th>
+															<td>{{ $user -> name }}</td>
+														</tr>
+														<tr>
+															<th>Nomor Handphone</th>
+															<td>{{ $user -> phone }}</td>
+														</tr>
+														<tr>
+															<th>Alamat Email</td>
+															<td>{{ $user -> email }}</td>
+														</tr>
+														<tr>
+															<th>Jenis Kelamin</td>
+															<td>{{ $user -> gender }}</td>
+														</tr>
+														<tr>
+															<th></th>
+															<th></th>
+														</tr>
+													</tbody>
+												</table>
 											</div>
-											<div class="mb-3">
-												<label for="exampleInputPassword1" class="form-label"><strong>Nomor
-														Telepon</strong></label>
-												<input type="text" class="form-control p-4" id="exampleInputPassword1"
-													value="{{ $user -> phone }}">
-											</div>
-											<div class="mb-3">
-												<label for="exampleInputPassword1" class="form-label"><strong>Alamat
-														Email</strong></label>
-												<input type="text" class="form-control p-4" id="exampleInputPassword1"
-													value="{{ $user -> email }}">
-											</div>
-
-										</form>
+										</div>
+										<p><a href="/profile">*Anda ingin mengubah informasi?</a></p>
 									</div>
 								</div>
 							</div>
@@ -76,13 +86,12 @@
 							<div class="card-header" id="headingTwo">
 								<h5 class="mb-0">
 									<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-										data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+										data-target="#qwe" aria-expanded="false" aria-controls="qwe">
 										Alamat Pengiriman
 									</button>
 								</h5>
 							</div>
-							<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-								data-parent="#accordionExample">
+							<div id="qwe" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
 								<div class="card-body">
 									<div class="shipping-address-form">
 										@if ($user -> address)
@@ -91,7 +100,103 @@
 										<p>Anda belum memasukkan alamat rumah anda!, <a href="/profile">Klik disini</a>
 											untuk melengkapi data diri</p>
 										@endif
+										<p class="mt-2"><a href="/profile">*Anda ingin mengubah informasi?</a></p>
 									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card single-accordion">
+							<div class="card-header" id="tesss">
+								<h5 class="mb-0">
+									<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+										data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+										Pilih Metode Pembayaran
+									</button>
+								</h5>
+							</div>
+							<div id="collapseTwo" class="collapse" aria-labelledby="tesss"
+								data-parent="#accordionExample">
+								<div class="card-body">
+									<table class="table">
+										<tbody>
+											<tr>
+												<td>
+													<div class="form-check">
+														<input class="form-check-input" type="radio"
+															name="exampleRadios" id="exampleRadios1" value="option1"
+															checked>
+														<label class="form-check-label" for="exampleRadios1">
+															<img src="{{ asset('img/payments/shopeepay.png') }}" alt=""
+																height="100px" style="object-fit: fill">
+														</label>
+													</div>
+												</td>
+												<td>
+													<div class="form-check">
+														<input class="form-check-input" type="radio"
+															name="exampleRadios" id="exampleRadios2" value="option2">
+														<label class="form-check-label" for="exampleRadios2">
+															<img src="{{ asset('img/payments/linkaja.png') }}" alt=""
+																height="100px">
+														</label>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="form-check">
+														<input class="form-check-input" type="radio"
+															name="exampleRadios" id="exampleRadios3" value="option1"
+															checked>
+														<label class="form-check-label" for="exampleRadios3">
+															<img src="{{ asset('img/payments/gopay.png') }}" alt=""
+																height="100px">
+														</label>
+													</div>
+												</td>
+												<td>
+													<div class="form-check">
+														<input class="form-check-input" type="radio"
+															name="exampleRadios" id="exampleRadios4" value="option2">
+														<label class="form-check-label" for="exampleRadios4">
+															<img src="{{ asset('img/payments/bca.png') }}" alt=""
+																height="100px">
+														</label>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="form-check">
+														<input class="form-check-input" type="radio"
+															name="exampleRadios" id="exampleRadios5" value="option1"
+															checked>
+														<label class="form-check-label" for="exampleRadios5">
+															<img src="{{ asset('img/payments/bri.png') }}" alt=""
+																height="100px">
+														</label>
+													</div>
+												</td>
+												<td>
+													<div class="form-check">
+														<input class="form-check-input" type="radio"
+															name="exampleRadios" id="exampleRadios6" value="option2">
+														<label class="form-check-label" for="exampleRadios6">
+															<img src="{{ asset('img/payments/mandiri.png') }}" alt=""
+																height="100px">
+														</label>
+													</div>
+												</td>
+											</tr>
+
+										</tbody>
+									</table>
+
+
+
+
+
+
 								</div>
 							</div>
 						</div>
@@ -101,7 +206,7 @@
 									<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
 										data-target="#collapseThree" aria-expanded="false"
 										aria-controls="collapseThree">
-										Card Details
+										Intruksi Pembayaran
 									</button>
 								</h5>
 							</div>
@@ -110,20 +215,20 @@
 								<div class="card-body">
 									<div class="card-details">
 										<div class="checkout-accordion-wrap">
-											<div class="accordion" id="accordionExample">
+											<div class="accordion" id="tes">
 												<div class="card single-accordion">
 													<div class="card-header" id="satu">
 														<h5 class="mb-0">
 															<button class="btn btn-link" type="button"
 																data-toggle="collapse" data-target="#satuu"
 																aria-expanded="true" aria-controls="satuu">
-																Billing Address
+																Shopeepay
 															</button>
 														</h5>
 													</div>
 
-													<div id="satuu" class="collapse show" aria-labelledby="satu"
-														data-parent="#accordionExample">
+													<div id="satuu" class="collapse" aria-labelledby="satu"
+														data-parent="#tes">
 														<div class="card-body">
 
 														</div>
@@ -135,12 +240,12 @@
 															<button class="btn btn-link collapsed" type="button"
 																data-toggle="collapse" data-target="#duaa"
 																aria-expanded="false" aria-controls="duaa">
-																Shipping Address
+																LinkAja
 															</button>
 														</h5>
 													</div>
 													<div id="duaa" class="collapse" aria-labelledby="dua"
-														data-parent="#accordionExample">
+														data-parent="#tes">
 														<div class="card-body">
 															<div class="shipping-address-form">
 																<p>Your shipping address form is here.</p>
@@ -154,12 +259,68 @@
 															<button class="btn btn-link collapsed" type="button"
 																data-toggle="collapse" data-target="#tigaa"
 																aria-expanded="false" aria-controls="tigaa">
-																Card Details
+																OVO
 															</button>
 														</h5>
 													</div>
 													<div id="tigaa" class="collapse" aria-labelledby="tiga"
-														data-parent="#accordionExample">
+														data-parent="#tes">
+														<div class="card-body">
+															<div class="card-details">
+																<p>Your card details goes here.</p>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="card single-accordion">
+													<div class="card-header" id="empat">
+														<h5 class="mb-0">
+															<button class="btn btn-link" type="button"
+																data-toggle="collapse" data-target="#empatu"
+																aria-expanded="false" aria-controls="empatu">
+																BCA
+															</button>
+														</h5>
+													</div>
+
+													<div id="empatu" class="collapse " aria-labelledby="empat"
+														data-parent="#tes">
+														<div class="card-body">
+
+														</div>
+													</div>
+												</div>
+												<div class="card single-accordion">
+													<div class="card-header" id="lima">
+														<h5 class="mb-0">
+															<button class="btn btn-link collapsed" type="button"
+																data-toggle="collapse" data-target="#limaa"
+																aria-expanded="false" aria-controls="limaa">
+																BRI
+															</button>
+														</h5>
+													</div>
+													<div id="limaa" class="collapse" aria-labelledby="lima"
+														data-parent="#tes">
+														<div class="card-body">
+															<div class="shipping-address-form">
+																<p>Your shipping address form is here.</p>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="card single-accordion">
+													<div class="card-header" id="enam">
+														<h5 class="mb-0">
+															<button class="btn btn-link collapsed" type="button"
+																data-toggle="collapse" data-target="#enama"
+																aria-expanded="false" aria-controls="enama">
+																Mandiri
+															</button>
+														</h5>
+													</div>
+													<div id="enama" class="collapse" aria-labelledby="enam"
+														data-parent="#tes">
 														<div class="card-body">
 															<div class="card-details">
 																<p>Your card details goes here.</p>
@@ -181,7 +342,7 @@
 
 			<div class="col-lg-4">
 				<div class="order-details-wrap">
-					<table class="order-details">
+					<table class="order-details" style="width: 270px">
 						@php
 						$order = \App\Models\Order::where('user_id', auth()->user()->id)->where('status',
 						0)->first();

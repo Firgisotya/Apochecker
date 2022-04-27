@@ -52,7 +52,7 @@ class ObatController extends Controller
             'description' => 'required',
             'imgae' => 'image|file',
         ]);
-        ddd($validatedData);
+
 
         $validatedData['slug'] = Str::slug($validatedData['name']);
 
@@ -105,10 +105,9 @@ class ObatController extends Controller
             'stock' => 'required',
             'category_id' => 'required',
             'description' => 'required',
-            'imgae' => 'image|file',
+            'image' => 'image|file',
 
         ];
-
 
         $validatedData = $request->validate($rules);
 

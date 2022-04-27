@@ -61,7 +61,12 @@
 												class="fa-solid fa-trash"></i></button>
 									</form>
 								</td>
-								<td class="product-image"><img src="{{ $orderDetail -> product -> image }}" alt=""></td>
+
+								<td class="product-image"><img src="@if ($orderDetail -> product -> image == null)
+								{{ asset('img/products/'.$orderDetail -> product -> slug.'.jpg') }}
+								@else
+								{{ asset('storage/'.$orderDetail -> image) }}
+								@endif" alt=""></td>
 								<td class="product-name">{{ $orderDetail -> product -> name }}</td>
 								<td class="product-price">{{ $orderDetail -> product -> price }}</td>
 								<td class="product-price">{{ $orderDetail -> quantity }}</td>
