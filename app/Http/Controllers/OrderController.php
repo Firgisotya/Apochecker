@@ -15,7 +15,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.histori_order.index', [
+            'orders' => Order::latest()->paginate(5),
+        ]);
     }
 
     /**

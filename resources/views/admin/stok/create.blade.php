@@ -13,7 +13,7 @@
                   <h5 class="mb-0">Tambah Stok</h5>
                 </div>
                 <div class="card-body">
-                  <form action="/admin/stok" method="POST" enctype="multipart/form-data">
+                  <form action="/admin/histori_stok" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="Product">Product</label>

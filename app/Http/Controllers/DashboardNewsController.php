@@ -126,6 +126,7 @@ class DashboardNewsController extends Controller
      */
     public function destroy(News $news)
     {
-        //
+        News::where('id', $news->id)->delete();
+        return redirect('/admin/news')->with('success', 'News deleted successfully');
     }
 }

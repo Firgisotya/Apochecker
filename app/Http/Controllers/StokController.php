@@ -17,7 +17,7 @@ class StokController extends Controller
      */
     public function index()
     {
-        return view('admin.stok.index', [
+        return view('admin.histori_stok.index', [
             'stoks' => Stok::latest()->paginate(5),
         ]);
     }
@@ -96,6 +96,6 @@ class StokController extends Controller
     public function destroy(Stok $stok)
     {
         Stok::where('id', $stok->id)->delete();
-        return redirect('/admin/stok')->with('success', 'Stok Has Been Deleted!');
+        return redirect('/admin/histori_stok')->with('success', 'Stok deleted successfully');
     }
 }

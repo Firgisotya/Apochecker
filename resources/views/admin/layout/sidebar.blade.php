@@ -134,7 +134,7 @@
       </a>
       <ul class="menu-sub">
         <li class="menu-item {{ Request::is('admin/stok') ? 'active' : '' }}">
-          <a href="/admin/stok" class="menu-link">
+          <a href="/admin/stok/create" class="menu-link">
             <div data-i18n="Tambah Stok">Tambah Stok</div>
           </a>
         </li>
@@ -148,12 +148,12 @@
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="" class="menu-link">
+          <a href="/admin/histori_stok" class="menu-link">
             <div data-i18n="Histori Tambah Stok">Histori Tambah Stok</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="" class="menu-link">
+          <a href="/admin/histori_penjualan" class="menu-link">
             <div data-i18n="Histori Penjualan">Histori Penjualan</div>
           </a>
         </li>
