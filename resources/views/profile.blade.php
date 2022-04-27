@@ -26,7 +26,7 @@
         </div>
         @endif
     </div>
-    <form method="POST" action="/profile/{{ $user -> id }}" enctype="multipart/form-data">
+    <form method="POST" action="/profile/{{ $user->id }}" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <div class="container" style="background-color: #f5f6fa">
@@ -38,9 +38,9 @@
                             <div class="account-settings">
                                 <div class="user-profile pt-4">
                                     <p><strong>Photo Profile</strong></p>
-                                    <input type="hidden" name="oldImage" value="{{ $user -> image }}">
-                                    @if ($user -> image)
-                                    <img src="{{ asset('storage/'.$user -> image) }}"
+                                    <input type="hidden" name="oldImage" value="{{ $user->image }}">
+                                    @if ($user->image)
+                                    <img src="{{ asset('storage/'.$user->image) }}"
                                         class="img-preview mb-3  m-auto rounded-circle" alt="" height="200px"
                                         width="200px">
                                     @else
@@ -52,8 +52,8 @@
                                             name="image" onchange="previewImage()" height="200px" width="200px">
                                     </div>
                                     <div class="pt-3">
-                                        <h5 class="user-name">{{ $user -> name }}</h5>
-                                        <h6 class="user-email">{{ $user -> email }}</h6>
+                                        <h5 class="user-name">{{ $user->name }}</h5>
+                                        <h6 class="user-email">{{ $user->email }}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -71,21 +71,21 @@
                                     <div class="form-group">
                                         <label for="fullName">Name</label>
                                         <input type="text" class="form-control" id="fullName" name="name"
-                                            placeholder="Masukkan Nama Lengkap" value="{{ $user -> name }}" autofocus>
+                                            placeholder="Masukkan Nama Lengkap" value="{{ $user->name }}" autofocus>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="username">Username</label>
                                         <input type="text" name="username" class="form-control" id="username"
-                                            placeholder="Masukkan Username" value=" {{ $user -> username }}">
+                                            placeholder="Masukkan Username" value=" {{ $user->username }}">
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="eMail">Email</label>
                                         <input type="email" name="email" class="form-control" id="eMail"
-                                            placeholder="Masukkan Alamat Email" value="{{ $user -> email }}">
+                                            placeholder="Masukkan Alamat Email" value="{{ $user->email }}">
                                     </div>
                                 </div>
 
@@ -93,10 +93,10 @@
                                     <div class="form-group">
                                         <label for="website">Jenis Kelamin</label>
                                         <select name="gender" class="form-control" id="website">
-                                            <option value="Laki-laki" @if ( $user -> gender == 'Laki-laki' )
+                                            <option value="Laki-laki" @if ( $user->gender == 'Laki-laki' )
                                                 selected
                                                 @endif>Laki-laki</option>
-                                            <option value="Perempuan" @if ( $user -> gender == 'Perempuan' )
+                                            <option value="Perempuan" @if ( $user->gender == 'Perempuan' )
                                                 selected
                                                 @endif>Perempuan</option>
                                         </select>
@@ -108,7 +108,7 @@
                                     <div class="form-group">
                                         <label for="street">Address</label>
                                         <input type="text" class="form-control" id="Street"
-                                            placeholder="Masukkan alamat" name="address" value="{{ $user -> address }}"
+                                            placeholder="Masukkan alamat" name="address" value="{{ $user->address }}"
                                             height="200px">
                                     </div>
                                 </div>
@@ -116,7 +116,7 @@
                                     <div class="form-group">
                                         <label for="hp">No Hp</label>
                                         <input type="text" class="form-control" id="hp" placeholder="Masukkan No Hp"
-                                            name="phone" value="{{ $user -> phone }}" height="200px">
+                                            name="phone" value="{{ $user->phone }}" height="200px">
                                     </div>
                                 </div>
 
@@ -142,12 +142,12 @@
     function previewImage(){
     const image = document.querySelector('#image');
     const imgPreview = document.querySelector('.img-preview');
-    
+
     imgPreview.style.display = 'block';
-    
+
     const oFReader = new FileReader();
     oFReader.readAsDataURL(image.files[0]);
-    
+
     oFReader.onload = function(oFREvent){
     imgPreview.src = oFREvent.target.result;
     }

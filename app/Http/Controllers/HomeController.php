@@ -87,17 +87,14 @@ class HomeController extends Controller
             'phone' => 'required',
             'gender' => 'required',
             'image' => 'image|file',
-            'level' => 'required',
         ]);
-        ddd($validateData);
         if ($request->file('image')) {
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
-            $validateData['image'] = $request->file('image')->store('profile');
+            $validateData['image'] = $request->file('image')->store('user');
             // $validateData['image'] = $request->file('image')->store('user', 'public');
         }
-
         User::where('id', $id)
             ->update($validateData);
         return redirect('/profile')->with('success', 'Profile telah diupdate!');
