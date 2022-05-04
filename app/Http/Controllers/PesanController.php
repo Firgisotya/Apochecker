@@ -65,8 +65,10 @@ class PesanController extends Controller
         $orderId = Order::where('id', $orderDetailId->order_id)->first();
         $orderId->total -= $orderDetailId->price;
         $orderId->update();
+        $orderDelete = Order::where('status', 0)->first();
 
         $orderDetail->delete();
+        $orderDelete->delete();
         return redirect('/cart')->with('success', 'Pesanan berhasil dibatalkan!');
     }
 }

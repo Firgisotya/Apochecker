@@ -21,7 +21,7 @@
 	<div class="container">
 		@if (session()->has('success'))
 		<div class="alert alert-success alert-dismissible fade show p-3" role="alert">
-			<strong>{{ session('success') }}</strong>
+			<strong>{{ session('success') }} <i class="fa-solid fa-circle-check"></i></strong>
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
@@ -29,7 +29,7 @@
 		@endif
 		@if (session()->has('error'))
 		<div class="alert alert-danger alert-dismissible fade show p-3" role="alert">
-			<strong>{{ session('error') }}</strong>
+			<strong>{{ session('error') }} <i class="fa-solid fa-trash-can"></i></strong>
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
@@ -37,7 +37,7 @@
 		@endif
 		@if (session()->has('warning'))
 		<div class="alert alert-warning alert-dismissible fade show p-3" role="alert">
-			<strong>{{ session('warning') }}</strong>
+			<strong>{{ session('warning') }} <i class="fa-solid fa-triangle-exclamation"></i> </strong>
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>

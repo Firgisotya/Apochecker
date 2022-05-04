@@ -17,6 +17,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardNewsController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PesananController;
+use App\Http\Controllers\tesController;
 use App\Models\Testimoni;
 
 /*
@@ -34,6 +36,7 @@ use App\Models\Testimoni;
 Route::get('/', [HomeController::class, 'home']);
 Route::get('/about', [HomeController::class, 'about']);
 Route::get('/cart', [HomeController::class, 'cart']);
+Route::get('/cart2', [HomeController::class, 'cart2']);
 Route::get('/checkout', [HomeController::class, 'checkout']);
 Route::get('/contact', [HomeController::class, 'contact']);
 Route::resource('/news', NewsController::class);
@@ -42,7 +45,7 @@ Route::post('/pesan/{product}', [PesanController::class, 'store']);
 Route::get('/profile', [HomeController::class, 'profile']);
 Route::put('/profile/{id}', [HomeController::class, 'update']);
 Route::delete('/order/{order_detail}', [PesanController::class, 'delete']);
-Route::get('/validation', [HomeController::class, 'validation']);
+Route::resource('/pesanan', PesananController::class);
 Route::resource('/user', UserController::class);
 
 
@@ -53,6 +56,7 @@ Auth::routes();
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', function () {
+
         return view(
             'admin.index',
             [
@@ -62,6 +66,9 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
                 'orders' => Order::count(),
                 'news' => News::count(),
                 'testimonies' => Testimoni::count(),
+                'gopay1' => Order::where('payments', 'Gopay')->count(),
+                // 'gopay' => Order::where('payments', 'Gopay')->sum('total'),
+                'gopay2' => Order::where('payments', 'Gopay')->sum('total'),
             ]
         );
     })->name('index');

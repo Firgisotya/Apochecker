@@ -167,12 +167,12 @@
             <div class="card-body">
               <ul class="p-0 m-0">
                 <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <img src="{{ asset('admin/assets/img/icons/unicons/paypal.png') }}" alt="User" class="rounded" />
-                  </div>
+
+                  <img src="{{ asset('img/payments/shopeepay.png') }}" alt="User" class="rounded" width="100px">
+
                   <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                     <div class="me-2">
-                      <small class="text-muted d-block mb-1">Paypal</small>
+                      <small class="text-muted d-block mb-1">Shopeepay</small>
                       <h6 class="mb-0">Send money</h6>
                     </div>
                     <div class="user-progress d-flex align-items-center gap-1">
@@ -182,9 +182,9 @@
                   </div>
                 </li>
                 <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <img src="{{ asset('admin/assets/img/icons/unicons/wallet.png') }}" alt="User" class="rounded" />
-                  </div>
+
+                  <img src="{{ asset('img/payments/linkaja.png') }}" alt="User" class="rounded" width="100px">
+
                   <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                     <div class="me-2">
                       <small class="text-muted d-block mb-1">Wallet</small>
@@ -197,25 +197,24 @@
                   </div>
                 </li>
                 <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <img src="{{ asset('admin/assets/img/icons/unicons/chart.png') }}" alt="User" class="rounded" />
-                  </div>
+
+                  <img src="{{ asset('img/payments/gopay.png') }}" alt="User" class="rounded" width="100px">
+
                   <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                     <div class="me-2">
-                      <small class="text-muted d-block mb-1">Transfer</small>
-                      <h6 class="mb-0">Refund</h6>
+                      <small class="text-muted d-block mb-1">Total</small>
+                      <h6 class="mb-0">{{ $gopay1 }}</h6>
                     </div>
                     <div class="user-progress d-flex align-items-center gap-1">
-                      <h6 class="mb-0">+637.91</h6>
-                      <span class="text-muted">USD</span>
+                      <span class="text-muted">Rp.</span>
+                      <h6 class="mb-0">{{ number_format($gopay2) }}</h6>
                     </div>
                   </div>
                 </li>
                 <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <img src="{{ asset('admin/assets/img/icons/unicons/cc-success.png') }}" alt="User"
-                      class="rounded" />
-                  </div>
+
+                  <img src="{{ asset('img/payments/bri.png') }}" alt="User" class="rounded" width="100px">
+
                   <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                     <div class="me-2">
                       <small class="text-muted d-block mb-1">Credit Card</small>
@@ -228,9 +227,9 @@
                   </div>
                 </li>
                 <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <img src="{{ asset('admin/assets/img/icons/unicons/wallet.png') }}" alt="User" class="rounded" />
-                  </div>
+
+                  <img src="{{ asset('img/payments/bca.png') }}" alt="User" class="rounded" width="100px">
+
                   <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                     <div class="me-2">
                       <small class="text-muted d-block mb-1">Wallet</small>
@@ -243,10 +242,9 @@
                   </div>
                 </li>
                 <li class="d-flex">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <img src="{{ asset('admin/assets/img/icons/unicons/cc-warning.png') }}" alt="User"
-                      class="rounded" />
-                  </div>
+
+                  <img src="{{ asset('img/payments/mandiri.png') }}" alt="User" class="rounded" width="100px">
+
                   <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                     <div class="me-2">
                       <small class="text-muted d-block mb-1">Mastercard</small>

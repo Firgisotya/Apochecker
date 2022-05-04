@@ -18,7 +18,9 @@ class CreateOrdersTable extends Migration
             $table->foreignid('user_id')->constrained();
             $table->dateTime('time');
             $table->integer('status');
+            $table->string('payments')->nullable();
             $table->bigInteger('total');
+            $table->string('bukti_pembayaran')->nullable();
             $table->timestamps();
         });
     }

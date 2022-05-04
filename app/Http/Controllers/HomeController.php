@@ -34,9 +34,54 @@ class HomeController extends Controller
     }
     public function cart()
     {
+        // $order = Order::where('user_id', auth()->user()->id)->where(
+        //     'status',
+        //     0
+        // )->first();
 
+        // if (!empty($order)) {
+        //     $orderDetails = OrderDetail::where('order_id', $order->id)->get();
+        // }
         return view('cart', [
             'title' => 'Cart',
+            // 'order' => $order,
+            // 'orderDetails' => $orderDetails,
+        ]);
+    }
+    // protected $pesan,  $details = [];
+    // public function cart2()
+    // {
+
+    //     if (Auth::user()) {
+    //         $this->pesan = Order::where('user_id', auth()->user()->id)->where(
+    //             'status',
+    //             1
+    //         )->first();
+    //         // ddd($order->id);
+    //         if ($this->pesan) {
+    //             $this->details = OrderDetail::where('order_id', $this->pesan->id)->get();
+    //         }
+    //         ddd($this->details);
+    //         return view('cart2', [
+    //             'title' => 'Cart',
+    //             'order' => $this->pesan,
+    //             'orderDetails' => $this->details,
+    //         ]);
+    //     }
+    // }
+    protected $pesanan, $pesanan_details = [];
+    public function cart2()
+    {
+        if (Auth::user()) {
+            $this->pesanan = Order::where('user_id', Auth::user()->id)->where('status', '1')->first();
+            if ($this->pesanan) {
+                $this->pesanan_details = OrderDetail::where('order_id', $this->pesanan->id)->get();
+            }
+            ddd($this->pesanan_details);
+        }
+        return view('cart2', [
+            'order' => $this->pesanan,
+            'orderDetails' => $this->pesanan_details
         ]);
     }
     public function contact()
@@ -71,8 +116,9 @@ class HomeController extends Controller
             'user' => Auth::user(),
         ]);
     }
-    public function validation()
+    public function validation(Request $request)
     {
+        ddd($request);
         return view('validation', [
             'title' => 'Validation',
         ]);

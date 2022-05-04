@@ -440,6 +440,20 @@ a.boxed-btn {
     color: #fff;
     padding: 10px 20px;
 }
+.boxed-btn {
+    font-family: "Poppins", sans-serif;
+    display: inline-block;
+    background-color: #f28123;
+    color: #fff;
+    padding: 10px 20px;
+}
+button.boxed-btn {
+    font-family: "Poppins", sans-serif;
+    display: inline-block;
+    background-color: #f28123;
+    color: #fff;
+    padding: 10px 20px;
+}
 
 a.bordered-btn {
     font-family: "Poppins", sans-serif;
@@ -464,6 +478,8 @@ a.read-more-btn:hover {
 }
 
 a.boxed-btn,
+.boxed-btn,
+button.boxed-btn,
 a.bordered-btn,
 button.cart-btn,
 a.cart-btn {
@@ -1042,8 +1058,26 @@ a.boxed-btn {
     -o-transition: 0.3s;
     transition: 0.3s;
 }
+.boxed-btn {
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+button.boxed-btn {
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
 
 a.boxed-btn:hover {
+    background-color: #051922;
+    color: #f28123;
+}
+.boxed-btn:hover {
+    background-color: #051922;
+    color: #f28123;
+}
+button.boxed-btn:hover {
     background-color: #051922;
     color: #f28123;
 }
@@ -1690,6 +1724,9 @@ p.excerpt {
 }
 
 .latest-news a.boxed-btn {
+    margin-top: 80px;
+}
+.latest-news button.boxed-btn {
     margin-top: 80px;
 }
 

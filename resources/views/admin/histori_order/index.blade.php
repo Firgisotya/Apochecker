@@ -21,11 +21,13 @@
         <table class="table">
           <thead class="table-dark">
             <tr>
-              <th>Nama User</th>
-              <th>Tanggal</th>
-              <th>Status</th>
-              <th>Total</th>
-              <th>Actions</th>
+              <th class="text-white">Nama User</th>
+              <th class="text-white">Tanggal</th>
+              <th class="text-white">Status</th>
+
+              <th class="text-white">Total</th>
+              <th class="text-white">Bukti</th>
+              <th class="text-white">Actions</th>
             </tr>
           </thead>
           <tbody class="table-border-bottom-0">
@@ -33,8 +35,15 @@
             <tr>
               <td>{{ $order->user->name }}</td>
               <td>{{ $order->time }}</td>
-              <td>{{ $order->status }}</td>
-              <td>{{ $order->total }}</td>
+              <td>@if ($order->status == 0)
+                Belum Bayar
+                @elseif ($order->status == 1)
+                Sudah Bayar
+                @endif
+              </td>
+
+              <td>Rp. {{ number_format($order->total) }}</td>
+              <td></td>
               <td>
                 <a href="/admin/histori_penjualan/{{ $order -> id }}" class="btn btn-info"><i
                     class='bx bx-show'></i></a>

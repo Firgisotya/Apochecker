@@ -1,3 +1,11 @@
+@php
+$order = \App\Models\Order::where('user_id', auth()->user()->id)->where('status',
+0)->first();
+
+if (!empty($order)) {
+$orderDetails = \App\Models\OrderDetail::where('order_id', $order->id)->get();
+}
+@endphp
 @extends('layouts.landingpage.main')
 
 @section('content')
@@ -28,28 +36,34 @@
 		</div>
 		@endif
 		<div class="row">
+
+			<div class="btn-group col-lg-12 mb-4" role="group" aria-label="Basic example">
+				{{-- <button type="button" class="btn btn-outline-info {{ Request::is('cart')? 'active'  : ''}}"><a
+					href="/cart">Belum dibayar</a></button>
+				<button type="button" class="btn btn-outline-info {{ Request::is('cart2')? 'active'  : ''}}"><a
+						href="/cart2">Dalam proses</a></button> --}}
+				<a class="btn btn-outline-info {{ Request::is('cart')? 'active'  : ''}}" href="/cart"><strong>Belum
+						dibayar</strong></a>
+				<a class="btn btn-outline-info {{ Request::is('cart2')? 'active'  : ''}}" href="/cart2"><strong>Dalam
+						proses</strong></a>
+
+			</div>
+
 			<div class="col-lg-8 col-md-12">
 				<div class="cart-table-wrap">
 					<table class="cart-table">
-						<thead class="cart-table-head">
-							<tr class="table-head-row">
-								<th class="product-remove"></th>
-								<th class="product-image">Product Image</th>
-								<th class="product-name">Name</th>
-								<th class="product-price">Price</th>
-								<th class="product-quantity">Quantity</th>
-								<th class="product-total">Total</th>
+						<thead class="cart-table-head" height="58px">
+							<tr>
+								<th class="text-center">Action</th>
+								<th class="text-center">Product Image</th>
+								<th class="text-center">Name</th>
+								<th class="text-center">Price</th>
+								<th class="text-center">Quantity</th>
+								<th class="text-center">Total</th>
+
 							</tr>
 						</thead>
 						<tbody>
-							@php
-							$order = \App\Models\Order::where('user_id', auth()->user()->id)->where('status',
-							0)->first();
-
-							if (!empty($order)) {
-							$orderDetails = \App\Models\OrderDetail::where('order_id', $order->id)->get();
-							}
-							@endphp
 							@if (!empty($order))
 							@foreach ($orderDetails as $orderDetail)
 							<tr class="table-body-row">
@@ -68,19 +82,18 @@
 								{{ asset('storage/'.$orderDetail -> image) }}
 								@endif" alt=""></td>
 								<td class="product-name">{{ $orderDetail -> product -> name }}</td>
-								<td class="product-price">{{ $orderDetail -> product -> price }}</td>
+								<td class="product-price">Rp. {{ number_format($orderDetail -> product -> price) }}</td>
 								<td class="product-price">{{ $orderDetail -> quantity }}</td>
-								<td class="product-total">{{ $orderDetail -> price }}</td>
+								<td class="product-total">Rp. {{ number_format($orderDetail -> price) }}</td>
 							</tr>
-
 							@endforeach
 							@else
 							<tr class="text-black text-center">
 								<td colspan="7">
-									<h3>Anda belum memesan product</h3>
+									{{-- <h3>Anda belum memesan product</h3> --}}
+									<h5>Keranjangmu masih kosong nih!, <a href="/products">Ayo pesan Sesuatu!</a></h5>
 								</td>
 							</tr>
-							<h5>Keranjangmu masih kosong nih!, <a href="/products">Ayo pesan Sesuatu!</a></h5>
 							@endif
 						</tbody>
 					</table>
@@ -92,25 +105,25 @@
 					<table class="total-table">
 						<thead class="total-table-head">
 							<tr class="table-total-row">
-								<th>Total</th>
-								<th>Price</th>
+								<th class="text-center">Total</th>
+								<th class="text-center">Price</th>
 							</tr>
 						</thead>
 						<tbody>
 							@if (!empty($order))
 							<tr class="total-data">
-								<td><strong>Subtotal: </strong></td>
-								<td>{{ number_format($order -> total) }}</td>
+								<td class="text-center"><strong>Total: </strong></td>
+								<td class="text-center">Rp. {{ number_format($order -> total) }}</td>
 							</tr>
 							@else
-							<tr class="total-data">
+							{{-- <tr class="total-data">
 								<td><strong>Subtotal: </strong></td>
 								<td>0</td>
-							</tr>
-							<tr class="total-data">
+							</tr> --}}
+							{{-- <tr class="total-data">
 								<td><strong>Shipping: </strong></td>
 								<td>0</td>
-							</tr>
+							</tr> --}}
 							<tr class="total-data">
 								<td><strong>Total: </strong></td>
 								<td>0</td>
@@ -119,9 +132,12 @@
 						</tbody>
 					</table>
 					<div class="cart-buttons">
-						<a href="/checkout" class="boxed-btn black"><button class="border-0 bg-transparent text-white"
+						<button class="boxed-btn text-center border-0 " @if (empty($order)) disabled @endif><a
+								href="/checkout" class="text-white d-block " style="width: 100%;">Checkout</a>
+						</button>
+						{{-- <a href="/checkout" class="boxed-btn black"><button class="border-0 bg-transparent text-white"
 								@if (empty($order)) disabled @endif>
-								Check Out</button></a>
+								Check Out</button></a> --}}
 					</div>
 				</div>
 

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Http\Requests\StoreOrderRequest;
-use App\Http\Requests\UpdateOrderRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class OrderController extends Controller
+class PesananController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('admin.histori_order.index', [
-            'orders' => Order::latest()->paginate(5),
-        ]);
+        //
     }
 
     /**
@@ -33,11 +31,18 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreOrderRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreOrderRequest $request)
+    public function store(Request $request)
     {
+        $validateData = $request->validate([
+            'payments' => 'required',
+        ]);
+        Order::where('user_id', Auth::user()->id)->where('status', 0)->update([
+            'payments' => $request->payments,
+        ]);
+        return redirect('/cart2')->with('success', 'Pembayaran berhasil');
     }
 
     /**
@@ -65,11 +70,11 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateOrderRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateOrderRequest $request, Order $order)
+    public function update(Request $request, Order $order)
     {
         //
     }
