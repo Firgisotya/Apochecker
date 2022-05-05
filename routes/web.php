@@ -90,5 +90,5 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/admin/stok/create', [StokController::class, 'create']);
     Route::post('/admin/stok', [StokController::class, 'store']);
     Route::delete('/admin/histori_stok/{id}', [StokController::class, 'destroy']);
-    Route::resource('/admin/histori_penjualan', OrderController::class);
+    Route::resource('/admin/order', OrderController::class);
 });

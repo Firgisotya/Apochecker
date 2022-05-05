@@ -9,12 +9,16 @@ class Order extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    public function order_details()
+    public function orderDetails()
     {
         return $this->hasMany(OrderDetail::class);
     }
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function getRouteKeyName()
+    {
+        return 'id';
     }
 }

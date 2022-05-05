@@ -9,6 +9,7 @@
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h5 class="">Histori Order</h5>
         {{-- <a href="" class="btn btn-primary">Tambah Obat</a> --}}
+
       </div>
 
       @if (session()->has('success'))
@@ -21,42 +22,48 @@
         <table class="table">
           <thead class="table-dark">
             <tr>
-              <th class="text-white">Nama User</th>
-              <th class="text-white">Tanggal</th>
-              <th class="text-white">Status</th>
+              <th class="text-white text-center">#</th>
+              <th class="text-white text-center">Nama User</th>
+              <th class="text-white text-center">Status</th>
+              <th class="text-white text-center">Pembayaran</th>
 
-              <th class="text-white">Total</th>
-              <th class="text-white">Bukti</th>
-              <th class="text-white">Actions</th>
+              <th class="text-white text-center">Total</th>
+              <th class="text-white text-center">Bukti Pembayaran</th>
+              <th class="text-white text-center">Actions</th>
             </tr>
           </thead>
           <tbody class="table-border-bottom-0">
             @foreach ($orders as $order)
             <tr>
+              <td>{{ $loop -> iteration }}</td>
               <td>{{ $order->user->name }}</td>
-              <td>{{ $order->time }}</td>
               <td>@if ($order->status == 0)
-                Belum Bayar
+                <span class=" badge rounded-pill bg-danger"><strong>Belum Bayar <i
+                      class="fa-solid fa-circle-xmark"></i></strong></span>
                 @elseif ($order->status == 1)
-                Belum Tervalidasi
+                <span class=" badge rounded-pill bg-warning text-dark"><strong>Belum Tervalidasi <i
+                      class="fa-solid fa-circle-exclamation"></i></span>
                 @elseif ($order->status == 2)
-                Sudah Tervalidasi
+                <span class=" badge rounded-pill bg-success text-dark"><strong>Sudah Tervalidasi <i
+                      class="fa-solid fa-circle-check"></i></strong></span>
                 @endif
               </td>
+              <td><img src="{{ asset('img/payments/'.$order -> payments.'.png') }}" alt="" width="100px"></td>
 
               <td>Rp. {{ number_format($order->total) }}</td>
               <td width="200px"><img src="{{ asset('storage/'.$order -> bukti_pembayaran) }}" alt="" height="200px">
               </td>
               <td>
-                <form action="/admin/histori_penjualan/{{ $order -> id }}" method="POST" class="d-inline">
+                <form action="/admin/order/{{ $order -> id }}" method="POST" class="d-inline">
                   @method('PUT')
                   @csrf
-                  <button class="btn btn-warning d-inline" onclick="return confirm('Verifikasi penjualan?')"><i
-                      class="fa-solid fa-circle-check"></i></button>
+                  <button class="btn btn-warning d-inline" onclick="return confirm('Verifikasi penjualan?')" @if ($order
+                    ->status == 2 ) disabled
+
+                    @endif><i class="fa-solid fa-circle-check"></i></button>
                 </form>
-                <a href="/admin/histori_penjualan/{{ $order -> id }}" class="btn btn-info"><i
-                    class='bx bx-show'></i></a>
-                <form action="/admin/histori_penjualan/{{ $order->id }}" method="POST" class="d-inline">
+                <a href="/admin/order/{{ $order -> id }}" class="btn btn-info"><i class='bx bx-show'></i></a>
+                <form action="/admin/order/{{ $order->id }}" method="POST" class="d-inline">
                   @method('DELETE')
                   @csrf
                   <button class="btn btn-danger border-0" onclick="return confirm('Are you sure?')"><i

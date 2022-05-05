@@ -152,8 +152,8 @@
             <div data-i18n="Histori Tambah Stok">Histori Tambah Stok</div>
           </a>
         </li>
-        <li class="menu-item {{ Request::is('admin/histori_penjualan') ? 'active' : '' }}">
-          <a href="/admin/histori_penjualan" class="menu-link active">
+        <li class="menu-item {{ Request::is('admin/order') ? 'active' : '' }}">
+          <a href="/admin/order" class="menu-link active">
             <div data-i18n="Histori Penjualan">Histori Penjualan</div>
           </a>
         </li>

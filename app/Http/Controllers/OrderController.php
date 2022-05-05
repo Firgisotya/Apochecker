@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\OrderDetail;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -51,7 +52,16 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        $tes = $order->id;
+        $coba =  OrderDetail::where('order_id', $tes)->get();
+        $orderDetails = $coba->first();
+        // ddd($bisa->product);
+        return view('admin.histori_order.detail', [
+            'order' => $order,
+            'orderDetails' => $orderDetails,
+            'tes' => $coba,
+            'loop' => $coba->count(),
+        ]);
     }
 
     /**
@@ -74,10 +84,17 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $tes = OrderDetail::where('order_id', $id)->get();
+        $order = $tes->first();
+        // ddd($order->product->name);
+        $count = $order->product->stock - $order->quantity;
+        Product::find($order->product_id)->update(['stock' => $count]);
         Order::where('id', $id)->update([
             'status' => 2,
+
         ]);
-        return redirect('/admin/histori_penjualan')->with('success', 'Order telah dikirim');
+        return redirect('/admin/order')->with('success', 'Order telah dikirim');
     }
 
     /**
@@ -90,6 +107,6 @@ class OrderController extends Controller
     {
         OrderDetail::where('order_id', $id)->delete();
         Order::where('id', $id)->delete();
-        return redirect('/admin/histori_penjualan')->with('success', 'Order telah dihapus');
+        return redirect('/admin/order')->with('success', 'Order telah dihapus');
     }
 }
