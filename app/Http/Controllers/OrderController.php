@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Models\OrderDetail;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -69,9 +72,12 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateOrderRequest $request, Order $order)
+    public function update(Request $request, $id)
     {
-        //
+        Order::where('id', $id)->update([
+            'status' => 2,
+        ]);
+        return redirect('/admin/histori_penjualan')->with('success', 'Order telah dikirim');
     }
 
     /**
@@ -80,8 +86,10 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy($id)
     {
-        //
+        OrderDetail::where('order_id', $id)->delete();
+        Order::where('id', $id)->delete();
+        return redirect('/admin/histori_penjualan')->with('success', 'Order telah dihapus');
     }
 }

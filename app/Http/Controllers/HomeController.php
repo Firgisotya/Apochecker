@@ -77,9 +77,10 @@ class HomeController extends Controller
             if ($this->pesanan) {
                 $this->pesanan_details = OrderDetail::where('order_id', $this->pesanan->id)->get();
             }
-            ddd($this->pesanan_details);
+            // ddd($this->pesanan_details);
         }
         return view('cart2', [
+            'title' => 'Cart',
             'order' => $this->pesanan,
             'orderDetails' => $this->pesanan_details
         ]);
@@ -144,5 +145,26 @@ class HomeController extends Controller
         User::where('id', $id)
             ->update($validateData);
         return redirect('/profile')->with('success', 'Profile telah diupdate!');
+    }
+    public function payments()
+    {
+        return view('payments', [
+            'title' => 'Payments',
+            'user' => Auth::user(),
+        ]);
+    }
+    public function buktiPembayaran(Request $request)
+    {
+        $validateData = $request->validate([
+            'bukti_pembayaran' => 'required|image',
+        ]);
+        if ($request->file('bukti_pembayaran')) {
+            $validateData['bukti_pembayaran'] = $request->file('bukti_pembayaran')->store('bukti_pembayaran', 'public');
+        }
+        Order::where('user_id', Auth::user()->id)->where('status', 0)->update([
+            'status' => 1,
+            'bukti_pembayaran' => $validateData['bukti_pembayaran'],
+        ]);
+        return redirect('/cart2')->with('success', 'Bukti pembayaran telah diupload!');
     }
 }

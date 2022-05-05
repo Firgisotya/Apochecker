@@ -47,6 +47,8 @@ Route::put('/profile/{id}', [HomeController::class, 'update']);
 Route::delete('/order/{order_detail}', [PesanController::class, 'delete']);
 Route::resource('/pesanan', PesananController::class);
 Route::resource('/user', UserController::class);
+Route::get('/payments', [HomeController::class, 'payments']);
+Route::post('buktiPembayaran', [HomeController::class, 'buktiPembayaran']);
 
 
 
@@ -56,7 +58,6 @@ Auth::routes();
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', function () {
-
         return view(
             'admin.index',
             [
@@ -67,8 +68,17 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
                 'news' => News::count(),
                 'testimonies' => Testimoni::count(),
                 'gopay1' => Order::where('payments', 'Gopay')->count(),
-                // 'gopay' => Order::where('payments', 'Gopay')->sum('total'),
                 'gopay2' => Order::where('payments', 'Gopay')->sum('total'),
+                'bri1' => Order::where('payments', 'BRI')->count(),
+                'bri2' => Order::where('payments', 'BRI')->sum('total'),
+                'bca1' => Order::where('payments', 'BCA')->count(),
+                'bca2' => Order::where('payments', 'BCA')->sum('total'),
+                'linkaja1' => Order::where('payments', 'LinkAja')->count(),
+                'linkaja2' => Order::where('payments', 'LinkAja')->sum('total'),
+                'mandiri1' => Order::where('payments', 'Mandiri')->count(),
+                'mandiri2' => Order::where('payments', 'Mandiri')->sum('total'),
+                'shopeepay1' => Order::where('payments', 'Shopeepay')->count(),
+                'shopeepay2' => Order::where('payments', 'Shopeepay')->sum('total'),
             ]
         );
     })->name('index');

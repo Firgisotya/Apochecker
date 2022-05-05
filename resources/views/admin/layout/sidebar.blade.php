@@ -141,19 +141,19 @@
       </ul>
     </li>
     <!-- Laporan -->
-    <li class="menu-item">
+    <li class="menu-item {{ Request::is('admin/histori_penjualan') ? 'active' : '' }}">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bxs-receipt"></i>
         <div data-i18n="Laporan">Laporan</div>
       </a>
-      <ul class="menu-sub">
+      <ul class="menu-sub ">
         <li class="menu-item">
           <a href="/admin/histori_stok" class="menu-link">
             <div data-i18n="Histori Tambah Stok">Histori Tambah Stok</div>
           </a>
         </li>
-        <li class="menu-item">
-          <a href="/admin/histori_penjualan" class="menu-link">
+        <li class="menu-item {{ Request::is('admin/histori_penjualan') ? 'active' : '' }}">
+          <a href="/admin/histori_penjualan" class="menu-link active">
             <div data-i18n="Histori Penjualan">Histori Penjualan</div>
           </a>
         </li>

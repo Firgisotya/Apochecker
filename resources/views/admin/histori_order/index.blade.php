@@ -38,13 +38,22 @@
               <td>@if ($order->status == 0)
                 Belum Bayar
                 @elseif ($order->status == 1)
-                Sudah Bayar
+                Belum Tervalidasi
+                @elseif ($order->status == 2)
+                Sudah Tervalidasi
                 @endif
               </td>
 
               <td>Rp. {{ number_format($order->total) }}</td>
-              <td></td>
+              <td width="200px"><img src="{{ asset('storage/'.$order -> bukti_pembayaran) }}" alt="" height="200px">
+              </td>
               <td>
+                <form action="/admin/histori_penjualan/{{ $order -> id }}" method="POST" class="d-inline">
+                  @method('PUT')
+                  @csrf
+                  <button class="btn btn-warning d-inline" onclick="return confirm('Verifikasi penjualan?')"><i
+                      class="fa-solid fa-circle-check"></i></button>
+                </form>
                 <a href="/admin/histori_penjualan/{{ $order -> id }}" class="btn btn-info"><i
                     class='bx bx-show'></i></a>
                 <form action="/admin/histori_penjualan/{{ $order->id }}" method="POST" class="d-inline">

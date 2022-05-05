@@ -170,14 +170,14 @@
 
                   <img src="{{ asset('img/payments/shopeepay.png') }}" alt="User" class="rounded" width="100px">
 
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 mx-2">
                     <div class="me-2">
-                      <small class="text-muted d-block mb-1">Shopeepay</small>
-                      <h6 class="mb-0">Send money</h6>
+                      <small class="text-muted d-block mb-1">Total</small>
+                      <h6 class="mb-0">{{ $shopeepay1 }}</h6>
                     </div>
                     <div class="user-progress d-flex align-items-center gap-1">
-                      <h6 class="mb-0">+82.6</h6>
-                      <span class="text-muted">USD</span>
+                      <span class="text-muted">Rp.</span>
+                      <h6 class="mb-0">{{ number_format($shopeepay2) }}</h6>
                     </div>
                   </div>
                 </li>
@@ -185,14 +185,14 @@
 
                   <img src="{{ asset('img/payments/linkaja.png') }}" alt="User" class="rounded" width="100px">
 
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 mx-2">
                     <div class="me-2">
-                      <small class="text-muted d-block mb-1">Wallet</small>
-                      <h6 class="mb-0">Mac'D</h6>
+                      <small class="text-muted d-block mb-1">Total</small>
+                      <h6 class="mb-0">{{ $linkaja1 }}</h6>
                     </div>
                     <div class="user-progress d-flex align-items-center gap-1">
-                      <h6 class="mb-0">+270.69</h6>
-                      <span class="text-muted">USD</span>
+                      <span class="text-muted">Rp.</span>
+                      <h6 class="mb-0">{{ number_format($linkaja2) }}</h6>
                     </div>
                   </div>
                 </li>
@@ -200,7 +200,7 @@
 
                   <img src="{{ asset('img/payments/gopay.png') }}" alt="User" class="rounded" width="100px">
 
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 mx-2">
                     <div class="me-2">
                       <small class="text-muted d-block mb-1">Total</small>
                       <h6 class="mb-0">{{ $gopay1 }}</h6>
@@ -215,14 +215,14 @@
 
                   <img src="{{ asset('img/payments/bri.png') }}" alt="User" class="rounded" width="100px">
 
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 mx-2">
                     <div class="me-2">
-                      <small class="text-muted d-block mb-1">Credit Card</small>
-                      <h6 class="mb-0">Ordered Food</h6>
+                      <small class="text-muted d-block mb-1">Total</small>
+                      <h6 class="mb-0">{{ $bri1 }}</h6>
                     </div>
                     <div class="user-progress d-flex align-items-center gap-1">
-                      <h6 class="mb-0">-838.71</h6>
-                      <span class="text-muted">USD</span>
+                      <span class="text-muted">Rp.</span>
+                      <h6 class="mb-0">{{ number_format($bri2) }}</h6>
                     </div>
                   </div>
                 </li>
@@ -230,32 +230,34 @@
 
                   <img src="{{ asset('img/payments/bca.png') }}" alt="User" class="rounded" width="100px">
 
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 mx-2">
                     <div class="me-2">
-                      <small class="text-muted d-block mb-1">Wallet</small>
-                      <h6 class="mb-0">Starbucks</h6>
+                      <small class="text-muted d-block mb-1">Total</small>
+                      <h6 class="mb-0">{{ $bca1 }}</h6>
                     </div>
                     <div class="user-progress d-flex align-items-center gap-1">
-                      <h6 class="mb-0">+203.33</h6>
-                      <span class="text-muted">USD</span>
+                      <span class="text-muted">Rp.</span>
+                      <h6 class="mb-0">{{ number_format($bca2) }}</h6>
                     </div>
                   </div>
                 </li>
-                <li class="d-flex">
+                <li class="d-flex mb-4 pb-1">
 
                   <img src="{{ asset('img/payments/mandiri.png') }}" alt="User" class="rounded" width="100px">
 
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 mx-2">
                     <div class="me-2">
-                      <small class="text-muted d-block mb-1">Mastercard</small>
-                      <h6 class="mb-0">Ordered Food</h6>
+                      <small class="text-muted d-block mb-1">Total</small>
+                      <h6 class="mb-0">{{ $mandiri1 }}</h6>
                     </div>
                     <div class="user-progress d-flex align-items-center gap-1">
-                      <h6 class="mb-0">-92.45</h6>
-                      <span class="text-muted">USD</span>
+                      <span class="text-muted">Rp.</span>
+                      <h6 class="mb-0">{{ number_format($mandiri2) }}</h6>
                     </div>
                   </div>
                 </li>
+
+
               </ul>
             </div>
           </div>

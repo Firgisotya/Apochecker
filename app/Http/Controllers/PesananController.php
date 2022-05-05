@@ -42,7 +42,7 @@ class PesananController extends Controller
         Order::where('user_id', Auth::user()->id)->where('status', 0)->update([
             'payments' => $request->payments,
         ]);
-        return redirect('/cart2')->with('success', 'Pembayaran berhasil');
+        return redirect('/payments')->with('success', 'Pembayaran berhasil');
     }
 
     /**
