@@ -125,7 +125,12 @@
 			<div class="col-lg-4 col-md-6 text-center">
 				<div class="single-product-item">
 					<div class="product-image">
-						<a href="/products/{{ $product -> slug }}"><img src="{{ $product -> image }}" alt=""></a>
+						<a href="/products/{{ $product -> slug }}"><img src="
+														@if ($product -> image == null)
+															{{ asset('img/products/'.$product -> slug.'.jpg') }}
+														@else
+															{{ asset('storage/'.$product -> image) }}
+														@endif" alt="{{ $product -> slug }}" height="250px"></a>
 					</div>
 					<h3>{{ $product -> name }}</h3>
 					<p class="product-price"> {{ number_format($product -> price) }} </p>
@@ -196,7 +201,7 @@
 					@foreach ($testimonis as $testimoni)
 					<div class="single-testimonial-slider">
 						<div class="client-avater">
-							<img src="{{ asset($testimoni -> photo) }}" alt="">
+							<img src="{{ asset($testimoni -> photo) || asset('storage/'.$testimoni -> photo) }}" alt="">
 						</div>
 						<div class="client-meta">
 							<h3>{{ $testimoni -> name }} <span>{{ $testimoni -> job_title }}</span></h3>

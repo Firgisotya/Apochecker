@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Testimoni;
-use App\Http\Requests\StoreTestimoniRequest;
-use App\Http\Requests\UpdateTestimoniRequest;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
-class TestimoniController extends Controller
+class DashboardContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,10 @@ class TestimoniController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.contact.index', [
+            'title' => 'Contact',
+            'contacts' => Contact::latest()->paginate(5),
+        ]);
     }
 
     /**
@@ -32,39 +33,35 @@ class TestimoniController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'photo' => 'required',
-            'job_title' => 'required',
-            'comment' => 'required',
-        ]);
-        Testimoni::create($validatedData);
-        return redirect()->back()->with('success', 'Testimoni berhasil ditambahkan');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Testimoni  $testimoni
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Testimoni $testimoni)
     {
         //
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Display the specified resource.
      *
-     * @param  \App\Models\Testimoni  $testimoni
+     * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function edit(Testimoni $testimoni)
+    public function show(Contact $contact)
+    {
+        return view('admin.contact.show', [
+            'title' => 'Contact',
+            'contact' => $contact,
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Contact  $contact
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Contact $contact)
     {
         //
     }
@@ -72,11 +69,11 @@ class TestimoniController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTestimoniRequest  $request
-     * @param  \App\Models\Testimoni  $testimoni
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTestimoniRequest $request, Testimoni $testimoni)
+    public function update(Request $request, Contact $contact)
     {
         //
     }
@@ -84,11 +81,12 @@ class TestimoniController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Testimoni  $testimoni
+     * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Testimoni $testimoni)
+    public function destroy(Contact $contact)
     {
-        //
+        Contact::where('id', $contact->id)->delete();
+        return redirect('/admin/contact')->with('success', 'Message deleted successfully');
     }
 }

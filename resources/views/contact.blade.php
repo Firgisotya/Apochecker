@@ -19,29 +19,41 @@
 <!-- contact form -->
 <div class="contact-from-section mt-150 mb-150">
 	<div class="container">
+		@if (session()->has('success'))
+		<div class="alert alert-success alert-dismissible fade show p-3" role="alert">
+			<strong>{{ session('success') }} <i class="fa-solid fa-circle-check"></i></strong>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		@endif
 		<div class="row">
 			<div class="col-lg-8 mb-5 mb-lg-0">
 				<div class="form-title">
-					<h2>Have you any question?</h2>
+					<h2>Apakah anda memiliki pertanyaan?</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, ratione! Laboriosam est,
 						assumenda. Perferendis, quo alias quaerat aliquid. Corporis ipsum minus voluptate? Dolore,
 						esse natus!</p>
 				</div>
 				<div id="form_status"></div>
 				<div class="contact-form">
-					<form type="POST" id="fruitkha-contact" onSubmit="return valid_datas( this );">
+					<form method="POST" id="fruitkha-contact" action="/contact">
+						@csrf
 						<p>
-							<input type="text" placeholder="Name" name="name" id="name">
-							<input type="email" placeholder="Email" name="email" id="email">
+							<input type="text" placeholder="Name" name="name" id="name"
+								value="{{ auth()->user() -> name }}" autofocus required>
+							<input type="email" placeholder="Email" name="email" id="email"
+								value="{{ auth() -> user() -> email }}" required>
 						</p>
 						<p>
-							<input type="tel" placeholder="Phone" name="phone" id="phone">
-							<input type="text" placeholder="Subject" name="subject" id="subject">
+							<input type="tel" placeholder="Phone" name="phone" id="phone"
+								value="{{ auth() -> user() -> phone }}" required>
+							<input type="text" placeholder="Subject" name="subject" id="subject" required>
 						</p>
-						<p><textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+						<p><textarea name="message" id="message" cols="30" rows="10" placeholder="Message"
+								required></textarea>
 						</p>
-						<input type="hidden" name="token" value="FsWga4&@f6aw" />
-						<p><input type="submit" value="Submit"></p>
+						<button class="boxed-btn border-0" type="submit">Submit</button>
 					</form>
 				</div>
 			</div>

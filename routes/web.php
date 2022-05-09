@@ -5,21 +5,24 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Testimoni;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\tesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ObatController;
 use App\Http\Controllers\StokController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PesanController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PesananController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\DashboardNewsController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PesananController;
-use App\Http\Controllers\tesController;
-use App\Models\Testimoni;
+use App\Http\Controllers\DashboardContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +40,9 @@ Route::get('/', [HomeController::class, 'home']);
 Route::get('/about', [HomeController::class, 'about']);
 Route::get('/cart', [HomeController::class, 'cart']);
 Route::get('/cart2', [HomeController::class, 'cart2']);
+Route::get('/cart3', [HomeController::class, 'cart3']);
 Route::get('/checkout', [HomeController::class, 'checkout']);
-Route::get('/contact', [HomeController::class, 'contact']);
+Route::resource('/contact', ContactController::class);
 Route::resource('/news', NewsController::class);
 Route::resource('/products', ProductController::class);
 Route::post('/pesan/{product}', [PesanController::class, 'store']);
@@ -49,6 +53,7 @@ Route::resource('/pesanan', PesananController::class);
 Route::resource('/user', UserController::class);
 Route::get('/payments', [HomeController::class, 'payments']);
 Route::post('buktiPembayaran', [HomeController::class, 'buktiPembayaran']);
+Route::resource('/testimoni', TestimoniController::class);
 
 
 
@@ -91,4 +96,5 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::post('/admin/stok', [StokController::class, 'store']);
     Route::delete('/admin/histori_stok/{id}', [StokController::class, 'destroy']);
     Route::resource('/admin/order', OrderController::class);
+    Route::resource('/admin/contact', DashboardContactController::class);
 });

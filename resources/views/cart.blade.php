@@ -42,10 +42,13 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order->id)->get();
 					href="/cart">Belum dibayar</a></button>
 				<button type="button" class="btn btn-outline-info {{ Request::is('cart2')? 'active'  : ''}}"><a
 						href="/cart2">Dalam proses</a></button> --}}
-				<a class="btn btn-outline-info {{ Request::is('cart')? 'active'  : ''}}" href="/cart"><strong>Belum
-						dibayar</strong></a>
+				<a class="btn btn-outline-danger {{ Request::is('cart')? 'active'  : ''}}" href="/cart"><strong>Belum
+						dibayar</strong> <i class="fa-solid fa-calendar-clock"></i></a>
 				<a class="btn btn-outline-info {{ Request::is('cart2')? 'active'  : ''}}" href="/cart2"><strong>Dalam
-						proses</strong></a>
+						proses</strong> </a>
+				<a class="btn btn-outline-success {{ Request::is('cart3')? 'active'  : ''}}"
+					href="/cart3"><strong>Riwayat
+						Belanja</strong> </a>
 
 			</div>
 

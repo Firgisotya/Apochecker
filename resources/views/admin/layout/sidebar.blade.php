@@ -98,7 +98,7 @@
     </li>
     <!-- Manajemen -->
     <li
-      class="menu-item {{ Request::is('admin/product') || Request::is('admin/category') || Request::is('admin/news') || Request::is('admin/user') ? 'active' : '' }}">
+      class="menu-item {{ Request::is('admin/product') || Request::is('admin/category') || Request::is('admin/news') || Request::is('admin/contact') || Request::is('admin/user') ? 'active' : '' }}">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bxs-cabinet"></i>
         <div data-i18n="Manajemen">Manajemen</div>
@@ -122,6 +122,11 @@
         <li class="menu-item {{ Request::is('admin/news') ? 'active' : '' }}">
           <a href="/admin/news" class="menu-link">
             <div data-i18n="Kategori">News</div>
+          </a>
+        </li>
+        <li class="menu-item {{ Request::is('admin/contact') ? 'active' : '' }}">
+          <a href="/admin/contact" class="menu-link">
+            <div data-i18n="Kategori">Contact</div>
           </a>
         </li>
       </ul>

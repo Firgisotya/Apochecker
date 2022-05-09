@@ -1,5 +1,9 @@
 <!-- Navbar -->
+@php
+// Menghitung jumlah pendapatan di table order
 
+$cuan = \App\Models\Order::where('status', 2)->sum('total');
+@endphp
 <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
   id="layout-navbar">
   <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
@@ -8,15 +12,14 @@
     </a>
   </div>
 
-  <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+  <div class="navbar-nav-right d-flex align-items-baseline" id="navbar-collapse">
     <!-- Search -->
     <div class="navbar-nav align-items-center">
-
+      <h4>Jumlah Pendapatan : Rp. <strong>{{ number_format($cuan) }}</strong></h4>
     </div>
     <!-- /Search -->
 
     <ul class="navbar-nav flex-row align-items-center ms-auto">
-
       <!-- User -->
       <li class="nav-item navbar-dropdown dropdown-user dropdown">
         <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">

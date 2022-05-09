@@ -29,6 +29,7 @@
         <table class="table">
           <thead class="table-dark">
             <tr>
+
               <th class="text-white">Nama Kategori</th>
               <th class="text-white">Actions</th>
             </tr>
@@ -36,6 +37,7 @@
           <tbody class="table-border-bottom-0">
             @foreach ($categories as $category)
             <tr>
+
               <td>{{ $category->name }}</td>
               <td>
                 <a href="/admin/category/{{ $category->slug }}/edit" class="btn btn-warning"><i

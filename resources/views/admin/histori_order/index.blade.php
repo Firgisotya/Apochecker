@@ -38,13 +38,13 @@
               <td>{{ $loop -> iteration }}</td>
               <td>{{ $order->user->name }}</td>
               <td>@if ($order->status == 0)
-                <span class=" badge rounded-pill bg-danger"><strong>Belum Bayar <i
+                <span class=" badge rounded-pill bg-danger text-dark" style="width: 160px"><strong>Belum Bayar <i
                       class="fa-solid fa-circle-xmark"></i></strong></span>
                 @elseif ($order->status == 1)
-                <span class=" badge rounded-pill bg-warning text-dark"><strong>Belum Tervalidasi <i
+                <span style="width: 160px" class=" badge rounded-pill bg-warning text-dark"><strong>Belum Tervalidasi <i
                       class="fa-solid fa-circle-exclamation"></i></span>
                 @elseif ($order->status == 2)
-                <span class=" badge rounded-pill bg-success text-dark"><strong>Sudah Tervalidasi <i
+                <span style="width: 160px" class=" badge rounded-pill bg-success text-dark"><strong>Sudah Tervalidasi <i
                       class="fa-solid fa-circle-check"></i></strong></span>
                 @endif
               </td>

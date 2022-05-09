@@ -70,6 +70,21 @@ class HomeController extends Controller
     //     }
     // }
     protected $pesanan, $pesanan_details = [];
+    public function cart3()
+    {
+        if (Auth::user()) {
+            $this->pesanan = Order::where('user_id', Auth::user()->id)->where('status', '2')->first();
+            if ($this->pesanan) {
+                $this->pesanan_details = OrderDetail::where('order_id', $this->pesanan->id)->get();
+            }
+            // ddd($this->pesanan_details);
+        }
+        return view('history_order', [
+            'title' => 'Cart',
+            'order' => $this->pesanan,
+            'orderDetails' => $this->pesanan_details
+        ]);
+    }
     public function cart2()
     {
         if (Auth::user()) {

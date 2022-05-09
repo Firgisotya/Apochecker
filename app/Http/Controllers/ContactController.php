@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Testimoni;
-use App\Http\Requests\StoreTestimoniRequest;
-use App\Http\Requests\UpdateTestimoniRequest;
+use App\Models\Contact;
+use App\Http\Requests\StoreContactRequest;
+use App\Http\Requests\UpdateContactRequest;
 use Illuminate\Http\Request;
 
-class TestimoniController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,9 @@ class TestimoniController extends Controller
      */
     public function index()
     {
-        //
+        return view('contact', [
+            'title' => 'Contact',
+        ]);
     }
 
     /**
@@ -26,7 +28,6 @@ class TestimoniController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -37,34 +38,34 @@ class TestimoniController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validateData = $request->validate([
             'name' => 'required',
-            'photo' => 'required',
-            'job_title' => 'required',
-            'comment' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
         ]);
-        Testimoni::create($validatedData);
-        return redirect()->back()->with('success', 'Testimoni berhasil ditambahkan');
+        Contact::create($validateData);
+        return redirect()->back()->with('success', 'Pesan Anda telah berhasil dikirim!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Testimoni  $testimoni
+     * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function show(Testimoni $testimoni)
+    public function show(Contact $contact)
     {
-        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Testimoni  $testimoni
+     * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function edit(Testimoni $testimoni)
+    public function edit(Contact $contact)
     {
         //
     }
@@ -72,11 +73,11 @@ class TestimoniController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTestimoniRequest  $request
-     * @param  \App\Models\Testimoni  $testimoni
+     * @param  \App\Http\Requests\UpdateContactRequest  $request
+     * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTestimoniRequest $request, Testimoni $testimoni)
+    public function update(UpdateContactRequest $request, Contact $contact)
     {
         //
     }
@@ -84,10 +85,10 @@ class TestimoniController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Testimoni  $testimoni
+     * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Testimoni $testimoni)
+    public function destroy(Contact $contact)
     {
         //
     }

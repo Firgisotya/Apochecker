@@ -62,7 +62,7 @@
         <div class="card-body">
           <div class="card-title d-flex align-items-start justify-content-between">
             <div class="avatar flex-shrink-0">
-              <img src="{{ asset('admin/logo/cargo.png') }}" alt="">
+              <a href="/admin/order"><img src="{{ asset('admin/logo/cargo.png') }}" alt=""></a>
             </div>
 
           </div>
@@ -161,7 +161,7 @@
         <div class="col-lg-12 col-md-12 col-6 mb-4">
           <div class="card h-100">
             <div class="card-header d-flex align-items-center justify-content-between">
-              <h5 class="card-title m-0 me-2">Transactions</h5>
+              <h5 class="card-title m-0 me-2"><a href="/admin/order">Transactions</a></h5>
 
             </div>
             <div class="card-body">

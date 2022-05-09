@@ -96,11 +96,13 @@
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="image">Gambar</label>
                 <div class="col-sm-10">
-                  @if ($obat -> image)
-                  <img src="{{ asset($obat -> image) }}" class="img-preview mb-3 " alt="" height="200px" width="200px">
-                  @else
-                  <img src="{{ asset('img/bahan/profile.png') }}" class="img-preview ">
-                  @endif
+
+                  <img src="@if ($obat -> image == null)
+                {{ asset('img/products/'.$obat -> slug.'.jpg') }}
+                @else
+                {{asset('storage/'.$obat->image)}}
+              @endif" class="img-preview mb-3 " alt="{{ $obat -> name }}" height="200px" width="200px">
+
                   <div class="pt-3">
                     <input class=" form-control @error('image') is-invalid @enderror" type="file" id="image"
                       name="image" onchange="previewImage()">
