@@ -15,7 +15,7 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $categories = collect(value: [
+        $categories = collect([
             'Flu',
             'Demam',
             'Diare',
