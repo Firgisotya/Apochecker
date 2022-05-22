@@ -93,9 +93,9 @@ class StokController extends Controller
      * @param  \App\Models\Stok  $stok
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Stok $stok)
+    public function destroy($id)
     {
-        Stok::where('id', $stok->id)->delete();
-        return redirect('/admin/histori_stok')->with('success', 'Stok deleted successfully');
+        Stok::where('id', $id)->delete();
+        return redirect('/admin/histori_stok');
     }
 }

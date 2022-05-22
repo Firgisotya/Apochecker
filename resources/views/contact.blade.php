@@ -31,9 +31,9 @@
 			<div class="col-lg-8 mb-5 mb-lg-0">
 				<div class="form-title">
 					<h2>Apakah anda memiliki pertanyaan?</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, ratione! Laboriosam est,
-						assumenda. Perferendis, quo alias quaerat aliquid. Corporis ipsum minus voluptate? Dolore,
-						esse natus!</p>
+					<p>Kami menyediakan fitur contact untuk anda agar dapat terhubung dengan kami melalui pesan yang
+						anda kirim, selain itu anda dapat memberikan kritik dan saran kepada kami melalui form dibawah
+						ini!</p>
 				</div>
 				<div id="form_status"></div>
 				<div class="contact-form">

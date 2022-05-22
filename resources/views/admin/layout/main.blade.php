@@ -83,7 +83,7 @@
     <div class="layout-overlay layout-menu-toggle"></div>
   </div>
   <!-- / Layout wrapper -->
-
+  @include('sweetalert::alert')
 
 
   <!-- Core JS -->
@@ -106,6 +106,11 @@
 
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  {{-- SweetAlert --}}
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  @yield('sweetAlert')
 </body>
 
 </html>

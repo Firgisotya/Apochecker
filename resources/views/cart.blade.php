@@ -44,10 +44,11 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order->id)->get();
 						href="/cart2">Dalam proses</a></button> --}}
 				<a class="btn btn-outline-danger {{ Request::is('cart')? 'active'  : ''}}" href="/cart"><strong>Belum
 						dibayar</strong> <i class="fa-solid fa-calendar-clock"></i></a>
-				<a class="btn btn-outline-info {{ Request::is('cart2')? 'active'  : ''}}" href="/cart2"><strong>Dalam
+				<a class="btn btn-outline-info {{ Request::is('process')? 'active'  : ''}}"
+					href="/process"><strong>Dalam
 						proses</strong> </a>
-				<a class="btn btn-outline-success {{ Request::is('cart3')? 'active'  : ''}}"
-					href="/cart3"><strong>Riwayat
+				<a class="btn btn-outline-success {{ Request::is('history_order')? 'active'  : ''}}"
+					href="/history_order"><strong>Riwayat
 						Belanja</strong> </a>
 
 			</div>
@@ -136,7 +137,9 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order->id)->get();
 					</table>
 					<div class="cart-buttons">
 						<button class="boxed-btn text-center border-0 " @if (empty($order)) disabled @endif><a
-								href="/checkout" class="text-white d-block " style="width: 100%;">Checkout</a>
+								href="/checkout" class="text-white d-block " style="width: 100%; @if (empty($order))
+									pointer-events: none;
+								@endif">Checkout</a>
 						</button>
 						{{-- <a href="/checkout" class="boxed-btn black"><button class="border-0 bg-transparent text-white"
 								@if (empty($order)) disabled @endif>

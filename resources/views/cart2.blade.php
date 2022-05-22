@@ -41,10 +41,11 @@
             <div class="btn-group col-lg-12 mb-4" role="group" aria-label="Basic example">
                 <a class="btn btn-outline-danger {{ Request::is('cart')? 'active'  : ''}}" href="/cart"><strong>Belum
                         dibayar</strong> <i class="fa-solid fa-calendar-clock"></i></a>
-                <a class="btn btn-outline-info {{ Request::is('cart2')? 'active'  : ''}}" href="/cart2"><strong>Dalam
+                <a class="btn btn-outline-info {{ Request::is('process')? 'active'  : ''}}"
+                    href="/process"><strong>Dalam
                         proses</strong> </a>
-                <a class="btn btn-outline-success {{ Request::is('cart3')? 'active'  : ''}}"
-                    href="/cart3"><strong>Riwayat
+                <a class="btn btn-outline-success {{ Request::is('history_order')? 'active'  : ''}}"
+                    href="/history_order"><strong>Riwayat
                         Belanja</strong> </a>
 
             </div>

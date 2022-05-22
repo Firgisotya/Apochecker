@@ -1,7 +1,9 @@
 <!-- Navbar -->
 @php
 // Menghitung jumlah pendapatan di table order
-
+$dt = Carbon\Carbon::now();
+// Membuat jam hari ini
+$jam = $dt->format('H:i');
 $cuan = \App\Models\Order::where('status', 2)->sum('total');
 @endphp
 <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
@@ -15,16 +17,18 @@ $cuan = \App\Models\Order::where('status', 2)->sum('total');
   <div class="navbar-nav-right d-flex align-items-baseline" id="navbar-collapse">
     <!-- Search -->
     <div class="navbar-nav align-items-center">
-      <h4>Jumlah Pendapatan : Rp. <strong>{{ number_format($cuan) }}</strong></h4>
+      <div class="d-flex">
+        <h4 id="jam"></h4>
+      </div>
     </div>
     <!-- /Search -->
 
-    <ul class="navbar-nav flex-row align-items-center ms-auto">
+    <ul class="navbar-nav flex-row align-items-center ms-auto" style="transform: translateY(7.5px)">
       <!-- User -->
       <li class="nav-item navbar-dropdown dropdown-user dropdown">
         <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
           <div class="avatar avatar-online">
-            <img src="{{ asset('admin/assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" />
+            <img src="{{ asset('storage/'.Auth::user() -> image) }}" alt class="w-px-40 h-auto rounded-circle" />
           </div>
         </a>
         <ul class="dropdown-menu dropdown-menu-end">
@@ -33,7 +37,7 @@ $cuan = \App\Models\Order::where('status', 2)->sum('total');
               <div class="d-flex">
                 <div class="flex-shrink-0 me-3">
                   <div class="avatar avatar-online">
-                    <img src="{{ asset('admin/assets/img/avatars/1.png') }}" alt
+                    <img src="{{ asset('storage/'.Auth::user() -> image) }}" alt
                       class="w-px-40 h-auto rounded-circle" />
                   </div>
                 </div>
@@ -74,3 +78,28 @@ $cuan = \App\Models\Order::where('status', 2)->sum('total');
 </nav>
 
 <!-- / Navbar -->
+
+<script>
+  const nama_hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+  const nama_bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+  function addZero(i){
+    if(i < 10){
+      i = "0" + i;
+    }
+    return i;
+  }
+  // Menampillkan jam menggunakan interval 
+  setInterval(function() {
+    var dt = new Date();
+    var jam = addZero(dt.getHours());
+    var menit = addZero(dt.getMinutes());
+    var detik = addZero(dt.getSeconds());
+    var hari = nama_hari[dt.getDay()];
+    var tanggal = dt.getDate();
+    var bulan = nama_bulan[dt.getMonth()];
+    var tahun = dt.getFullYear();
+    var jam_format = jam + " : " + menit + " : " + detik;
+    var hari_format = hari + ", " + tanggal + " " + bulan + " " + tahun;
+    document.getElementById("jam").innerHTML = ` <strong>${jam_format}</strong> <br>${hari_format}`;
+  }, 1000);
+</script>

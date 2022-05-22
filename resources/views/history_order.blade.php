@@ -41,10 +41,11 @@
             <div class="btn-group col-lg-12 mb-3 rounded" role="group" aria-label="Basic example">
                 <a class="btn btn-outline-danger {{ Request::is('cart')? 'active'  : ''}}" href="/cart"><strong>Belum
                         dibayar</strong> <i class="fa-solid fa-calendar-clock"></i></a>
-                <a class="btn btn-outline-info {{ Request::is('cart2')? 'active'  : ''}}" href="/cart2"><strong>Dalam
+                <a class="btn btn-outline-info {{ Request::is('process')? 'active'  : ''}}"
+                    href="/process"><strong>Dalam
                         proses</strong> </a>
-                <a class="btn btn-outline-success {{ Request::is('cart3')? 'active'  : ''}}"
-                    href="/cart3"><strong>Riwayat
+                <a class="btn btn-outline-success {{ Request::is('history_order')? 'active'  : ''}}"
+                    href="/history_order"><strong>Riwayat
                         Belanja</strong> </a>
 
             </div>
@@ -120,7 +121,7 @@
                     <input type="hidden" name="photo" value="{{ auth() -> user() -> image }}">
                     <input type="hidden" name="job_title" value="Customer">
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Testimoni</label>
+                        <label for="exampleFormControlTextarea1">Berikan penilaian anda terhadap kami!</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                             name="comment"></textarea>
                     </div>
@@ -133,5 +134,7 @@
         </div>
     </div>
 </div>
+
+
 
 @endsection

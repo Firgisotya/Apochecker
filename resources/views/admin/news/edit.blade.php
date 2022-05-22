@@ -8,6 +8,9 @@
         <div class="row">
             <!-- Basic Layout -->
             <div class="col-xxl">
+                <div class="" style="transform: translateY(-20px)">
+                    <a href="/admin/news" class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i> Back</a>
+                </div>
                 <div class="card mb-4">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <h5 class="mb-0">Edit News</h5>
@@ -16,15 +19,14 @@
                         <form action="/admin/news/{{ $news -> slug }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
+                            <input type="hidden" name="oldImage" value="{{ $news -> photo }}" id="">
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="image">Gambar</label>
                                 <div class="col-sm-10">
-                                    @if ($news -> photo)
-                                    <img src="{{ asset($news -> photo) }}" class="img-preview mb-3 rounded img-fluid"
-                                        alt="" height="250px" width="400px" style="object-fit: cover">
-                                    @else
-                                    <img src="{{ asset('img/bahan/profile.png') }}" class="img-preview ">
-                                    @endif
+
+                                    <img src="{{ asset('storage/'.$news -> photo) }}"
+                                        class="img-preview mb-3 rounded img-fluid" alt="" height="250px" width="400px"
+                                        style="object-fit: cover">
                                     <div class="pt-3">
                                         <input class=" form-control @error('image') is-invalid @enderror" type="file"
                                             id="image" name="photo" onchange="previewImage()" style="object-fit: cover">
@@ -83,5 +85,8 @@
     imgPreview.src = oFREvent.target.result;
     }
     }
+
+
+    
 </script>
 @endsection

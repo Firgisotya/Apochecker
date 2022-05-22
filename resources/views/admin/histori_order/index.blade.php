@@ -12,11 +12,7 @@
 
       </div>
 
-      @if (session()->has('success'))
-      <div class="alert alert-success" role="alert">
-        {{ session('success') }}
-      </div>
-      @endif
+
 
       <div class="table-responsive text-nowrap">
         <table class="table">
@@ -41,7 +37,7 @@
                 <span class=" badge rounded-pill bg-danger text-dark" style="width: 160px"><strong>Belum Bayar <i
                       class="fa-solid fa-circle-xmark"></i></strong></span>
                 @elseif ($order->status == 1)
-                <span style="width: 160px" class=" badge rounded-pill bg-warning text-dark"><strong>Belum Tervalidasi <i
+                <span style="width: 160px" class="badge rounded-pill bg-warning text-dark"><strong>Belum Tervalidasi <i
                       class="fa-solid fa-circle-exclamation"></i></span>
                 @elseif ($order->status == 2)
                 <span style="width: 160px" class=" badge rounded-pill bg-success text-dark"><strong>Sudah Tervalidasi <i
@@ -54,20 +50,22 @@
               <td width="200px"><img src="{{ asset('storage/'.$order -> bukti_pembayaran) }}" alt="" height="200px">
               </td>
               <td>
-                <form action="/admin/order/{{ $order -> id }}" method="POST" class="d-inline">
+                <form action="/admin/order/{{ $order -> id }}" method="POST" class="d-inline"
+                  id="data-update-{{ $order -> id }}">
                   @method('PUT')
                   @csrf
-                  <button class="btn btn-warning d-inline" onclick="return confirm('Verifikasi penjualan?')" @if ($order
-                    ->status == 2 ) disabled
+                  <button class="btn btn-warning d-inline update" data-name="{{ $order->user -> name }}"
+                    data-slug="{{ $order->id }}" @if ($order ->status == 2 ) disabled
 
-                    @endif><i class="fa-solid fa-circle-check"></i></button>
+                    @endif><i class="fa-solid fa-circle-check" title="Validation Payments"></i></button>
                 </form>
                 <a href="/admin/order/{{ $order -> id }}" class="btn btn-info"><i class='bx bx-show'></i></a>
-                <form action="/admin/order/{{ $order->id }}" method="POST" class="d-inline">
+                <form action="/admin/order/{{ $order->id }}" method="POST" class="d-inline"
+                  id="data-delete-{{ $order-> id }}">
                   @method('DELETE')
                   @csrf
-                  <button class="btn btn-danger border-0" onclick="return confirm('Are you sure?')"><i
-                      class='bx bxs-trash'></i></button>
+                  <button class="btn btn-danger border-0 delete" data-name="{{ $order->user -> name }}"
+                    data-slug="{{ $order->id }}"><i class='bx bxs-trash'></i></button>
                 </form>
               </td>
             </tr>
@@ -83,4 +81,65 @@
   </div>
 </div>
 
+@endsection
+
+@section('sweetAlert')
+<script>
+  const deleteButton = document.querySelectorAll('.delete');
+    deleteButton.forEach((dBtn) => {
+        dBtn.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            const postSlug = this.dataset.slug;
+            const postTitle = this.dataset.name;
+            Swal.fire({
+                title: 'Are you sure to delete this data?',
+                text: "You will delete data with name: " + postTitle,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            const dataSlug = document.getElementById('data-delete-' + postSlug);
+                            dataSlug.submit();
+                            Swal.fire(
+                                'Deleted!',
+                                'Your data has been deleted.',
+                                'success'
+                            )
+                        }
+            })
+        })
+    });
+  const updateButton = document.querySelectorAll('.update');
+    updateButton.forEach((dBtn) => {
+        dBtn.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            const postSlug = this.dataset.slug;
+            const postTitle = this.dataset.name;
+            Swal.fire({
+                title: 'Are you sure to validate this transactions?',
+                text: "You will delete data with name: " + postTitle,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            const dataSlug = document.getElementById('data-update-' + postSlug);
+                            dataSlug.submit();
+                            Swal.fire(
+                                'Validated!',
+                                'Your data has been validated.',
+                                'success'
+                            )
+                        }
+            })
+        })
+    });
+</script>
 @endsection

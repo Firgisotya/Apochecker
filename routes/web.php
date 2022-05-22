@@ -39,8 +39,8 @@ use App\Http\Controllers\DashboardContactController;
 Route::get('/', [HomeController::class, 'home']);
 Route::get('/about', [HomeController::class, 'about']);
 Route::get('/cart', [HomeController::class, 'cart']);
-Route::get('/cart2', [HomeController::class, 'cart2']);
-Route::get('/cart3', [HomeController::class, 'cart3']);
+Route::get('/process', [HomeController::class, 'cart2']);
+Route::get('/history_order', [HomeController::class, 'cart3']);
 Route::get('/checkout', [HomeController::class, 'checkout']);
 Route::resource('/contact', ContactController::class);
 Route::resource('/news', NewsController::class);
@@ -60,33 +60,9 @@ Route::resource('/testimoni', TestimoniController::class);
 Auth::routes();
 
 
-
+// Route untuk Dashboard
 Route::middleware(['auth', 'isAdmin'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view(
-            'admin.index',
-            [
-                'users' => User::count(),
-                'categories' => Category::count(),
-                'products' => Product::count(),
-                'orders' => Order::count(),
-                'news' => News::count(),
-                'testimonies' => Testimoni::count(),
-                'gopay1' => Order::where('payments', 'Gopay')->count(),
-                'gopay2' => Order::where('payments', 'Gopay')->sum('total'),
-                'bri1' => Order::where('payments', 'BRI')->count(),
-                'bri2' => Order::where('payments', 'BRI')->sum('total'),
-                'bca1' => Order::where('payments', 'BCA')->count(),
-                'bca2' => Order::where('payments', 'BCA')->sum('total'),
-                'linkaja1' => Order::where('payments', 'LinkAja')->count(),
-                'linkaja2' => Order::where('payments', 'LinkAja')->sum('total'),
-                'mandiri1' => Order::where('payments', 'Mandiri')->count(),
-                'mandiri2' => Order::where('payments', 'Mandiri')->sum('total'),
-                'shopeepay1' => Order::where('payments', 'Shopeepay')->count(),
-                'shopeepay2' => Order::where('payments', 'Shopeepay')->sum('total'),
-            ]
-        );
-    })->name('index');
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('index');
     Route::resource('/admin/product', ObatController::class)->except('show');
     Route::resource('/admin/category', CategoryController::class)->except('show');
     Route::resource('/admin/news', DashboardNewsController::class);

@@ -94,7 +94,7 @@ class OrderController extends Controller
             'status' => 2,
 
         ]);
-        return redirect('/admin/order')->with('success', 'Order telah dikirim');
+        return redirect('/admin/order');
     }
 
     /**
@@ -107,6 +107,6 @@ class OrderController extends Controller
     {
         OrderDetail::where('order_id', $id)->delete();
         Order::where('id', $id)->delete();
-        return redirect('/admin/order')->with('success', 'Order telah dihapus');
+        return redirect('/admin/order');
     }
 }

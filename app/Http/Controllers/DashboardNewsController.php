@@ -75,7 +75,6 @@ class DashboardNewsController extends Controller
     {
         return view('admin.news.show', [
             'news' => $news,
-
         ]);
     }
 
@@ -102,19 +101,24 @@ class DashboardNewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        $validateData = $request->validate([
+        // ddd($request->photo);
+        $rules = [
             'title' => 'required|max:255',
             'content' => 'required',
             'photo' => 'image|file',
-        ]);
+        ];
+        $validateData = $request->validate($rules);
+        if ($request->file('photo')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validateData['photo'] = $request->file('photo')->store('news', 'public');
+        }
         $validateData['slug'] = Str::slug($request->title);
         $validateData['excerpt'] = Str::limit(strip_tags($request->content), 200);
         $validateData['user_id'] = auth()->user()->id;
-        if ($news->photo && file_exists(storage_path('app/public/' . $news->photo))) {
-            Storage::delete('public/' . $news->photo);
-        }
-        $validateData['photo'] = $request->file('photo')->store('news', 'public');
         News::where('id', $news->id)->update($validateData);
+        // Membuat return redirect back 
         return redirect('/admin/news')->with('success', 'News updated successfully');
     }
 
@@ -126,7 +130,8 @@ class DashboardNewsController extends Controller
      */
     public function destroy(News $news)
     {
+        // ddd($news->id);
         News::where('id', $news->id)->delete();
-        return redirect('/admin/news')->with('success', 'News deleted successfully');
+        return redirect('/admin/news');
     }
 }

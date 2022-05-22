@@ -51,13 +51,10 @@
                                 <tr>
                                     <th>Pembayaran</th>
                                     <td><img src="{{ asset('img/payments/'.$order -> payments.'.png') }}" alt=""
-                                            width="100px"></td>
+                                            width="150px"></td>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th>Pesanan</th>
-                                    <td>{{ $orderDetails -> product -> name }}</td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -78,12 +75,44 @@
 
                                 @endif><i class="fa-solid fa-circle-check"></i></button>
                         </form>
-                        <form action="/admin/order/{{ $order->id }}" method="POST" class="d-inline">
+                        <form action="/admin/order/{{ $order->id }}" method="POST" class="d-inline"
+                            id="data-{{ $order -> id }}">
                             @method('DELETE')
                             @csrf
-                            <button class="btn btn-danger border-0" onclick="return confirm('Are you sure?')"><i
-                                    class='bx bxs-trash'></i></button>
+                            <button class="btn btn-danger border-0 delete" data-name={{ $order -> user -> name }}
+                                data-slug={{ $order -> id }}><i class='bx bxs-trash'></i></button>
                         </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>Daftar pesanan : </th>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Gambar</th>
+                                    <th class="text-center">Nama Product</th>
+                                    <th class="text-center">Jumlah Pembelian</th>
+                                    <th class="text-center">Harga</th>
+                                </tr>
+                                @foreach ($tes as $item)
+                                <tr>
+                                    <td class="text-center">{{ $loop -> iteration }}</td>
+                                    <th class="text-center"><img src="@if ($item -> product -> image == null)
+                                                    {{ asset('img/products/'.$item -> product -> slug.'.jpg') }}
+                                                    @else
+                                                    {{asset('storage/'.$item -> product -> image)}}
+                                                  @endif" width="100px" height="100px"></th>
+                                    <th class="text-center">{{ $item -> product -> name }}</th>
+                                    <td class="text-center"> {{ $item -> quantity }}</td>
+                                    <th class="text-center"> Rp. {{ number_format($item -> price) }}</th>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -91,4 +120,37 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('sweetAlert')
+<script>
+    const deleteButton = document.querySelectorAll('.delete');
+    deleteButton.forEach((dBtn) => {
+        dBtn.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            const postSlug = this.dataset.slug;
+            const postTitle = this.dataset.name;
+            Swal.fire({
+                title: 'Are you sure to delete this data?',
+                text: "You will delete data : " + postTitle,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            const dataSlug = document.getElementById('data-' + postSlug);
+                            dataSlug.submit();
+                            Swal.fire(
+                                'Deleted!',
+                                'Your data has been deleted.',
+                                'success'
+                            )
+                        }
+            })
+        })
+    });
+</script>
 @endsection

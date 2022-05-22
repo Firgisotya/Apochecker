@@ -6,6 +6,7 @@ use App\Models\News;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\Testimoni;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
+
     public function home()
     {
         return view('index_2', [
@@ -31,6 +33,32 @@ class HomeController extends Controller
             'title' => 'About',
             'testimonis' => Testimoni::all(),
         ]);
+    }
+    public function index()
+    {
+        return view(
+            'admin.index',
+            [
+                'users' => User::count(),
+                'categories' => Category::count(),
+                'products' => Product::count(),
+                'orders' => Order::count(),
+                'news' => News::count(),
+                'testimonies' => Testimoni::count(),
+                'gopay1' => Order::where('payments', 'Gopay')->count(),
+                'gopay2' => Order::where('payments', 'Gopay')->sum('total'),
+                'bri1' => Order::where('payments', 'BRI')->count(),
+                'bri2' => Order::where('payments', 'BRI')->sum('total'),
+                'bca1' => Order::where('payments', 'BCA')->count(),
+                'bca2' => Order::where('payments', 'BCA')->sum('total'),
+                'linkaja1' => Order::where('payments', 'LinkAja')->count(),
+                'linkaja2' => Order::where('payments', 'LinkAja')->sum('total'),
+                'mandiri1' => Order::where('payments', 'Mandiri')->count(),
+                'mandiri2' => Order::where('payments', 'Mandiri')->sum('total'),
+                'shopeepay1' => Order::where('payments', 'Shopeepay')->count(),
+                'shopeepay2' => Order::where('payments', 'Shopeepay')->sum('total'),
+            ]
+        );
     }
     public function cart()
     {

@@ -10,10 +10,10 @@
 				<div class="col-md-12 col-lg-7 offset-lg-1 offset-xl-0">
 					<div class="hero-text">
 						<div class="hero-text-tablecell">
-							<p class="subtitle">Fresh & Organic</p>
-							<h1>Delicious Seasonal Fruits</h1>
+							<p class="subtitle">Higine and Top Quality</p>
+							<h1>Kualitas dan mutu adalah nomor satu</h1>
 							<div class="hero-btns">
-								<a href="/shop" class="boxed-btn">Fruit Collection</a>
+								<a href="/shop" class="boxed-btn">Visit Shop</a>
 								<a href="/contact" class="bordered-btn">Contact Us</a>
 							</div>
 						</div>
@@ -75,7 +75,7 @@
 					</div>
 					<div class="content">
 						<h3>Free Shipping</h3>
-						<p>When order over $75</p>
+						<p>When order over Rp.100,000</p>
 					</div>
 				</div>
 			</div>
@@ -114,8 +114,8 @@
 			<div class="col-lg-8 offset-lg-2 text-center">
 				<div class="section-title">
 					<h3><span class="orange-text">Our</span> Products</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet
-						beatae optio.</p>
+					<p>Berikut adalah beberapa obat yang paling banyak di cari saat ini, mungkin ada yang juga anda
+						cari!</p>
 				</div>
 			</div>
 		</div>
@@ -285,7 +285,7 @@
 							<span class="author"><i class="fas fa-user"></i> {{ $recent -> user -> name }}</span>
 							<span class="date"><i class="fas fa-calendar"></i>{{ $recent -> date }}</span>
 						</p>
-						<p class="excerpt">{{ $recent -> excerpt }}</p>
+						<p class="excerpt">{!! $recent -> excerpt !!}</p>
 						<a href="/news/{{ $recent -> slug }}" class="read-more-btn">read more <i
 								class="fas fa-angle-right"></i></a>
 					</div>

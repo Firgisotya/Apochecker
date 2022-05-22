@@ -7,13 +7,16 @@
             {{ $news -> title }}</h4>
 
         <div class="card p-3">
+            <div class="px-3">
+                <a href="/admin/news" class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i> Back</a>
+            </div>
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h5 class="">Detail News</h5>
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <img src="{{ asset($news ->photo) }}" alt="" class="rounded " width="350px" height="250px"
-                        style="object-fit: cover">
+                    <img src="{{ asset('storage/'.$news ->photo) }}" alt="" class="rounded " width="350px"
+                        height="250px" style="object-fit: cover">
                     <p class="text-center pt-1">Penulis : {{ $news -> user -> name }}</p>
                 </div>
                 <div class="col-md-8">

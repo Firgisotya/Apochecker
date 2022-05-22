@@ -19,11 +19,7 @@
         {{-- <a href="" class="btn btn-primary">Tambah Obat</a> --}}
       </div>
 
-      @if (session()->has('success'))
-      <div class="alert alert-success" role="alert">
-        {{ session('success') }}
-      </div>
-      @endif
+
 
       <div class="table-responsive text-nowrap">
         <table class="table">

@@ -8,6 +8,9 @@
     <div class="row">
       <!-- Basic Layout -->
       <div class="col-xxl">
+        <div class="" style="transform: translateY(-20px)">
+          <a href="/admin/product" class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i> Back</a>
+        </div>
         <div class="card mb-4">
           <div class="card-header d-flex align-items-center justify-content-between">
             <h5 class="mb-0">Edit Obat</h5>
@@ -67,19 +70,7 @@
                 </div>
               </div>
 
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="stok">Stok</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control @error('stock') is-invalid
-                        @enderror" id="stock" name="stock" placeholder="stock"
-                    value="{{ old('stock', $obat->stock) }}" />
-                  @error('stock')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-                  @enderror
-                </div>
-              </div>
+
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="deaskripsi">Deskripsi</label>
                 <div class="col-sm-10">

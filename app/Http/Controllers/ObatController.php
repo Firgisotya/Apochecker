@@ -102,7 +102,7 @@ class ObatController extends Controller
         $rules = [
             'name' => 'required|max:255',
             'price' => 'required',
-            'stock' => 'required',
+            // 'stock' => 'required',
             'category_id' => 'required',
             'description' => 'required',
             'image' => 'image|file',
@@ -134,6 +134,6 @@ class ObatController extends Controller
     public function destroy(Product $product)
     {
         Product::where('id', $product->id)->delete();
-        return redirect('/admin/product')->with('success', 'Product Has Been Deleted!');
+        return redirect('/admin/product');
     }
 }

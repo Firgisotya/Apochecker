@@ -87,6 +87,6 @@ class DashboardContactController extends Controller
     public function destroy(Contact $contact)
     {
         Contact::where('id', $contact->id)->delete();
-        return redirect('/admin/contact')->with('success', 'Message deleted successfully');
+        return redirect('/admin/contact');
     }
 }
