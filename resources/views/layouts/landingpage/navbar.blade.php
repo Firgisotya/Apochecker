@@ -59,8 +59,9 @@
 
 
                             <div class="header-icons">
-                                <li style="padding-left: 250px"><a class="shopping-cart position-relative"
-                                        href="/cart"><i class="fas fa-shopping-cart"></i><span class="badge bg-danger"
+                                <li style="padding-left: 250px">
+                                    <a class="shopping-cart position-relative" href="/cart"><i
+                                            class="fas fa-shopping-cart"></i><span class="badge bg-danger"
                                             style="transform: translateY(-15px);margin-left: 3px;padding:3px 5px;border-radius: 30px">{{ $notification }}</span></a>
                                 </li>
                                 @else

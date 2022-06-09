@@ -45,7 +45,7 @@ Route::get('/checkout', [HomeController::class, 'checkout']);
 Route::resource('/contact', ContactController::class);
 Route::resource('/news', NewsController::class);
 Route::resource('/products', ProductController::class);
-Route::post('/pesan/{product}', [PesanController::class, 'store']);
+Route::post('/pesan/{product}', [PesanController::class, 'store'])->middleware('auth');
 Route::get('/profile', [HomeController::class, 'profile']);
 Route::put('/profile/{id}', [HomeController::class, 'update']);
 Route::delete('/order/{order_detail}', [PesanController::class, 'delete']);

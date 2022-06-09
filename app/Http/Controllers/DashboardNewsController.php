@@ -48,7 +48,6 @@ class DashboardNewsController extends Controller
      */
     public function store(Request $request)
     {
-
         $validateData = $request->validate([
             'title' => 'required|max:255',
             'content' => 'required',
@@ -61,6 +60,7 @@ class DashboardNewsController extends Controller
         if ($request->file('photo')) {
             $validateData['photo'] = $request->file('photo')->store('news', 'public');
         }
+        ddd($validateData);
         News::create($validateData);
         return redirect('/admin/news')->with('success', 'News created successfully');
     }

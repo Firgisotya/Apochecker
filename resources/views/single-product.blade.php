@@ -77,7 +77,7 @@
 							<input type="text" name="price" id="" value="{{ $product -> price }}"
 								placeholder="{{ $product -> price }}"> --}}
 							<p><strong>Stok :</strong>{{ $product -> stock }}</p>
-							<input type="number" name="quantity" id="" @if ($product -> stock == 0) disabled
+							<input type="number" min="0" name="quantity" id="" @if ($product -> stock == 0) disabled
 							@endif
 							><br>
 							<button type="submit" class="cart-btn" style="border: none" @if ($product ->
