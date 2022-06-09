@@ -30,6 +30,12 @@
         <div data-i18n="Analytics">Homepage</div>
       </a>
     </li>
+    <li class="menu-item ">
+        <a href="/chatify" class="menu-link {{ Request::is('/chatify') ? 'active' : '' }}">
+          <i class="menu-icon tf-icons bx bx-chat"></i>
+          <div data-i18n="Analytics">Chat</div>
+        </a>
+      </li>
 
     <!-- Data -->
     <li class="menu-header small text-uppercase">

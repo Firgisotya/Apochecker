@@ -84,10 +84,13 @@
                                         style="height: 40px;">Profile <i
                                             class="fa-solid fa-user d-flex justify-content-end"
                                             style="transform: translateY(-20px)"></i></a></li>
+                                <li style="height: 40px;overflow: hidden;"><a class="dropdown-item" href="/chatify"
+                                                style="height: 40px;">Chat <i
+                                                    class="fa-solid fa-message d-flex justify-content-end"
+                                                    style="transform: translateY(-20px)"></i></a></li>
                                 <li style="height: 40px;overflow: hidden;"><a class="dropdown-item"
                                         href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                                                                                                                             document.getElementById('logout-form').submit();">
+                                        onclick="event.preventDefault();">
                                         {{ __('Logout') }} <i
                                             class="fa-solid fa-arrow-right-from-bracket justify-content-end d-flex align-baseline"
                                             style="transform: translateY(-20px)"></i>
