@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 
 class ObatController extends Controller
 {
@@ -136,4 +137,5 @@ class ObatController extends Controller
         Product::where('id', $product->id)->delete();
         return redirect('/admin/product');
     }
+
 }

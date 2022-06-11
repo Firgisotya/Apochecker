@@ -23,6 +23,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\DashboardNewsController;
 use App\Http\Controllers\DashboardContactController;
+use App\Http\Controllers\ExpiredController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,4 +74,5 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::delete('/admin/histori_stok/{id}', [StokController::class, 'destroy']);
     Route::resource('/admin/order', OrderController::class);
     Route::resource('/admin/contact', DashboardContactController::class);
+    Route::resource('/admin/product/expired', ExpiredController::class)->only(['edit', 'update']);
 });

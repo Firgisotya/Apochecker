@@ -69,6 +69,8 @@
 						<h3>{{ $product -> name }}</h3>
 						<p class="single-product-pricing"><span></span>Rp. {{ number_format($product -> price) }}</p>
 						<p>{{ $product -> description }}</p>
+                        <h3><span class="badge bg-warning text-black p-2"><i class="fa-solid fa-calendar-xmark"></i> Kadaluarsa : {{ $product->expired_date }}
+                            </span></h3>
 						<div class="single-product-form">
 							{{-- <input type="text" name="name" id="" value="{{ $product -> name }}"
 							placeholder="{{ $product -> name }}">

@@ -30,6 +30,7 @@
               <th class="text-white">Kategori</th>
               <th class="text-white">Harga</th>
               <th class="text-white">Stok</th>
+              <th class="text-white">Kadaluarsa</th>
               <th class="text-white">Actions</th>
             </tr>
           </thead>
@@ -45,6 +46,16 @@
               <td>{{ $obat->category->name }}</td>
               <td>{{ $obat->price }}</td>
               <td>{{ $obat->stock }}</td>
+              <td>
+                @if ($obat->expired_date == NULL)
+                <a href="/admin/product/expired/{{ $obat->id }}/edit" class="btn btn-primary"><i class="bx bx-plus me-1"></i></a>
+
+                @else
+                {{ $obat->expired_date }}
+                @endif
+              </td>
+
+
               <td>
                 <a href="/admin/product/{{ $obat->slug }}/edit" class="btn btn-warning"><i
                     class='bx bxs-pencil'></i></a>
