@@ -208,6 +208,6 @@ class HomeController extends Controller
             'status' => 1,
             'bukti_pembayaran' => $validateData['bukti_pembayaran'],
         ]);
-        return redirect('/cart2')->with('success', 'Bukti pembayaran telah diupload!');
+        return redirect('/process')->with('success', 'Bukti pembayaran telah diupload!');
     }
 }

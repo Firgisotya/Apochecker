@@ -88,7 +88,15 @@
                                                 style="height: 40px;">Chat <i
                                                     class="fa-solid fa-message d-flex justify-content-end"
                                                     style="transform: translateY(-20px)"></i></a></li>
-                                <li style="height: 40px;overflow: hidden;"><a class="dropdown-item"
+                                <li style="height: 40px;overflow: hidden;">
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+              {{ __('Logout') }}
+              <i class="fa-solid fa-arrow-right-from-bracket justify-content-end d-flex align-baseline" style="transform: translateY(-20px)"></i>
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+            </form>
+                                    {{-- <a class="dropdown-item"
                                         href="{{ route('logout') }}"
                                         onclick="event.preventDefault();">
                                         {{ __('Logout') }} <i
@@ -98,8 +106,8 @@
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
-                                    </form>
-
+                                    </form> --}}
+                                </li>
                         </ul>
                         </li>
                         @endguest

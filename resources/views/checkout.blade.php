@@ -137,9 +137,9 @@
 													<td>
 														<div class="form-check">
 															<input class="form-check-input" type="radio" name="payments"
-																id="exampleRadios1" value="ShopeePay">
+																id="exampleRadios1" value="shopeepay">
 															<label class="form-check-label" for="exampleRadios1">
-																<img src="{{ asset('img/payments/Shopeepay.png') }}"
+																<img src="{{ asset('img/payments/shopeepay.png') }}"
 																	alt="" height="100px" style="object-fit: fill">
 															</label>
 														</div>
@@ -147,9 +147,9 @@
 													<td>
 														<div class="form-check">
 															<input class="form-check-input" type="radio" name="payments"
-																id="exampleRadios2" value="LinkAja">
+																id="exampleRadios2" value="linkaja">
 															<label class="form-check-label" for="exampleRadios2">
-																<img src="{{ asset('img/payments/LinkAja.png') }}"
+																<img src="{{ asset('img/payments/linkaja.png') }}"
 																	alt="" height="100px">
 															</label>
 														</div>
@@ -159,9 +159,9 @@
 													<td>
 														<div class="form-check">
 															<input class="form-check-input" type="radio" name="payments"
-																id="exampleRadios3" value="Gopay">
+																id="exampleRadios3" value="gopay">
 															<label class="form-check-label" for="exampleRadios3">
-																<img src="{{ asset('img/payments/Gopay.png') }}" alt=""
+																<img src="{{ asset('img/payments/gopay.png') }}" alt=""
 																	height="100px">
 															</label>
 														</div>
@@ -169,9 +169,9 @@
 													<td>
 														<div class="form-check">
 															<input class="form-check-input" type="radio" name="payments"
-																id="exampleRadios4" value="BCA">
+																id="exampleRadios4" value="bca">
 															<label class="form-check-label" for="exampleRadios4">
-																<img src="{{ asset('img/payments/BCA.png') }}" alt=""
+																<img src="{{ asset('img/payments/bca.png') }}" alt=""
 																	height="100px">
 															</label>
 														</div>
@@ -181,9 +181,9 @@
 													<td>
 														<div class="form-check">
 															<input class="form-check-input" type="radio" name="payments"
-																id="exampleRadios5" value="BRI">
+																id="exampleRadios5" value="bri">
 															<label class="form-check-label" for="exampleRadios5">
-																<img src="{{ asset('img/payments/BRI.png') }}" alt=""
+																<img src="{{ asset('img/payments/bri.png') }}" alt=""
 																	height="100px">
 															</label>
 														</div>
@@ -191,9 +191,9 @@
 													<td>
 														<div class="form-check">
 															<input class="form-check-input" type="radio" name="payments"
-																id="exampleRadios6" value="Mandiri">
+																id="exampleRadios6" value="mandiri">
 															<label class="form-check-label" for="exampleRadios6">
-																<img src="{{ asset('img/payments/Mandiri.png') }}"
+																<img src="{{ asset('img/payments/mandiri.png') }}"
 																	alt="" height="100px">
 															</label>
 														</div>

@@ -121,20 +121,20 @@
             const postSlug = this.dataset.slug;
             const postTitle = this.dataset.name;
             Swal.fire({
-                title: 'Are you sure to validate this transactions?',
-                text: "You will delete data with name: " + postTitle,
+                title: 'Yakin Untuk Konfirmasi ?',
+                text: "Konfirmasi Data : " + postTitle,
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Ya, Konfirmasi!'
                     }).then((result) => {
                         if (result.isConfirmed) {
                             const dataSlug = document.getElementById('data-update-' + postSlug);
                             dataSlug.submit();
                             Swal.fire(
                                 'Validated!',
-                                'Your data has been validated.',
+                                'Your data has been Confirmed.',
                                 'success'
                             )
                         }

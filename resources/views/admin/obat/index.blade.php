@@ -92,13 +92,13 @@
             const postSlug = this.dataset.slug;
             const postTitle = this.dataset.name;
             Swal.fire({
-                title: 'Are you sure to delete this data?',
-                text: "You will delete data : " + postTitle,
+                title: 'Anda Yakin Menghapus Product Ini ?',
+                text: "Data Produk : " + postTitle,
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Ya, Hapus!'
                     }).then((result) => {
                         if (result.isConfirmed) {
                             const dataSlug = document.getElementById('data-' + postSlug);

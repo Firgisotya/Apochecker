@@ -50,6 +50,7 @@ class ObatController extends Controller
             'price' => 'required',
             'stock' => 'required',
             'category_id' => 'required',
+            'expired_date' => 'required',
             'description' => 'required',
             'imgae' => 'image|file',
         ]);
@@ -103,7 +104,7 @@ class ObatController extends Controller
         $rules = [
             'name' => 'required|max:255',
             'price' => 'required',
-            // 'stock' => 'required',
+            'expired_date' => 'required',
             'category_id' => 'required',
             'description' => 'required',
             'image' => 'image|file',

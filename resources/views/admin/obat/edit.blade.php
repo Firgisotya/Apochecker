@@ -57,18 +57,20 @@
                   @enderror
                 </div>
               </div>
-              <div class="row">
-
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="expired_date">Kadaluarsa</label>
                 <div class="col-sm-10">
-                  <input type="hidden" class="form-control @error('price') is-invalid
-                        @enderror" id="price" name="oldImage" placeholder="price" value="{{$obat->image }}" />
-                  @error('price')
+                  <input type="date" class="form-control @error('expired_date') is-invalid
+                        @enderror" id="expired_date" name="expired_date" placeholder="expired_date"
+                    value="{{ old('expired_date', $obat->expired_date) }}" />
+                  @error('expired_date')
                   <div class="invalid-feedback">
                     {{ $message }}
                   </div>
                   @enderror
                 </div>
               </div>
+
 
 
               <div class="row mb-3">

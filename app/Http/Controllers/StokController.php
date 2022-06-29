@@ -17,7 +17,7 @@ class StokController extends Controller
      */
     public function index()
     {
-        return view('admin.histori_stok.index', [
+        return view('admin.stok.index', [
             'stoks' => Stok::latest()->paginate(5),
         ]);
     }
@@ -50,7 +50,7 @@ class StokController extends Controller
         ]);
         $validateData['user_id'] = auth()->user()->id;
         Stok::create($validateData);
-        return redirect('/admin/stok')->with('success', 'Stok Has Been Added');
+        return redirect('/admin/histori_stok')->with('success', 'Stok Has Been Added');
     }
 
     /**
