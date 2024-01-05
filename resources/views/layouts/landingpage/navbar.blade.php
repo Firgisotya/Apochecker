@@ -60,9 +60,13 @@
 
                             <div class="header-icons">
                                 <li style="padding-left: 250px">
-                                    <a class="shopping-cart position-relative" href="/cart"><i
+
+                                    <form action="/cart" method="POST">
+                                        @csrf
+                                        <button type="submit" class="shopping-cart position-relative"><i
                                             class="fas fa-shopping-cart"></i><span class="badge bg-danger"
-                                            style="transform: translateY(-15px);margin-left: 3px;padding:3px 5px;border-radius: 30px">{{ $notification }}</span></a>
+                                            style="transform: translateY(-15px);margin-left: 3px;padding:3px 5px;border-radius: 30px">{{ $notification }}</span></button>
+                                    </form>
                                 </li>
                                 @else
                                 <li style="padding-left: 250px"><a class="shopping-cart position-relative"

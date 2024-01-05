@@ -62,41 +62,48 @@ class HomeController extends Controller
     }
     public function cart()
     {
-        // $order = Order::where('user_id', auth()->user()->id)->where(
-        //     'status',
-        //     0
-        // )->first();
+        $order = Order::where('user_id', auth()->user()->id)->where(
+            'status',
+            0
+        )->first();
 
-        // if (!empty($order)) {
-        //     $orderDetails = OrderDetail::where('order_id', $order->id)->get();
-        // }
+        if (!empty($order)) {
+            $orderDetails = OrderDetail::where('order_id', $order->id)->get();
+            $user = User::where('id', $order->user_id)->first();
+
+            // Set your Merchant Server Key
+            \Midtrans\Config::$serverKey = config('midtrans.server_key');
+            // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+            \Midtrans\Config::$isProduction = false;
+            // Set sanitization on (default)
+            \Midtrans\Config::$isSanitized = true;
+            // Set 3DS transaction for credit card to true
+            \Midtrans\Config::$is3ds = true;
+
+            $params = array(
+                'transaction_details' => array(
+                    'order_id' => $order->id,
+                    'gross_amount' => $order->total,
+                ),
+                'customer_details' => array(
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'phone' => $user->phone,
+                ),
+            );
+
+            $snapToken = \Midtrans\Snap::getSnapToken($params);
+        }
+
         return view('cart', [
             'title' => 'Cart',
-            // 'order' => $order,
-            // 'orderDetails' => $orderDetails,
+            'order' => $order,
+            'orderDetails' => $orderDetails,
+            'user' => $user,
+            'snapToken' => $snapToken,
         ]);
     }
-    // protected $pesan,  $details = [];
-    // public function cart2()
-    // {
-
-    //     if (Auth::user()) {
-    //         $this->pesan = Order::where('user_id', auth()->user()->id)->where(
-    //             'status',
-    //             1
-    //         )->first();
-    //         // ddd($order->id);
-    //         if ($this->pesan) {
-    //             $this->details = OrderDetail::where('order_id', $this->pesan->id)->get();
-    //         }
-    //         ddd($this->details);
-    //         return view('cart2', [
-    //             'title' => 'Cart',
-    //             'order' => $this->pesan,
-    //             'orderDetails' => $this->details,
-    //         ]);
-    //     }
-    // }
+  
     protected $pesanan, $pesanan_details = [];
     public function cart3()
     {

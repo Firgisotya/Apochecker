@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
                 'phone' => '081334552124',
                 'gender' => 'Laki-Laki',
                 'image' => '',
-                'level' => '',
+                'level' => 'admin',
                 'address' => 'Pasuruan',
                 'email' => 'firgi@gmail.com',
                 'password' => Hash::make('123'),

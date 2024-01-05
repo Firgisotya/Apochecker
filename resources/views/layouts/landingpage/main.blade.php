@@ -35,6 +35,8 @@
     <link rel="stylesheet" href="/css/profile.css">
 
     <link rel="stylesheet" href="{{ asset('fontawesome/fontawesome-free-6.0.0-web/css/all.min.css') }}">
+    
+    @yield('css')
 
 </head>
 
@@ -79,6 +81,8 @@
     <!-- main js -->
     <script src="/js/main.js"></script>
     {{-- FontAwesome --}}
+
+    @yield('js')
 
 
 </body>
